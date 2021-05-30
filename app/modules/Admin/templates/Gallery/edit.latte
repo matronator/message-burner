@@ -1,0 +1,69 @@
+{layout '../@layoutSginedIn.latte'}
+
+{block content}
+    {form galleryForm}
+        <div class="input text uk-margin-bottom">
+            {label title /}
+            {input title}
+        </div>
+
+        <div class="uk-child-width-1-2 uk-margin-bottom uk-flex-middle" uk-grid>
+            <div class="input date">
+                {label date /}
+                {input date}
+            </div>
+            <div class="input checkbox">
+                {label visible /}
+                {input visible}
+            </div>
+        </div>
+
+        <div class="input upload uk-margin-bottom uk-child-width-1-2" uk-grid>
+            <div>
+                <div class="uk-button-group uk-margin" uk-margin>
+                    <div uk-form-custom="target: true">
+                        <input class="js-file" type="file" n:name="image" data-main-image="mainImageFile">
+                        <input data-image-desc="mainImageFile" class="uk-input uk-form-width-medium" type="text" placeholder="Vyberte titulní obrázek" value="{ifset $mainImageName}{$mainImageName}{/ifset}">
+                    </div>
+                    <a class="uk-button uk-button-default uk-button" data-clear-target="mainImageFile">
+                        <span uk-icon="close"></span>
+                    </a>
+                    <input n:name="clear_image" data-clear-image="mainImageFile">
+                </div>
+            </div>
+            <div>
+                <img n:ifset="$mainImageName" data-image-preview="mainImageFile" src="{$basePath}/upload/gallery/{$galleryDir}/{$mainImageName}">
+            </div>
+        </div>
+
+        {include '../../components/DropUpload/DropUpload.latte',
+            'input' => $form['files']->control,
+            'formId' => 'galleryForm'
+        }
+
+        <div class="uk-child-width-1-5 uk-grid-small uk-grid-match uk-margin-bottom" uk-grid>
+            {foreach $galleryMedia as $image}
+                {capture $filePath}{$basePath}/upload/gallery/{$galleryDir}/{$image->filename}{/capture}
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body uk-padding-small">
+                        <a href="#" uk-toggle="target: #delete-{$image->id}" class="uk-button uk-button-small uk-button-danger"><span uk-icon="icon: close"></span></a>
+                        <a href="#" uk-toggle="target: #show-{$image->id}">
+                            <img src="{$filePath}">
+                        </a>
+                        {include '../../components/Modals/imagePreview.latte'
+                            imageId => $image->id,
+                            id => "show-" . $image->id,
+                            file => $filePath,
+                        }
+                    </div>
+                </div>
+            {/foreach}
+        </div>
+
+        <div class="input date uk-margin-bottom">
+            <a n:href="default" class="uk-button uk-button-default">Zrušit</a>
+            <button n:name="save" type="submit" class="uk-button uk-button-primary">Uložit</button>
+        </div>
+
+    {/form}
+{/block}

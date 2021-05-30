@@ -1,0 +1,21 @@
+<nav class="uk-light">
+    {block navList}
+        <ul class="{ifset $nested}uk-nav-sub{else}uk-nav-default uk-nav-parent-icon{/ifset}" uk-nav="multiple: true;" n:inner-foreach="$list as $item">
+            {if $presenter->isAllowed('read', $item->presenter)}
+                {var $isParent = isset($item->items) && is_array($item->items)}
+                {var $isAction = isset($item->action)}
+                {var $isCurrent = $isAction ? $presenter->isLinkCurrent($item->presenter . ':' . $item->action) : $presenter->isLinkCurrent($item->presenter . ':*')}
+                <li class="{if $isParent}uk-parent{if $isCurrent} uk-open{/if}{/if} {if $isCurrent}uk-active{/if}">
+                    <a href="{$isAction ? $presenter->link($item->presenter . ':' . $item->action) : $presenter->link($item->presenter . ':default')}">
+                        <span class="uk-margin-small-right" uk-icon="icon: {isset($item->icon) ? $item->icon : 'chevron-right'}"></span>
+                        {$item->title}
+                    </a>
+                    {if $isParent}
+                        {include navList, list => $item->items, nested => true}
+                    {/if}
+                </li>
+                <li class="uk-nav-divider" n:if="!$iterator->isLast()"></li>
+            {/if}
+        </ul>
+    {/block}
+</nav>

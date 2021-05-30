@@ -1,0 +1,18 @@
+:root {
+  --width-aside: 240px;
+  --height-header: 80px;
+
+  --color-1: #117fcb;
+  --color-2: #db7343;
+  --color-3: #6c757d;
+}
+
+/* breakpoints (inherited from UI kit) */
+
+@custom-media --s (min-width: 640px);
+
+@custom-media --m (min-width: 960px);
+
+@custom-media --l (min-width: 1200px);
+
+@custom-media --xl (min-width: 1600px);

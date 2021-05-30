@@ -1,0 +1,6 @@
+.ck.ck-content.ck-editor__editable.ck-editor__editable_inline {
+    min-height: 200px;
+    .perex & {
+        min-height: 120px;
+    }
+}

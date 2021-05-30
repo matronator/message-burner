@@ -1,0 +1,29 @@
+{**
+ *        $id          string         Modal ID
+ *        $imageId          string         Image ID
+ *        $file        string         Image filename
+**}
+
+<div id="{$id}" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close>
+        </button>
+        {* <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Potvrzení</h2>
+        </div> *}
+        <div class="uk-modal-body" n:if="isset($file)">
+            <img src="{$file}">
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Zavřít náhled</button>
+            <a href="#" class="uk-button uk-button-danger" uk-toggle="target: #delete-{$imageId}" type="button">
+                Smazat obrázek
+            </a>
+            {include './deleteConfirm.latte'
+                id => "delete-" . $imageId,
+                action => $presenter->link('deleteImage', $imageId),
+                text => 'Opravdu chcete smazat obrázek?',
+            }
+        </div>
+    </div>
+</div>

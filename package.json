@@ -1,0 +1,88 @@
+{
+  "name": "starterpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp --production",
+    "postpost": "npm run report-js && npm run report-css && npm run report-lh",
+    "start-admin": "gulp --mod admin",
+    "build-admin": "gulp --production --mod admin",
+    "serve": "source .env && php -S 127.0.0.1:8000 -t www/",
+    "lint-js": "eslint dev/**/*.js --fix",
+    "lint-css": "stylelint dev/**/*.css app/**/*.css --fix",
+    "report-css": "stylelint dev/**/*.css > www/dist/report/stylelint.txt || exit 0",
+    "report-js": "eslint dev/**/*.js -f compact -o www/dist/report/eslint.txt",
+    "report-lh": "lighthouse http://127.0.0.1:8000/ --output html --output-path www/dist/report/lighthouse.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "apigen": "apidoc -i app/modules/Api/presenters/ -o www/dist/apidoc/"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [],
+  "author": "Matronator",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/register": "^7.13.16",
+    "apidoc": "^0.19.1",
+    "autoprefixer": "^9.8.6",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.14",
+    "browserify": "^16.5.2",
+    "cssnano": "^4.1.11",
+    "del": "^5.1.0",
+    "dotenv": "^8.6.0",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "glob": "^7.1.7",
+    "gulp": "^4.0.2",
+    "gulp-cache": "^1.1.3",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-noop": "^1.0.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-rev": "^9.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svg-sprite": "^1.5.0",
+    "gulp-tap": "^2.0.0",
+    "gulp-uglify-es": "^2.0.0",
+    "lighthouse": "^5.6.0",
+    "loose-envify": "^1.4.0",
+    "postcss": "^8.3.0",
+    "postcss-custom-media": "^7.0.8",
+    "postcss-import": "^14.0.2",
+    "postcss-nested": "^5.0.5",
+    "prettier": "^1.19.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-prettier": "^1.2.0",
+    "tailwindcss": "^2.1.2",
+    "vinyl-buffer": "^1.0.1",
+    "yargs": "^15.4.1"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ie >= 11"
+  ],
+  "prettier": {
+    "semi": false,
+    "include": [
+      "./prettierrc.json"
+    ]
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@ckeditor/ckeditor5-build-classic": "^16.0.0",
+    "@ckeditor/ckeditor5-ckfinder": "^16.0.0",
+    "choices.js": "^9.0.1",
+    "core-js": "^3.13.1",
+    "flatpickr": "^4.6.9",
+    "nouislider": "^14.7.0",
+    "tui-image-editor": "^3.14.3",
+    "uikit": "^3.6.22"
+  }
+}

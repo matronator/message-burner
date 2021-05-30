@@ -1,0 +1,19 @@
+{**
+ *      $formId          string          Parent form
+ *      $input           object          Input control
+**}
+
+<div class="uk-form-controls">
+    <div class="js-upload uk-placeholder uk-text-center uk-position-relative drop-upload uk-margin-bottom">
+        {$input|noescape}
+        <div class="uk-padding-small">
+            <span uk-icon="icon: cloud-upload"></span>
+            <span class="uk-text-middle">Nahrajte soubory přetáhnutím nebo</span>
+            <span class="uk-link">je vyberte.</span>
+        </div>
+    </div>
+
+    <ul class="uk-thumbnav js-thumbnav uk-margin-bottom" uk-margin>
+        <li class="uk-active"></li>
+    </ul>
+</div>

@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Common styles */
+
+@layer base {
+    @import "common/variables.css";
+    @import "common/mixins.css";
+    @import "common/fonts.css";
+    @import "common/general.css";
+    a {
+        @apply hover:underline;
+    }
+
+    p {
+        @apply font-sans text-base tracking-normal text-black;
+    }
+
+    h1 {
+        @apply text-3xl;
+    }
+
+    section {
+        @apply w-full;
+    }
+
+    .section {
+        @apply my-72;
+    }
+
+    .container {
+        @apply px-4;
+        max-width: 1392px;
+    }
+}
+
+@layer components {
+    @import "common/buttons.css";
+    @import "common/flash.css";
+    @import "common/header.css";
+    @import "common/footer.css";
+    .container-max {
+        max-width: 1392px !important;
+        @screen xl {
+            padding-left: 80px !important;
+            padding-right: 80px !important;
+        }
+    }
+    .container-sm {
+        max-width: 640px;
+    }
+
+    .container-md {
+        max-width: 1310px;
+    }
+    /* --------========≡≡≡≡≡--| TYPOGRAPHY |--≡≡≡≡≡========-------- */
+
+    .lead {
+        @apply font-bold tracking-normal text-center text-lead;
+    }
+    .sub-1 {
+        @apply text-lg font-bold tracking-normal;
+    }
+    .sub-2 {
+        @apply text-xl font-bold tracking-normal;
+    }
+    .headline-1 {
+        @apply text-2xl font-bold tracking-normal;
+    }
+    .headline-2 {
+        @apply text-3xl font-bold tracking-normal;
+    }
+    .headline-3 {
+        @apply text-4xl font-bold tracking-normal;
+    }
+    .headline-4 {
+        @apply font-bold tracking-normal text-hd;
+    }
+    .label {
+        @apply font-sans font-bold uppercase text-button;
+    }
+}
+
+@layer utilities {
+}
+
+@screen xl {
+    .container {
+        @apply px-0;
+    }
+}
