@@ -5,10 +5,10 @@
 /* Common styles */
 
 @layer base {
-    @import "common/variables.css";
-    @import "common/mixins.css";
-    @import "common/fonts.css";
-    @import "common/general.css";
+    /* @import "common/variables.css"; */
+    /* @import "common/mixins.css"; */
+    /* @import "common/fonts.css"; */
+    /* @import "common/general.css"; */
     a {
         @apply hover:underline;
     }
@@ -32,6 +32,11 @@
     .container {
         @apply px-4;
         max-width: 1392px;
+    }
+
+    .bg-grad-primary {
+        background: linear-gradient(-226deg, rgba(201,31,8,0.65) 0%, rgba(93,4,110,0.70) 100%),
+                    linear-gradient(-180deg, #FFB156 2%, #710202 97%);
     }
 }
 
@@ -79,6 +84,13 @@
     }
     .label {
         @apply font-sans font-bold uppercase text-button;
+    }
+
+    .btn {
+        @apply text-button uppercase px-4 py-2;
+        &\-primary {
+            @apply text-yellow bg-dark-2;
+        }
     }
 }
 

@@ -18,10 +18,10 @@ module.exports = {
     },
     fontSize: {
       button: [
-        "10px",
         {
+          fontSize: "11px",
           lineHeight: "22px",
-          letterSpacing: "3px",
+          letterSpacing: "2px",
         },
       ],
       xs: ["12px", "22px"],
@@ -49,30 +49,43 @@ module.exports = {
       colors: {
         transparent: "transparent",
         current: "currentColor",
-        black: {
+        dark: {
           DEFAULT: "#000000",
-          100: "#111111",
+          1: "#131313",
+          2: "#222222",
+        },
+        light: {
+          DEFAULT: "#ffffff",
+          1: "#f5f5f5",
+          2: "#acacac",
         },
         grey: {
           3: "#ababab",
         },
         white: "#ffffff",
         yellow: {
-          DEFAULT: "#FFCE41",
+          DEFAULT: "#ffc400",
+          light: "#ffd06a",
+          lighter: "#faeec7",
         },
         red: {
-          DEFAULT: "#E65069",
+          DEFAULT: "#9f2934",
+          danger: "#db0000",
+          "danger-2": "#ff0000",
         },
         green: {
           DEFAULT: "#13C6B0",
         },
         orange: {
-          DEFAULT: "#FABA71",
+          DEFAULT: "#ff9216",
         },
         purple: {
           DEFAULT: "#44105C",
           light: "#A288E3",
         },
+        primary: "#ffc400",
+        secondary: "#ff9216",
+        ternary: "#9f2934",
       },
       width: {
         55: "220px",
