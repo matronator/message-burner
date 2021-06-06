@@ -25,7 +25,8 @@
 		"tracy/tracy": "^2.8",
 		"latte/latte": "^2.10",
 		"contributte/translation": "^0.9",
-		"ext-json": "*"
+		"ext-json": "*",
+		"defuse/php-encryption": "9999999-dev"
     },
 	"require-dev": {
 		"nette/tester": "^2.4.0"
