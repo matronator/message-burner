@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace App\Components;
 
+use App\Libs\HashService;
 use App\Model\MessagesRepository;
 use Contributte\Translation\Translator;
+use DateTime;
+use Defuse\Crypto\Crypto;
+use Defuse\Crypto\Key;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
+use Nette\Utils\Strings;
 
 class MessageForm extends Control
 {
@@ -41,23 +46,25 @@ class MessageForm extends Control
 			->setHtmlAttribute('class', 'message-input')
 			->setHtmlAttribute('placeholder', 'Write your message here...');
 
+        // $form->addText('captcha', 'Enter captcha:');
+
+        $form->addPassword('password', 'Protect message with password (Optional):')
+            ->setHtmlAttribute('class', 'password-input')
+            ->setHtmlAttribute('placeholder', '(Optional) password')
+            ->addCondition(Form::FILLED, true)
+            ->addRule(Form::MIN_LENGTH, 'Password must be at least 3 characters long.', 3);
+
 		$form->addSubmit('submit', 'Create message')
 			->setHtmlAttribute('class', 'btn btn-primary');
 
-		$form->addHidden('recaptcha_token');
+		// $form->addHidden('recaptcha_token');
 
 		$form->onSuccess[] = [$this, 'processForm'];
 		return $form;
     }
 
-    public function processForm(Form $form, $values) {
-		$recaptcha = $this->verifyRecaptcha($values->recaptcha_token);
-		if ($recaptcha->success && $recaptcha->score > 0.49) {
-			$this->presenter->flashMessage($this->translator->translate('m.form.success'), 'success');
-			$this->onSuccess($form);
-		} else {
-			$this->presenter->flashMessage($this->translator->translate('m.form.errorYouAreRobot'), 'error');
-            $this->onError($form);
-		}
+    public function processForm(Form $form, $values)
+    {
+        $this->onSuccess();
 	}
 }

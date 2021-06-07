@@ -26,7 +26,9 @@
 		"latte/latte": "^2.10",
 		"contributte/translation": "^0.9",
 		"ext-json": "*",
-		"defuse/php-encryption": "9999999-dev"
+		"defuse/php-encryption": "9999999-dev",
+		"gregwar/captcha": "9999999-dev",
+		"hashids/hashids": "4.1.x-dev"
     },
 	"require-dev": {
 		"nette/tester": "^2.4.0"
