@@ -80,7 +80,8 @@ module.exports = {
           DEFAULT: "#ff9216",
         },
         purple: {
-          DEFAULT: "#44105C",
+          DEFAULT: "#5D046E",
+          dark: "#44105C",
           light: "#A288E3",
         },
         primary: "#ffc400",

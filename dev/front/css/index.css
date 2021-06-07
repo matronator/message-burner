@@ -1,14 +1,14 @@
+@import "common/buttons.css";
+@import "common/flash.css";
+@import "common/header.css";
+@import "common/footer.css";
+@import "../../../app/modules/Front/components/MessageForm/MessageForm.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Common styles */
-
 @layer base {
-    /* @import "common/variables.css"; */
-    /* @import "common/mixins.css"; */
-    /* @import "common/fonts.css"; */
-    /* @import "common/general.css"; */
     a {
         @apply hover:underline;
     }
@@ -38,13 +38,13 @@
         background: linear-gradient(-226deg, rgba(201,31,8,0.65) 0%, rgba(93,4,110,0.70) 100%),
                     linear-gradient(-180deg, #FFB156 2%, #710202 97%);
     }
+    .bg-grad-secondary {
+        background: linear-gradient(-226deg, var(--color-1) 0%, rgba(93,4,110,0.70) 100%),
+                    linear-gradient(-180deg, #FFB156 2%, #710202 97%);
+    }
 }
 
 @layer components {
-    @import "common/buttons.css";
-    @import "common/flash.css";
-    @import "common/header.css";
-    @import "common/footer.css";
     .container-max {
         max-width: 1392px !important;
         @screen xl {
@@ -87,7 +87,7 @@
     }
 
     .btn {
-        @apply text-button uppercase px-4 py-2;
+        @apply px-4 py-2 uppercase text-button;
         &\-primary {
             @apply text-yellow bg-dark-2;
         }
