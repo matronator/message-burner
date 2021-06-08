@@ -37,9 +37,9 @@
 
     {include '../components/Header/Header.latte'}
 
-    <main class="container mx-auto text-center">
+    <div class="container mx-auto text-center" n:snippet="body">
         {include pageContent}
-    </main>
+    </div>
 
     <script defer src="{asset index.js front}"></script>
 

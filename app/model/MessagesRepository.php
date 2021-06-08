@@ -2,8 +2,10 @@
 
 namespace App\Model;
 
+use App\Libs\HashService;
 use Nette;
-
+use Nette\Database\Table\ActiveRow;
+use Nette\Database\Table\Selection;
 
 class MessagesRepository
 {
@@ -17,8 +19,13 @@ class MessagesRepository
 		$this->database = $database;
 	}
 
-	public function findAll()
+	public function findAll(): Selection
 	{
 		return $this->database->table('messages');
+	}
+
+	public function getMessage(string $hash): ActiveRow
+	{
+		return $this->findAll()->get(HashService::hashToId($hash));
 	}
 }

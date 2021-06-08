@@ -40,7 +40,21 @@ final class DefaultPresenter extends BasePresenter
 		if ($hash === '') {
 			$this->redirect('default');
 		}
+		$this->template->hash = $hash;
+		$this->template->messageUrl = $this->link('Default:read', $hash);
+	}
+
+	public function renderRead(string $hash = '')
+	{
+		if ($hash === '') {
+			$this->redirect('default');
+		}
+		$message = $this->messagesRepository->getMessage($hash);
+		if (!$message) {
+			$this->redirect('default');
+		}
 		$this->template->url = $hash;
+		$this->template->message = $message;
 	}
 
 	public function createComponentMessageForm(): Form
