@@ -5,7 +5,11 @@
 {block pageContent}
 <h2>Message created!</h2>
 {* {control contactForm} *}
-<p>Message URL: {$url}</p>
+<p>Message URL:</p>
+<p>
+    <input class="msg-link" id="messageLink" type="text" readonly value="{$messageUrl}" data-popup-target="copied">
+    <div class="popup" data-popup-id="copied">Copied!</div>
+</p>
 
 {* {/form} *}
 {/block}

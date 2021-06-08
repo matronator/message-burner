@@ -1,8 +1,7 @@
-@import "import/buttons.css";
 @import "import/flash.css";
-@import "import/header.css";
-@import "import/footer.css";
 @import "../../../app/modules/Front/components/MessageForm/MessageForm.css";
+@import "../../../app/modules/Front/components/Dropdown/Dropdown.css";
+@import "import/popup.css";
 
 @tailwind base;
 @tailwind components;
@@ -14,12 +13,14 @@
     }
 
     p {
-        @apply font-sans text-base tracking-normal text-black;
+        @apply mb-4 font-sans text-base tracking-normal text-black;
     }
 
-    h1 {
-        @apply text-3xl;
-    }
+    h1 { @apply mb-6 text-3xl; }
+    h2 { @apply mb-6 text-2xl; }
+    h3 { @apply mb-4 text-xl; }
+    h4 { @apply mb-4 text-lg; }
+    h5 { @apply mb-4 text-base font-bold; }
 
     section {
         @apply w-full;
@@ -32,6 +33,10 @@
     .container {
         @apply px-4;
         max-width: 1392px;
+    }
+    .container-sm {
+        @apply px-2 mx-auto;
+        max-width: 960px;
     }
 
     .bg-grad-primary {
@@ -91,6 +96,16 @@
         &\-primary {
             @apply text-yellow bg-dark-2;
         }
+    }
+
+    .msg-link {
+        @apply w-full px-3 py-2 mb-3 text-base font-bold text-black no-underline appearance-none select-text bg-light-2;
+        writing-mode: horizontal-tb;
+    }
+
+    .read-message {
+        @apply block w-full px-3 py-4 mx-auto text-base text-left bg-yellow-lighter;
+        min-height: 200px;
     }
 }
 

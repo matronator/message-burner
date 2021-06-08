@@ -35,7 +35,7 @@ final class DefaultPresenter extends BasePresenter
 			$this->redirect('default');
 		}
 		$this->template->hash = $hash;
-		$this->template->messageUrl = $this->link('Default:read', $hash);
+		$this->template->messageUrl = $this->link('//Default:read', $hash);
 	}
 
 	public function renderRead(string $hash = '')
@@ -45,10 +45,43 @@ final class DefaultPresenter extends BasePresenter
 		}
 		$message = $this->messagesRepository->getMessage($hash);
 		if (!$message) {
-			$this->redirect('default');
+			$this->template->noMessage = true;
+		} else {
+			if ($this->isAjax()) {
+				$session = $this->session->getSection('readMessage');
+				if ($session['showAndDelete'] === true) {
+					$this->template->message = (object) [
+						'password' => $message->password,
+						'content' => Crypto::decrypt($message->content, Key::loadFromAsciiSafeString($message->secret_key)),
+					];
+					$this->messagesRepository->messageRead($hash);
+					unset($session['showAndDelete']);
+				} else {
+					$this->template->message = (object) [
+						'password' => $message->password,
+						'content' => '',
+					];
+					$this->template->msgError = 'Something went wrong';
+				}
+			} else {
+				$this->template->message = (object) [
+					'password' => $message->password,
+					'content' => '',
+				];
+			}
 		}
-		$this->template->url = $hash;
-		$this->template->message = $message;
+	}
+
+	public function handleUnlockMessage()
+	{
+
+	}
+
+	public function handleShowMessage()
+	{
+		$session = $this->session->getSection('readMessage');
+		$session['showAndDelete'] = true;
+		$this->redrawControl('message');
 	}
 
 	public function createComponentMessageForm(): Form
@@ -62,13 +95,13 @@ final class DefaultPresenter extends BasePresenter
 
         // $form->addText('captcha', 'Enter captcha:');
 
-        $form->addPassword('password', 'Protect message with password (Optional):')
+        $form->addPassword('password', 'Password (optional):')
             ->setHtmlAttribute('class', 'password-input')
-            ->setHtmlAttribute('placeholder', '(Optional) password')
+            ->setHtmlAttribute('placeholder', 'Enter password')
             ->addCondition(Form::FILLED, true)
             ->addRule(Form::MIN_LENGTH, 'Password must be at least 3 characters long.', 3);
 
-		$form->addSubmit('submit', 'Create message')
+		$form->addSubmit('save', 'Create message')
 			->setHtmlAttribute('class', 'btn btn-primary');
 
 		// $form->addHidden('recaptcha_token');
@@ -85,11 +118,14 @@ final class DefaultPresenter extends BasePresenter
 		$data['expires_at'] = new DateTime('now + 2 DAYS');
 		$url = '';
 		if (strlen($data['password']) >= 3) {
+			$hashedPassword = HashService::hashPassword($data['password']);
 			$data['content'] = Crypto::encryptWithPassword($values->content, $data['password']);
+			$data['password'] = $hashedPassword;
 			$row = $this->messagesRepository->findAll()->insert($data);
 			$hash = HashService::idToHash($row->id);
 			$row->update(['hash' => $hash]);
 		} else {
+			unset($data['password']);
 			$key = Key::createNewRandomKey();
 			$data['secret_key'] = $key->saveToAsciiSafeString();
 			$data['content'] = Crypto::encrypt($values->content, $key);

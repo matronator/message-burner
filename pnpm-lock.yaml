@@ -2,17 +2,20 @@ lockfileVersion: 5.3
 
 specifiers:
   '@babel/core': ^7.14.3
+  '@babel/plugin-proposal-optional-chaining': ^7.14.2
   '@babel/polyfill': ^7.12.1
   '@babel/preset-env': ^7.14.4
   '@babel/register': ^7.13.16
   '@ckeditor/ckeditor5-build-classic': ^16.0.0
   '@ckeditor/ckeditor5-ckfinder': ^16.0.0
+  '@popperjs/core': ^2.9.2
   apidoc: ^0.19.1
   autoprefixer: ^9.8.6
   babelify: ^10.0.0
   browser-sync: ^2.26.14
   browserify: ^16.5.2
   choices.js: ^9.0.1
+  clipboard-polyfill: ^3.0.3
   core-js: ^3.13.1
   cssnano: ^4.1.11
   del: ^5.1.0
@@ -53,7 +56,9 @@ dependencies:
   '@babel/polyfill': 7.12.1
   '@ckeditor/ckeditor5-build-classic': 16.0.0
   '@ckeditor/ckeditor5-ckfinder': 16.0.0
+  '@popperjs/core': 2.9.2
   choices.js: 9.0.1
+  clipboard-polyfill: 3.0.3
   core-js: 3.13.1
   flatpickr: 4.6.9
   nouislider: 14.7.0
@@ -62,6 +67,7 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.14.3
+  '@babel/plugin-proposal-optional-chaining': 7.14.2_@babel+core@7.14.3
   '@babel/preset-env': 7.14.4_@babel+core@7.14.3
   '@babel/register': 7.13.16_@babel+core@7.14.3
   apidoc: 0.19.1
@@ -1337,6 +1343,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.4
       fastq: 1.11.0
     dev: true
+
+  /@popperjs/core/2.9.2:
+    resolution: {integrity: sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==}
+    dev: false
 
   /@sindresorhus/is/0.7.0:
     resolution: {integrity: sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==}
@@ -2756,6 +2766,10 @@ packages:
   /cli-width/2.2.1:
     resolution: {integrity: sha512-GRMWDxpOB6Dgk2E5Uo+3eEBvtOOlimMmpbFiKuLFnQzYDavtLFY3K5ona41jgN/WdRZtG7utuVSVTL4HbZHGkw==}
     dev: true
+
+  /clipboard-polyfill/3.0.3:
+    resolution: {integrity: sha512-hts0o01ZkwjA1qHA5gFePzAj/780W7v+eyN3GdaCRyDnapzcPsKRV5aodv77gcr40NDIcyNjNmc+HvfKV+jD0g==}
+    dev: false
 
   /cliui/3.2.0:
     resolution: {integrity: sha1-EgYBU3qRbSmUD5NNo7SNWFo5IT0=}

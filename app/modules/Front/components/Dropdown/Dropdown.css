@@ -1,0 +1,12 @@
+@layer components {
+    details.dropdown {
+        @apply mb-4;
+        & summary {
+            @apply mb-4;
+            cursor: pointer;
+            & > * {
+                display: inline;
+            }
+        }
+    }
+}

@@ -24,12 +24,17 @@ class MessagesRepository
 		return $this->database->table('messages');
 	}
 
-	public function getMessage(string $hash): ActiveRow|null
+	public function getMessage(string $hash)
 	{
 		$id = HashService::hashToId($hash);
 		if ($id === -1) {
 			return null;
 		}
 		return $this->findAll()->get($id);
+	}
+
+	public function messageRead(string $hash)
+	{
+		$this->getMessage($hash)->delete();
 	}
 }

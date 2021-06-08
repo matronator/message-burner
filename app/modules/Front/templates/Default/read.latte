@@ -3,9 +3,33 @@
 {define metaDescription}Read{/define}
 
 {block pageContent}
-<h2>Read message</h2>
 {* {control contactForm} *}
-<p>Message URL: {$url}</p>
+{ifset $noMessage}
+    <h2>No message found</h2>
+    <p class="lead">Invalid link or the message was already opened and deleted.</p>
+    <p class="text-center">
+        <a n:href="Default:default">Back to homepage</a>
+    </p>
+{else}
+    <h2>Read message</h2>
+    <p class="lead">Do you want to read the message now?</p>
+    <div class="relative" n:if="$message->password !== null">
+        <p class="text-lead">Message is protected by password. Enter the password below to unlock and read the message.</p>
+        <input type="password" placeholder="Enter password">
+        <a n:href="unlockMessage!" class="btn btn-primary ajax">Unlock message</a>
+    </div>
+    <div class="relative" n:if="$message->password === null">
+        <a n:href="showMessage!" class="btn btn-primary ajax">Show message</a>
+    </div>
+
+    <div class="read-message" n:snippet="message">
+        {if $message->content === '' && isset($msgError)}
+            {$msgError}
+        {else}
+            {$message->content|breakLines}
+        {/if}
+    </div>
+{/ifset}
 
 {* {/form} *}
 {/block}

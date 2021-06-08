@@ -26,6 +26,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.14.3",
+    "@babel/plugin-proposal-optional-chaining": "^7.14.2",
     "@babel/preset-env": "^7.14.4",
     "@babel/register": "^7.13.16",
     "apidoc": "^0.19.1",
@@ -78,7 +79,9 @@
     "@babel/polyfill": "^7.12.1",
     "@ckeditor/ckeditor5-build-classic": "^16.0.0",
     "@ckeditor/ckeditor5-ckfinder": "^16.0.0",
+    "@popperjs/core": "^2.9.2",
     "choices.js": "^9.0.1",
+    "clipboard-polyfill": "^3.0.3",
     "core-js": "^3.13.1",
     "flatpickr": "^4.6.9",
     "nouislider": "^14.7.0",

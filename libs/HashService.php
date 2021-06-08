@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace App\Libs;
 
 use Hashids\Hashids;
+use Nette\Security\Passwords;
 
 class HashService
 {
@@ -25,5 +26,11 @@ class HashService
     {
         $hashids = new Hashids('messages', 8);
         return $hashids->decode($hash)[0] ?? -1;
+    }
+
+    public static function hashPassword(string $password): string
+    {
+        $security = new Passwords;
+        return $security->hash($password);
     }
 }
