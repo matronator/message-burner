@@ -15,16 +15,10 @@ tracy:
 	showLocation: true
 
 services:
-	- App\FrontModule\Factories\ContactFormFactory
-	- App\FrontModule\Factories\AccountFormsFactory
-	- App\FrontModule\Factories\MessageFormFactory
 	- App\Model\Authorizator::create
 	- App\Model\Authenticator
-	- App\Model\ArticlesRepository
 	- App\Model\MessagesRepository
-	- App\Model\ContactFormRepository
 	- App\Model\GalleryRepository
-	- App\Model\PagesRepository
 	- App\Model\UserRepository
 	- App\Filter\ImageFilter
 	imagePipe: \ImageGenerator(%wwwDir%)

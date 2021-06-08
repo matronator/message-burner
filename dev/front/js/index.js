@@ -19,7 +19,7 @@ async function handleNetteResponse(link, data, contentType = `application/json`)
     }
     Object.entries(snippets).forEach(([id, html]) => {
         const elem = document.getElementById(id)
-        elem?.innerHTML = html
+        if (elem) elem.innerHTML = html
     })
     // registerAjaxHandlers(link)
     // toggleHashGroups(location.href)

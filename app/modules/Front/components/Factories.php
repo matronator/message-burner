@@ -58,48 +58,25 @@ class AccountFormsFactory
 	// }
 }
 
-class MessageFormFactory
-{
-	/** @var Translator */
-	private $translator;
+// class ContactFormFactory
+// {
+// 	/** @var Translator */
+// 	private $translator;
 
-	/** @var MessagesRepository */
-	private $messagesRepository;
+// 	/** @var ContactFormRepository */
+// 	private $contactFormRepository;
 
-	public function __construct(
-		Translator $translator,
-		MessagesRepository $messagesRepository
-	)
-	{
-		$this->translator = $translator;
-		$this->messagesRepository = $messagesRepository;
-	}
+// 	public function __construct(
+// 		Translator $translator,
+// 		ContactFormRepository $contactFormRepository
+// 	)
+// 	{
+// 		$this->translator = $translator;
+// 		$this->contactFormRepository = $contactFormRepository;
+// 	}
 
-	public function createMessageForm()
-	{
-		return new MessageForm($this->translator, $this->messagesRepository);
-	}
-}
-
-class ContactFormFactory
-{
-	/** @var Translator */
-	private $translator;
-
-	/** @var ContactFormRepository */
-	private $contactFormRepository;
-
-	public function __construct(
-		Translator $translator,
-		ContactFormRepository $contactFormRepository
-	)
-	{
-		$this->translator = $translator;
-		$this->contactFormRepository = $contactFormRepository;
-	}
-
-	public function createContactForm()
-	{
-		return new \ContactForm($this->translator, $this->contactFormRepository);
-	}
-}
+// 	public function createContactForm()
+// 	{
+// 		return new \ContactForm($this->translator, $this->contactFormRepository);
+// 	}
+// }

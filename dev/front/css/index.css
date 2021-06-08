@@ -1,7 +1,7 @@
-@import "common/buttons.css";
-@import "common/flash.css";
-@import "common/header.css";
-@import "common/footer.css";
+@import "import/buttons.css";
+@import "import/flash.css";
+@import "import/header.css";
+@import "import/footer.css";
 @import "../../../app/modules/Front/components/MessageForm/MessageForm.css";
 
 @tailwind base;

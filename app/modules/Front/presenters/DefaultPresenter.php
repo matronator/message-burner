@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\FrontModule\Presenters;
 
-use App\Components\MessageForm;
-use App\FrontModule\Factories\MessageFormFactory;
 use App\Libs\HashService;
 use App\Model\MessagesRepository;
 use DateTime;
@@ -19,15 +17,11 @@ final class DefaultPresenter extends BasePresenter
 	/** @var MessagesRepository */
 	private $messagesRepository;
 
-	private $messageFormFactory;
-
 	public function __construct(
-		MessagesRepository $messagesRepository,
-		MessageFormFactory $messageFormFactory
+		MessagesRepository $messagesRepository
 	)
 	{
 		$this->messagesRepository = $messagesRepository;
-		$this->messageFormFactory = $messageFormFactory;
 	}
 
 	public function renderDefault()

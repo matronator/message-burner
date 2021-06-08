@@ -26,8 +26,8 @@ final class RouterFactory
 		//--------------------- FRONT ROUTES ---------------------//
 		////////////////////////////////////////////////////////////
 		$router->withModule('Front')
-			->addRoute('<locale=cs cs|en>/message/new/<hash>', 'Default:created')
-			->addRoute('<locale=cs cs|en>/message/read/<hash>', 'Default:read')
+			->addRoute('[<locale=cs cs|en>/]message/new/<hash>', 'Default:created')
+			->addRoute('[<locale=cs cs|en>/]message/read/<hash>', 'Default:read')
 			// SITEMAP
 			->addRoute('sitemap.xml', 'Sitemap:default')
 			->addRoute('sitemap', 'Sitemap:default')

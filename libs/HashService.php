@@ -15,15 +15,15 @@ use Hashids\Hashids;
 
 class HashService
 {
-    public static function idToHash(int $id)
+    public static function idToHash(int $id): string
     {
         $hashids = new Hashids('messages', 8);
         return $hashids->encode($id);
     }
 
-    public static function hashToId(string $hash)
+    public static function hashToId(string $hash): int
     {
         $hashids = new Hashids('messages', 8);
-        return $hashids->decode($hash)[0];
+        return $hashids->decode($hash)[0] ?? -1;
     }
 }

@@ -17,19 +17,9 @@ class UserRepository
 
     private $navItems = [
         [
-            'presenter' => 'Article',
-            'title' => 'Články',
-            'icon' => ' file-text'
-        ],
-        [
             'presenter' => 'Gallery',
             'title' => 'Galerie',
             'icon' => 'album'
-        ],
-        [
-            'presenter' => 'Page',
-            'title' => 'Stránky',
-            'icon' => 'world'
         ],
         [
             'presenter' => 'User',
