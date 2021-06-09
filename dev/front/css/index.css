@@ -1,4 +1,5 @@
 @import "import/flash.css";
+@import "import/fonts.css";
 @import "../../../app/modules/Front/components/MessageForm/MessageForm.css";
 @import "../../../app/modules/Front/components/Dropdown/Dropdown.css";
 @import "import/popup.css";
@@ -8,6 +9,10 @@
 @tailwind utilities;
 
 @layer base {
+    body {
+        @apply relative flex flex-col justify-between min-h-screen font-body;
+    }
+
     a {
         @apply hover:underline;
     }
@@ -92,9 +97,9 @@
     }
 
     .btn {
-        @apply px-4 py-2 uppercase text-button;
+        @apply px-5 py-2 font-bold uppercase cursor-pointer text-button rounded-3xl;
         &\-primary {
-            @apply text-yellow bg-dark-2;
+            @apply text-white bg-ternary;
         }
     }
 
