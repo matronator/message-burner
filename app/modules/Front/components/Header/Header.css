@@ -1,0 +1,5 @@
+@layer components {
+    header.header {
+        @apply w-screen h-auto mb-4 border-b bg-grad-primary border-primary max-h-32 relative p-4 mx-auto text-center flex flex-col justify-center items-center;
+    }
+}

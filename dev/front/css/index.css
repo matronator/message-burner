@@ -1,5 +1,6 @@
 @import "import/flash.css";
 @import "import/fonts.css";
+@import "../../../app/modules/Front/components/Header/Header.css";
 @import "../../../app/modules/Front/components/MessageForm/MessageForm.css";
 @import "../../../app/modules/Front/components/Dropdown/Dropdown.css";
 @import "import/popup.css";
@@ -10,7 +11,7 @@
 
 @layer base {
     body {
-        @apply relative flex flex-col justify-between min-h-screen font-body;
+        @apply relative min-h-screen pb-16 font-body bg-orange-lightest;
     }
 
     a {
@@ -46,11 +47,16 @@
 
     .bg-grad-primary {
         background: linear-gradient(-226deg, rgba(201,31,8,0.65) 0%, rgba(93,4,110,0.70) 100%),
-                    linear-gradient(-180deg, #FFB156 2%, #710202 97%);
+                    linear-gradient(-180deg, #FFB156 2%, rgba(116, 2, 2, 0.65) 97%);
     }
     .bg-grad-secondary {
-        background: linear-gradient(-226deg, var(--color-1) 0%, rgba(93,4,110,0.70) 100%),
-                    linear-gradient(-180deg, #FFB156 2%, #710202 97%);
+        background: linear-gradient(226deg, rgba(244, 116, 42, 0.68) 20%, rgba(82, 4, 108, 0.65) 100%),
+                    linear-gradient(-270deg, rgba(255, 176, 87, 0.66) 0%, rgba(113,2,2,0.75) 100%);
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        @apply bg-yellow-lightest;
     }
 }
 
@@ -111,6 +117,10 @@
     .read-message {
         @apply block w-full px-3 py-4 mx-auto text-base text-left bg-yellow-lighter;
         min-height: 200px;
+    }
+
+    .input {
+        @apply font-normal border-none shadow-none bg-yellow-lightest text-grey-darker text-input placeholder-grey-dark;
     }
 }
 

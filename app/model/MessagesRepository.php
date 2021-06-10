@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Libs\HashService;
+use App\Services\HashService;
 use Nette;
 use Nette\Database\Table\ActiveRow;
 use Nette\Database\Table\Selection;

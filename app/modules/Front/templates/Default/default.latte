@@ -4,14 +4,7 @@
 
 {block pageContent}
 <h2>Create new self-destructing message</h2>
-{form messageForm, class => 'container-sm'}
-    {input content}
-    <div class="relative grid w-full grid-cols-12 px-8 mx-auto mb-4">
-        <div class="relative col-span-4 p-2 text-left">
-            {label password, class => 'w-full d-block' /}
-        </div>
-        <div class="relative col-span-8">{input password, class => 'w-full d-block p-2'}</div>
-    </div>
-    {input save}
-{/form}
+
+{include '../../components/MessageForm/MessageForm.latte'}
+
 {/block}

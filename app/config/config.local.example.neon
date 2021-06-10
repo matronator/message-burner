@@ -1,4 +1,8 @@
 parameters:
+    encryption:
+        # password: 'YOUR_PASSWORD' # (String) Your password used for encryption
+        algo: 'PASSWORD_BCRYPT' # (String) Any of the PHP predefined password hashing constants (https://www.php.net/manual/en/password.constants.php)
+        keyHash: 'PASSWORD_HASH' (String) Your password hash generated using the algorithm chosen above
 
 # to be used along with fake sendmail:
 # https://www.geeksforgeeks.org/how-to-configure-xampp-to-send-mail-from-localhost-using-php/

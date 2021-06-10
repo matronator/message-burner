@@ -1,5 +1,5 @@
 @layer components {
     .message-input {
-        @apply bg-yellow-lightest text-grey-darker font-normal text-input placeholder-grey-dark border-none overflow-auto outline-none shadow-none resize-none h-80 w-full my-0 mx-auto py-2 px-1 mb-5 appearance-none;
+        @apply outline-none h-80 w-full my-0 mx-auto mb-5 p-2 resize-none overflow-auto appearance-none;
     }
 }

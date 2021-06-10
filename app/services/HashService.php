@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace App\Libs;
+namespace App\Services;
 
 use Hashids\Hashids;
 use Nette\Security\Passwords;
