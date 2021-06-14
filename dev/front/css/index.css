@@ -11,7 +11,7 @@
 
 @layer base {
     body {
-        @apply relative min-h-screen pb-16 font-body bg-orange-lightest;
+        @apply font-body bg-orange-lightest dark:bg-red-darkest dark:text-white relative min-h-screen pb-16 text-black;
     }
 
     a {
@@ -19,7 +19,7 @@
     }
 
     p {
-        @apply mb-4 font-sans text-base tracking-normal text-black;
+        @apply mb-4 font-sans text-base tracking-normal;
     }
 
     h1 { @apply mb-6 text-3xl; }
@@ -56,7 +56,7 @@
 
     input[type="text"],
     input[type="password"] {
-        @apply bg-yellow-lightest;
+        @apply bg-yellow-lightest dark:bg-primary dark:text-white;
     }
 }
 
@@ -78,7 +78,7 @@
     /* --------========≡≡≡≡≡--| TYPOGRAPHY |--≡≡≡≡≡========-------- */
 
     .lead {
-        @apply font-bold tracking-normal text-center text-lead;
+        @apply text-lead font-bold tracking-normal text-center;
     }
     .sub-1 {
         @apply text-lg font-bold tracking-normal;
@@ -96,31 +96,31 @@
         @apply text-4xl font-bold tracking-normal;
     }
     .headline-4 {
-        @apply font-bold tracking-normal text-hd;
+        @apply text-hd font-bold tracking-normal;
     }
     .label {
-        @apply font-sans font-bold uppercase text-button;
+        @apply text-button font-sans font-bold uppercase;
     }
 
     .btn {
-        @apply px-5 py-2 font-bold uppercase cursor-pointer text-button rounded-3xl;
+        @apply text-button rounded-3xl px-5 py-2 font-bold uppercase cursor-pointer;
         &\-primary {
-            @apply text-white bg-ternary;
+            @apply bg-ternary text-white;
         }
     }
 
     .msg-link {
-        @apply w-full px-3 py-2 mb-3 text-base font-bold text-black no-underline appearance-none select-text bg-light-2;
+        @apply bg-light-2 w-full px-3 py-2 mb-3 text-base font-bold text-black no-underline appearance-none select-text;
         writing-mode: horizontal-tb;
     }
 
     .read-message {
-        @apply block w-full px-3 py-4 mx-auto text-base text-left bg-yellow-lighter;
+        @apply bg-yellow-lighter block w-full px-3 py-4 mx-auto text-base text-left;
         min-height: 200px;
     }
 
     .input {
-        @apply font-normal border-none shadow-none bg-yellow-lightest text-grey-darker text-input placeholder-grey-dark;
+        @apply bg-yellow-lightest dark:bg-primary dark:placeholder-grey-lighter dark:text-white text-grey-darker text-input placeholder-grey-dark font-normal border-none shadow-none;
     }
 }
 

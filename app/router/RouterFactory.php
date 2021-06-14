@@ -33,7 +33,7 @@ final class RouterFactory
 			->addRoute('sitemap', 'Sitemap:default')
 
 			// MOST GENERAL ROUTE
-			->addRoute('<locale=cs cs|en>/<presenter>/<action>[/<slug>]', 'Default:default');
+			->addRoute('[<locale=cs cs|en>/]<presenter>/<action>[/<slug>]', 'Default:default');
 
 		return $router;
 	}

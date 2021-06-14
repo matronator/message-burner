@@ -19,14 +19,7 @@ fields.forEach(field => {
         "indent",
         "outdent",
         "|",
-        "imageUpload",
-        "blockQuote",
-        "insertTable",
-        "mediaEmbed",
         "horizontalLine",
-        "|",
-        "subscript",
-        "superscript",
       ]
     },
     language: "cs",
@@ -46,7 +39,7 @@ fields.forEach(field => {
           model: 'lead',
           view: {
             name: 'p',
-            classes: 'lead'
+            classes: 'text-lead'
           },
           title: 'Hlavní odstavec',
           class: 'ck-heading_paragraph_lead',

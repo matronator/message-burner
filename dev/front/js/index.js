@@ -1,40 +1,41 @@
 import NetteForms from "../../../vendor/nette/forms/src/assets/netteForms.js"
+import { registerAjaxHandlers, handleNetteResponse } from "ajaxette"
 import * as clipboard from "clipboard-polyfill/text";
 import "./import/popup.js";
 
 // nette forms
 NetteForms.initOnLoad()
 
-function registerAjaxHandlers() {
-    const links = document.querySelectorAll(`a.ajax`)
-    links?.forEach(link => {
-        link.addEventListener(`click`, e => {
-            e.preventDefault()
-            handleNetteResponse(e.target.href)
-        })
-    })
-}
+// function registerAjaxHandlers() {
+//     const links = document.querySelectorAll(`a.ajax`)
+//     links?.forEach(link => {
+//         link.addEventListener(`click`, e => {
+//             e.preventDefault()
+//             handleNetteResponse(e.target.href)
+//         })
+//     })
+// }
 
-async function handleNetteResponse(link, data, contentType = `application/json`) {
-    const response = await fetch(link, {
-        method: data ? `POST` : `GET`,
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-            ...(data && { 'Content-Type': contentType }),
-        },
-        ...(data && { body: data })
-    })
-    const { snippets = {}, redirect = `` } = await response.json()
-    if (redirect !== ``) {
-        window.location.replace(redirect)
-    }
-    Object.entries(snippets).forEach(([id, html]) => {
-        const elem = document.getElementById(id)
-        if (elem) elem.innerHTML = html
-    })
-    registerAjaxHandlers()
-    // toggleHashGroups(location.href)
-}
+// async function handleNetteResponse(link, data, contentType = `application/json`) {
+//     const response = await fetch(link, {
+//         method: data ? `POST` : `GET`,
+//         headers: {
+//             'X-Requested-With': 'XMLHttpRequest',
+//             ...(data && { 'Content-Type': contentType }),
+//         },
+//         ...(data && { body: data })
+//     })
+//     const { snippets = {}, redirect = `` } = await response.json()
+//     if (redirect !== ``) {
+//         window.location.replace(redirect)
+//     }
+//     Object.entries(snippets).forEach(([id, html]) => {
+//         const elem = document.getElementById(id)
+//         if (elem) elem.innerHTML = html
+//     })
+//     registerAjaxHandlers()
+//     // toggleHashGroups(location.href)
+// }
 
 registerAjaxHandlers()
 
@@ -44,5 +45,19 @@ document.addEventListener(`DOMContentLoaded`, () => {
     const messageLink = document.getElementById(`messageLink`)
     messageLink?.addEventListener(`click`, e => {
         clipboard.writeText(e.target.value)
+    })
+
+    const darkmodeBtn = document.querySelector(`[data-dark-mode]`)
+    const root = document.documentElement;
+    darkmodeBtn.addEventListener(`click`, e => {
+        if (darkmodeBtn.getAttribute(`data-dark-mode`) !== `true`) {
+            darkmodeBtn.setAttribute(`data-dark-mode`, `true`)
+            darkmodeBtn.innerHTML = `🌞`
+            root.classList.add(`dark`)
+        } else {
+            darkmodeBtn.setAttribute(`data-dark-mode`, `false`)
+            root.classList.remove(`dark`)
+            darkmodeBtn.innerHTML = `🌘`
+        }
     })
 })

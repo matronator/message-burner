@@ -93,6 +93,8 @@ final class DefaultPresenter extends BasePresenter
 		$form->addTextArea('content')
 			->setRequired()
 			->setHtmlAttribute('placeholder', 'Write your message here...');
+			// ->setHtmlAttribute('data-text-editor', 'message')
+			// ->setHtmlAttribute('class', 'js-wysiwyg');
 
         // $form->addText('captcha', 'Enter captcha:');
 

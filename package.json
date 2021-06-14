@@ -80,6 +80,7 @@
     "@ckeditor/ckeditor5-build-classic": "^16.0.0",
     "@ckeditor/ckeditor5-ckfinder": "^16.0.0",
     "@popperjs/core": "^2.9.2",
+    "ajaxette": "^1.0.5",
     "choices.js": "^9.0.1",
     "clipboard-polyfill": "^3.0.3",
     "core-js": "^3.13.1",

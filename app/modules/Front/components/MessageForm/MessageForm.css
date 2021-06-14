@@ -1,5 +1,22 @@
 @layer components {
     .message-input {
-        @apply outline-none h-80 w-full my-0 mx-auto mb-5 p-2 resize-none overflow-auto appearance-none;
+        /* @apply outline-none p-2 resize-none overflow-auto appearance-none w-full h-full text-yellow-lightest; */
+        /* caret-color: rgba(7, 10, 10, var(--tw-text-opacity)); */
+        @apply outline-none p-2 resize-none overflow-auto appearance-none h-80 w-full my-0 mx-auto mb-5 relative dark:bg-primary;
+    }
+
+    .editor-wrapper {
+        @apply h-80 w-full my-0 mx-auto mb-5 relative;
+    }
+
+    .editor {
+        @apply absolute top-0 left-0 right-0 bottom-0 max-w-full max-h-full overflow-y-scroll overflow-x-hidden pointer-events-none text-left p-2 text-grey-darker bg-transparent break-all whitespace-pre-line;
+        &.placeholder {
+            @apply text-grey-dark;
+        }
+    }
+
+    .ck-content.ck-editor__editable {
+        @apply h-80 bg-yellow-lightest;
     }
 }

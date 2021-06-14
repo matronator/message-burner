@@ -1,10 +1,13 @@
 module.exports = {
+  // mode: 'jit',
   purge: [
-    "./app/modules/Front/**/*.latte",
-    "./app/modules/Front/**/*.js",
-    "./dev/front/js/**/*.js",
+    "./app/modules/Front/**/*.{js,css,html,latte}",
+    "./dev/front/**/*.{js,css,html,latte}",
+    // "./app/modules/Front/**/*.latte",
+    // "./app/modules/Front/**/*.js",
+    // "./dev/front/js/**/*.js",
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     screens: {
       "2xl": { 'max': "1536px" },
@@ -54,12 +57,6 @@ module.exports = {
       colors: {
         transparent: "transparent",
         current: "currentColor",
-        dark: {
-          DEFAULT: "#000000",
-          1: "#131313",
-          2: "#222222",
-          3: "#303838",
-        },
         light: {
           DEFAULT: "#ffffff",
           1: "#f5f5f5",
@@ -117,9 +114,9 @@ module.exports = {
           light: "#4D9FEB",
           lighter: "#B5DBFF",
         },
-        primary: "#FFC000",
-        secondary: "#FA8A20",
-        ternary: "#A80314",
+        primary: "#A80314",
+        secondary: "#FFC000",
+        ternary: "#FA8A20",
       },
       width: {
         55: "220px",
@@ -132,3 +129,5 @@ module.exports = {
   variants: {},
   plugins: [],
 }
+
+// https://coolors.co/12355b-420039-d72638-ffffff-ff570a-d8c99b

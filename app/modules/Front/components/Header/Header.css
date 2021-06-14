@@ -1,5 +1,8 @@
 @layer components {
-    header.header {
-        @apply w-screen h-auto mb-4 border-b bg-grad-primary border-primary max-h-32 relative p-4 mx-auto text-center flex flex-col justify-center items-center;
+    .header {
+        @apply w-screen h-auto mb-4 border-b bg-primary dark:bg-grey-darker dark:text-white dark:border-primary border-secondary max-h-32 relative p-4 mx-auto text-center flex flex-col justify-center items-center;
+    }
+    .dark-toggle {
+        @apply absolute right-4 bottom-4 w-auto h-auto;
     }
 }

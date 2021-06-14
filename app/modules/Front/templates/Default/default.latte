@@ -2,9 +2,18 @@
 {define pageTitle}Homepage{/define}
 {define metaDescription}Homepage{/define}
 
+{block head}
+    <script src="{$basePath}/ckeditor5/build/ckeditor.js"></script>
+{/block}
+
 {block pageContent}
 <h2>Create new self-destructing message</h2>
 
 {include '../../components/MessageForm/MessageForm.latte'}
 
+{/block}
+
+{block scripts}
+    <script defer src="{$basePath}/ckeditor5/build/editorSettings.js"></script>
+    {* <script src="{asset editor.js front}"></script> *}
 {/block}
