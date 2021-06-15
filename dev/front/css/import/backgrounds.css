@@ -1,0 +1,23 @@
+@layer utilities {
+    .bg-grad-secondary-primary {
+        background: linear-gradient(230deg, theme(colors.primary) 0%, theme(colors.secondary) 100%);
+    }
+    .bg-grad-primary-secondary {
+        background: linear-gradient(50deg, theme(colors.primary) 0%, theme(colors.secondary) 100%);
+    }
+    .bg-grad-primary-ternary {
+        background: linear-gradient(50deg, theme(colors.primary) 0%, theme(colors.ternary) 100%);
+    }
+}
+
+@variants dark {
+    .bg-grad-secondary-primary {
+        background: linear-gradient(230deg, theme(colors.dark-secondary) 0%, theme(colors.dark-primary) 100%);
+    }
+    .bg-grad-primary-secondary {
+        background: linear-gradient(50deg, theme(colors.dark-secondary) 0%, theme(colors.dark-primary) 100%);
+    }
+    .bg-grad-primary-ternary {
+        background: linear-gradient(50deg, theme(colors.ternary) 0%, theme(colors.dark-primary) 100%);
+    }
+}

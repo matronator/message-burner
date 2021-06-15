@@ -1,6 +1,8 @@
 @import "import/flash.css";
 @import "import/fonts.css";
+@import "import/backgrounds.css";
 @import "../../../app/modules/Front/components/Header/Header.css";
+@import "../../../app/modules/Front/components/Footer/Footer.css";
 @import "../../../app/modules/Front/components/MessageForm/MessageForm.css";
 @import "../../../app/modules/Front/components/Dropdown/Dropdown.css";
 @import "import/popup.css";
@@ -11,7 +13,7 @@
 
 @layer base {
     body {
-        @apply font-body bg-orange-lightest dark:bg-red-darkest dark:text-white relative min-h-screen pb-16 text-black;
+        @apply font-body bg-orange-lightest dark:bg-purple-darkest dark:text-white relative min-h-screen pb-16 text-black;
     }
 
     a {
@@ -56,7 +58,7 @@
 
     input[type="text"],
     input[type="password"] {
-        @apply bg-yellow-lightest dark:bg-primary dark:text-white;
+        @apply bg-yellow-lightest dark:bg-dark-primary dark:text-white;
     }
 }
 
@@ -120,7 +122,7 @@
     }
 
     .input {
-        @apply bg-yellow-lightest dark:bg-primary dark:placeholder-grey-lighter dark:text-white text-grey-darker text-input placeholder-grey-dark font-normal border-none shadow-none;
+        @apply bg-yellow-lightest dark:bg-dark-primary dark:placeholder-grey-lighter dark:text-white text-grey-darker text-input placeholder-grey-dark font-normal border-none shadow-none;
     }
 }
 

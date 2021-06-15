@@ -34,6 +34,14 @@
 
     <link n:foreach="$presenter->localeList as $localeItem" rel="alternate" hreflang="{$localeItem}" href="{link //this, locale=>$localeItem}"/>
     <link rel="alternate" hreflang="x-default" href="{link //this, locale=>$defaultLocale}" />
+
+    <script n:syntax="off">
+        if (localStorage.getItem(`theme`) === `dark` || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
 
 <body class="{ifset #bodyClass}{include #bodyClass}{/ifset} w-full h-full">

@@ -1,6 +1,7 @@
 import NetteForms from "../../../vendor/nette/forms/src/assets/netteForms.js"
 import { registerAjaxHandlers, handleNetteResponse } from "ajaxette"
 import * as clipboard from "clipboard-polyfill/text";
+import "./import/darkmode.js";
 import "./import/popup.js";
 
 // nette forms
@@ -45,19 +46,5 @@ document.addEventListener(`DOMContentLoaded`, () => {
     const messageLink = document.getElementById(`messageLink`)
     messageLink?.addEventListener(`click`, e => {
         clipboard.writeText(e.target.value)
-    })
-
-    const darkmodeBtn = document.querySelector(`[data-dark-mode]`)
-    const root = document.documentElement;
-    darkmodeBtn.addEventListener(`click`, e => {
-        if (darkmodeBtn.getAttribute(`data-dark-mode`) !== `true`) {
-            darkmodeBtn.setAttribute(`data-dark-mode`, `true`)
-            darkmodeBtn.innerHTML = `🌞`
-            root.classList.add(`dark`)
-        } else {
-            darkmodeBtn.setAttribute(`data-dark-mode`, `false`)
-            root.classList.remove(`dark`)
-            darkmodeBtn.innerHTML = `🌘`
-        }
     })
 })

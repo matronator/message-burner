@@ -1,0 +1,5 @@
+@layer components {
+    .footer {
+        @apply bg-grad-primary-ternary dark:bg-grad-primary-ternary dark:text-white text-white absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center w-screen h-16;
+    }
+}
