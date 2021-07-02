@@ -13,7 +13,7 @@
 
 @layer base {
     body {
-        @apply font-body bg-orange-lightest dark:bg-purple-darkest dark:text-white relative min-h-screen pb-16 text-black;
+        @apply font-body dark:bg-grad-body dark:text-white relative min-h-screen pb-16 text-black bg-white;
     }
 
     a {
@@ -45,15 +45,6 @@
     .container-sm {
         @apply px-2 mx-auto;
         max-width: 960px;
-    }
-
-    .bg-grad-primary {
-        background: linear-gradient(-226deg, rgba(201,31,8,0.65) 0%, rgba(93,4,110,0.70) 100%),
-                    linear-gradient(-180deg, #FFB156 2%, rgba(116, 2, 2, 0.65) 97%);
-    }
-    .bg-grad-secondary {
-        background: linear-gradient(226deg, rgba(244, 116, 42, 0.68) 20%, rgba(82, 4, 108, 0.65) 100%),
-                    linear-gradient(-270deg, rgba(255, 176, 87, 0.66) 0%, rgba(113,2,2,0.75) 100%);
     }
 
     input[type="text"],
@@ -107,13 +98,14 @@
     .btn {
         @apply text-button rounded-3xl px-5 py-2 font-bold uppercase cursor-pointer;
         &\-primary {
-            @apply bg-ternary text-white;
+            @apply bg-ternary dark:bg-dark-secondary text-white;
         }
     }
 
     .msg-link {
         @apply bg-light-2 w-full px-3 py-2 mb-3 text-base font-bold text-black no-underline appearance-none select-text;
         writing-mode: horizontal-tb;
+        font-size: 16px;
     }
 
     .read-message {

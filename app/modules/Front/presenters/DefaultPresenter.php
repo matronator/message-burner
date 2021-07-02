@@ -7,6 +7,7 @@ namespace App\FrontModule\Presenters;
 use App\Services\HashService;
 use App\Model\MessagesRepository;
 use App\Services\EncryptionService;
+use App\Services\ExpiryService;
 use DateTime;
 use Nette\Application\UI\Form;
 use Nette\Utils\Strings;
@@ -16,14 +17,17 @@ final class DefaultPresenter extends BasePresenter
 	/** @var MessagesRepository */
 	private $messagesRepository;
 	private $encryptionService;
+	private $expiryService;
 
 	public function __construct(
 		MessagesRepository $messagesRepository,
-		EncryptionService $encryptionService
+		EncryptionService $encryptionService,
+		ExpiryService $expiryService
 	)
 	{
 		$this->messagesRepository = $messagesRepository;
 		$this->encryptionService = $encryptionService;
+		$this->expiryService = $expiryService;
 	}
 
 	public function renderDefault()
@@ -74,6 +78,12 @@ final class DefaultPresenter extends BasePresenter
 		}
 	}
 
+	public function handleTest()
+	{
+		$this->template->test = 'Test';
+		$this->redrawControl('test');
+	}
+
 	public function handleUnlockMessage()
 	{
 
@@ -84,6 +94,19 @@ final class DefaultPresenter extends BasePresenter
 		$session = $this->session->getSection('readMessage');
 		$session['showAndDelete'] = true;
 		$this->redrawControl('message');
+	}
+
+	public function actionExpireMessages(?string $hash = null, ?string $confirm = null)
+	{
+		if ($hash === null || $confirm === null) {
+			$this->sendJson(false);
+		}
+		$correct = $this->expiryService->verifyExpiration($hash, $confirm);
+		if ($correct) {
+			$this->messagesRepository->deleteExpiredMessages();
+			$this->sendJson(true);
+		}
+		$this->sendJson(false);
 	}
 
 	public function createComponentMessageForm(): Form
@@ -103,8 +126,7 @@ final class DefaultPresenter extends BasePresenter
             ->addCondition(Form::FILLED, true)
             ->addRule(Form::MIN_LENGTH, 'Password must be at least 3 characters long.', 3);
 
-		$form->addSubmit('save', 'Create message')
-			->setHtmlAttribute('class', 'btn btn-primary bg-grad-primary');
+		$form->addSubmit('save', 'Create message');
 
 		// $form->addHidden('recaptcha_token');
 

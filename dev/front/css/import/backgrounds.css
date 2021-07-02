@@ -1,4 +1,16 @@
 @layer utilities {
+    .bg-grad-primary {
+        background: linear-gradient(-226deg, rgba(201,31,8,0.65) 0%, rgba(93,4,110,0.70) 100%),
+                    linear-gradient(-180deg, #FFB156 2%, rgba(116, 2, 2, 0.65) 97%);
+    }
+    .bg-grad-secondary {
+        background: linear-gradient(226deg, rgba(244, 116, 42, 0.68) 20%, rgba(82, 4, 108, 0.65) 100%),
+                    linear-gradient(-270deg, rgba(255, 176, 87, 0.66) 0%, rgba(113,2,2,0.75) 100%);
+    }
+    .bg-grad-main {
+        background: linear-gradient(-226deg, rgba(201,31,8,0.65) 0%, rgba(93,4,110,0.70) 100%),
+                    linear-gradient(-180deg, #FFB156 2%, #710202 97%);
+    }
     .bg-grad-secondary-primary {
         background: linear-gradient(230deg, theme(colors.primary) 0%, theme(colors.secondary) 100%);
     }
@@ -19,5 +31,8 @@
     }
     .bg-grad-primary-ternary {
         background: linear-gradient(50deg, theme(colors.ternary) 0%, theme(colors.dark-primary) 100%);
+    }
+    .bg-grad-body {
+        background: linear-gradient(41deg, rgba(15,33,36,1) 0%, rgba(2,16,36,1) 14%, rgba(17,0,47,1) 35%, rgba(0,10,47,1) 52%, rgba(35,1,54,1) 70%, rgba(20,6,43,1) 90%, rgba(36,12,19,1) 100%);
     }
 }

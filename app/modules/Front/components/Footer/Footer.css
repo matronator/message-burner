@@ -1,5 +1,6 @@
 @layer components {
     .footer {
-        @apply bg-grad-primary-ternary dark:bg-grad-primary-ternary dark:text-white text-white absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center w-screen h-16;
+        @apply bg-red-darker dark:bg-dark-secondary dark:text-white text-white absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center w-screen h-10;
+        box-shadow: 0px 6px 10px -7px rgba(0,0,0,0.6) inset;
     }
 }

@@ -2,7 +2,8 @@
     .message-input {
         /* @apply outline-none p-2 resize-none overflow-auto appearance-none w-full h-full text-yellow-lightest; */
         /* caret-color: rgba(7, 10, 10, var(--tw-text-opacity)); */
-        @apply outline-none p-2 resize-none overflow-auto appearance-none h-80 w-full my-0 mx-auto mb-5 relative dark:bg-dark-primary;
+        @apply rounded-xl outline-none p-2 resize-none overflow-auto appearance-none h-80 w-full my-0 mx-auto mb-5 relative dark:bg-dark-primary;
+        font-size: 16px;
     }
 
     .editor-wrapper {

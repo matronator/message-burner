@@ -22,6 +22,7 @@ services:
 	- App\Model\UserRepository
 	- App\Filter\ImageFilter
 	- App\Services\EncryptionService(%encryption%)
+	- App\Services\ExpiryService(%expiration%)
 	imagePipe: \ImageGenerator(%wwwDir%)
 	imageStorage: \ImageStorage(%wwwDir%)
 	router: App\Router\RouterFactory::createRouter

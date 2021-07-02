@@ -3,13 +3,20 @@
 {define metaDescription}Created{/define}
 
 {block pageContent}
-<h2>Message created!</h2>
-{* {control contactForm} *}
-<p>Message URL:</p>
-<p>
-    <input class="msg-link" id="messageLink" type="text" readonly value="{$messageUrl}" data-popup-target="copied">
-    <div class="popup" data-popup-id="copied">Copied!</div>
-</p>
+<div class="container-sm">
+    <h2>Message created!</h2>
+    {* {control contactForm} *}
+    <p><strong>Link to your message is ready.</strong> It will self-destruct after reading.</p>
+    <p><em>Click the link bellow to copy it to clipboard:</em></p>
+    <p>
+        <input class="msg-link" id="messageLink" type="text" readonly value="{$messageUrl}" data-popup-target="copied">
+        <div class="popup" data-popup-id="copied">Copied!</div>
+    </p>
+    <p>Message will only available for <strong>48 hours</strong> - unread messages are automatically <strong>deleted</strong> after 2 days!</p>
+    <p class="text-label mb-8 italic font-light"><a href="" class="text-red-danger">Destroy the message now</a></p>
+
+    <p><a n:href="Default:default" class="btn btn-primary">Create new message</a></p>
+</div>
 
 {* {/form} *}
 {/block}

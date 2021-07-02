@@ -6,6 +6,7 @@ use App\Services\HashService;
 use Nette;
 use Nette\Database\Table\ActiveRow;
 use Nette\Database\Table\Selection;
+use Nette\Utils\DateTime;
 
 class MessagesRepository
 {
@@ -36,5 +37,14 @@ class MessagesRepository
 	public function messageRead(string $hash)
 	{
 		$this->getMessage($hash)->delete();
+	}
+
+	public function deleteExpiredMessages()
+	{
+		$messages = $this->findAll()->where('expires_at <= ?', new DateTime('now'));
+		if ($messages) {
+			return $messages->delete();
+		}
+		return 0;
 	}
 }

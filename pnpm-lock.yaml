@@ -9,9 +9,10 @@ specifiers:
   '@ckeditor/ckeditor5-build-classic': ^16.0.0
   '@ckeditor/ckeditor5-ckfinder': ^16.0.0
   '@popperjs/core': ^2.9.2
-  ajaxette: ^1.0.5
+  ajaxette: ^1.1.4
   apidoc: ^0.19.1
   autoprefixer: ^9.8.6
+  axette: ^1.1.3
   babelify: ^10.0.0
   browser-sync: ^2.26.14
   browserify: ^16.5.2
@@ -58,7 +59,8 @@ dependencies:
   '@ckeditor/ckeditor5-build-classic': 16.0.0
   '@ckeditor/ckeditor5-ckfinder': 16.0.0
   '@popperjs/core': 2.9.2
-  ajaxette: 1.0.5
+  ajaxette: 1.1.4
+  axette: 1.1.3
   choices.js: 9.0.1
   clipboard-polyfill: 3.0.3
   core-js: 3.13.1
@@ -1521,8 +1523,8 @@ packages:
       indent-string: 4.0.0
     dev: true
 
-  /ajaxette/1.0.5:
-    resolution: {integrity: sha512-LcOF3Fomu5QD4pTdZmiUZc5qhst29kQuvxwipOZbK0nyqlmCEXu1mEAXfmlt+RVx0nkoVhyU8wNNIfpQUVexqw==}
+  /ajaxette/1.1.4:
+    resolution: {integrity: sha512-mtTTtYBE2AxMbIjn5x0QK1YjoxFw2vOTCTLR3GuOjuXLOQZcOCGhpN9eghuBG6eFvS2LNMq48KgB6WlR6N2/rA==}
     dev: false
 
   /ajv/6.12.6:
@@ -1906,6 +1908,10 @@ packages:
     resolution: {integrity: sha512-54XaTd2VB7A6iBnXMUG2LnBOI7aRbnrVxC5Tz+rVUwYl9MX/cIJc/Ll32YUoFIE/e9UKWMZoQenQu9dFrQyZCg==}
     engines: {node: '>=4'}
     dev: true
+
+  /axette/1.1.3:
+    resolution: {integrity: sha512-FNaDzJnPWUYS+2i3u/mKSIuAJJaLZyfH+eXS2rGWm3SDSG/D5P0lj1IPDz6cmJZiSLFWPzW+xXFyOP2H3oIotA==}
+    dev: false
 
   /axios/0.21.1_debug@4.3.1:
     resolution: {integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==}
