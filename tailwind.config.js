@@ -1,11 +1,11 @@
 module.exports = {
   // mode: 'jit',
   purge: [
-    "./app/modules/Front/**/*.{js,css,html,latte}",
-    "./dev/front/**/*.{js,css,html,latte}",
-    // "./app/modules/Front/**/*.latte",
-    // "./app/modules/Front/**/*.js",
-    // "./dev/front/js/**/*.js",
+    // "./app/modules/Front/**/*.{js,css,html,latte}",
+    // "./dev/front/**/*.{js,css,html,latte}",
+    "./app/modules/Front/**/*.latte",
+    "./app/modules/Front/**/*.js",
+    "./dev/front/js/**/*.js",
   ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
@@ -18,6 +18,7 @@ module.exports = {
     },
     container: {
       center: true,
+      maxWidth: "1280px",
     },
     fontSize: {
       button: [
@@ -42,7 +43,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'body': ['Jost', 'sans'],
+        'body': ['Jost', 'Futura', 'Gil Sans', 'sans'],
       },
       screens: {
         "3xl": "1920px",

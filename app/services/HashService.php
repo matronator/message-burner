@@ -16,15 +16,22 @@ use Nette\Security\Passwords;
 
 class HashService
 {
-    public static function idToHash(int $id): string
+    /**
+     * Encode an integer ID to a hash
+     *
+     * @return string The resulting hash string
+     * @param integer $id ID to be hashed
+     * @param string $namespace Namespace to use as the salt. Different namespaces produce different hashes for the same ID
+     */
+    public static function idToHash(int $id, string $namespace = 'messages'): string
     {
-        $hashids = new Hashids('messages', 8);
+        $hashids = new Hashids($namespace, 8);
         return $hashids->encode($id);
     }
 
-    public static function hashToId(string $hash): int
+    public static function hashToId(string $hash, string $namespace = 'messages'): int
     {
-        $hashids = new Hashids('messages', 8);
+        $hashids = new Hashids($namespace, 8);
         return $hashids->decode($hash)[0] ?? -1;
     }
 

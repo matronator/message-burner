@@ -25,13 +25,22 @@ class MessagesRepository
 		return $this->database->table('messages');
 	}
 
-	public function getMessage(string $hash)
+	public function getMessage(string $hash): Selection|null
 	{
 		$id = HashService::hashToId($hash);
 		if ($id === -1) {
 			return null;
 		}
 		return $this->findAll()->get($id);
+	}
+
+	public function getImage(string $hash): Selection|null
+	{
+		$id = HashService::hashToId($hash, 'images');
+		if ($id === -1) {
+			return null;
+		}
+		return $this->findAllImages()->get($id);
 	}
 
 	public function messageRead(string $hash)
@@ -46,5 +55,10 @@ class MessagesRepository
 			return $messages->delete();
 		}
 		return 0;
+	}
+
+	public function findAllImages(): Selection
+	{
+		return $this->database->table('images');
 	}
 }

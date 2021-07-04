@@ -157,7 +157,7 @@ final class GalleryPresenter extends BasePresenter
 		$clearImage = false;
 
 		if (isset($values->image) && $values->image->isOk()) { // There is no error, the file uploaded with success
-			$imageToInsert = $this->imageStorage->saveImg($values->image, $this->galleryRepository->uploadDir, $htaccess);
+			$imageToInsert = $this->imageStorage->saveImage($values->image, $this->galleryRepository->uploadDir, $htaccess);
 		} else {
 			if ($values->clear_image === 'true') {
 				$clearImage = true;

@@ -1,7 +1,15 @@
 @layer components {
     .header {
-        @apply w-screen h-28 mb-4 dark:bg-grad-secondary-primary bg-grad-main dark:bg-grey-darker dark:text-white relative p-4 mx-auto text-center flex flex-col justify-center items-center;
+        @apply w-screen h-32 mb-4 dark:bg-grad-secondary-primary bg-grad-main dark:bg-grey-darker dark:text-white relative p-4 mx-auto text-center flex flex-col justify-center items-center;
         box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.66);
+        font-family: 'Big Shoulders Stencil Display', sans-serif;
+        & h1 {
+            text-shadow: 0 0 4px #000000;
+        }
+        & .brand-logo {
+            filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
+            margin-left: -20rem;
+        }
     }
     .dark-toggle {
         @apply absolute right-4 bottom-4 w-auto h-auto;

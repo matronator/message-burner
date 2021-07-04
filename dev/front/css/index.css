@@ -109,7 +109,7 @@
     }
 
     .read-message {
-        @apply bg-yellow-lighter block w-full px-3 py-4 mx-auto text-base text-left;
+        @apply bg-yellow-lighter block w-full px-3 py-4 mx-auto my-4 text-base text-left;
         min-height: 200px;
     }
 

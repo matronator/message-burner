@@ -1,5 +1,6 @@
 <?php
 
+use Nette\Http\FileUpload;
 use Nette\Utils\Image,
 	Nette\Utils\Strings;
 
@@ -12,27 +13,35 @@ class ImageStorage
 		$this->dir = $dir;
 	}
 
-	public function saveImg($file, string $subdir, ?string $gallery = null)
+	public function saveImage(FileUpload $file, string $subdir, ?string $gallery = null)
 	{
 		$fileName = $this->getRandomName($file->name);
-		$subdir = $gallery ? $subdir . '/' . $gallery . '/' : $subdir;
-		$imgUrl = $this->dir . $subdir . $fileName;
+		$sub = $gallery ? $subdir . '/' . $gallery . '/' : $subdir;
+		$imgUrl = $this->dir . $sub . $fileName;
 		$file->move($imgUrl);
-		return $fileName;
+		return (object)[
+			'filename' => $fileName,
+			'path' => $imgUrl,
+			'encryptPath' => $this->dir . $sub . 'encrypted/' . $fileName,
+		];
 	}
 
 	public function saveFile($file, string $subdir, ?string $gallery = null)
 	{
-		$subdir = $gallery ? $subdir . '/' . $gallery . '/' : $subdir;
+		$sub = $gallery ? $subdir . '/' . $gallery . '/' : $subdir;
 		$ext = explode('.', $file->name);
 		$ext = '.'.$ext[count($ext)-1];
 		$fileNameNoExtension = preg_replace("/\.[^.]+$/", "", $file->name);
 
 		$fileName = Strings::webalize($fileNameNoExtension).$ext;
 
-		$fileUrl = $this->dir . $subdir . $fileName;
+		$fileUrl = $this->dir . $sub . $fileName;
 		$file->move($fileUrl);
-		return $fileName;
+		return (object)[
+			'filename' => $fileName,
+			'path' => $fileUrl,
+			'encryptPath' => $this->dir . $sub . 'encrypted/' . $fileName,
+		];
 	}
 
 	private function getRandomName(string $fileName)

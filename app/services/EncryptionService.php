@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use Defuse\Crypto\Crypto;
+use Defuse\Crypto\File;
 use Defuse\Crypto\Key;
 
 class EncryptionService
@@ -78,5 +79,31 @@ class EncryptionService
     public function decryptWithPassword(string $message, ?string $password = null, bool $isFile = false): string
     {
         return Crypto::decryptWithPassword($message, $password ?? $this->password, $isFile);
+    }
+
+    public function encryptFile(string $source, string $destination)
+    {
+        $encrypted = File::encryptFile($source, $destination, $this->key);
+        unlink($source);
+        return $encrypted;
+    }
+
+    public function decryptFile(string $source, string $destination)
+    {
+        return File::decryptFile($source, $destination, $this->key);
+    }
+
+    public function encryptFileWithPassword(string $source, string $destination, ?string $password = null)
+    {
+        $encrypted = File::encryptFileWithPassword($source, $destination, $password ?? $this->password);
+        unlink($source);
+        return $encrypted;
+    }
+
+    public function decryptFileWithPassword(string $source, string $destination, ?string $password = null)
+    {
+        $decrypted = File::decryptFileWithPassword($source, $destination, $password ?? $this->password);
+        // unlink($source);
+        return $decrypted;
     }
 }

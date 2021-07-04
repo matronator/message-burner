@@ -9,6 +9,7 @@ use App\Model\MessagesRepository;
 use App\Services\EncryptionService;
 use App\Services\ExpiryService;
 use DateTime;
+use ImageStorage;
 use Nette\Application\UI\Form;
 use Nette\Utils\Strings;
 
@@ -19,15 +20,22 @@ final class DefaultPresenter extends BasePresenter
 	private $encryptionService;
 	private $expiryService;
 
+	/** @var ImageStorage */
+	private $imageStorage;
+
+	public const PASSWORD_MIN_LENGTH = 5;
+
 	public function __construct(
 		MessagesRepository $messagesRepository,
 		EncryptionService $encryptionService,
-		ExpiryService $expiryService
+		ExpiryService $expiryService,
+		ImageStorage $imageStorage
 	)
 	{
 		$this->messagesRepository = $messagesRepository;
 		$this->encryptionService = $encryptionService;
 		$this->expiryService = $expiryService;
+		$this->imageStorage = $imageStorage;
 	}
 
 	public function renderDefault()
@@ -35,13 +43,17 @@ final class DefaultPresenter extends BasePresenter
 
 	}
 
-	public function renderCreated(string $hash = '')
+	public function renderCreated(string $hash = '', bool $isImage = false)
 	{
 		if ($hash === '') {
 			$this->redirect('default');
 		}
 		$this->template->hash = $hash;
-		$this->template->messageUrl = $this->link('//Default:read', $hash);
+		if ($isImage) {
+			$this->template->messageUrl = $this->link('//Default:openImage', $hash);
+		} else {
+			$this->template->messageUrl = $this->link('//Default:read', $hash);
+		}
 	}
 
 	public function renderRead(string $hash = '')
@@ -78,10 +90,38 @@ final class DefaultPresenter extends BasePresenter
 		}
 	}
 
-	public function handleTest()
+	public function renderOpenImage(string $hash = '')
 	{
-		$this->template->test = 'Test';
-		$this->redrawControl('test');
+		if ($hash === '') {
+			$this->redirect('default');
+		}
+		$message = $this->messagesRepository->getMessage($hash);
+		if (!$message) {
+			$this->template->noMessage = true;
+		} else {
+			if ($this->isAjax()) {
+				$session = $this->session->getSection('readMessage');
+				if ($session['showAndDelete'] === true) {
+					$this->template->message = (object) [
+						'password' => $message->password,
+						'content' => $this->encryptionService->decrypt($message->content),
+					];
+					$this->messagesRepository->messageRead($hash);
+					unset($session['showAndDelete']);
+				} else {
+					$this->template->message = (object) [
+						'password' => $message->password,
+						'content' => '',
+					];
+					$this->template->msgError = 'Something went wrong';
+				}
+			} else {
+				$this->template->message = (object) [
+					'password' => $message->password,
+					'content' => '',
+				];
+			}
+		}
 	}
 
 	public function handleUnlockMessage()
@@ -124,13 +164,31 @@ final class DefaultPresenter extends BasePresenter
         $form->addPassword('password', 'Password (optional):')
             ->setHtmlAttribute('placeholder', 'Enter password')
             ->addCondition(Form::FILLED, true)
-            ->addRule(Form::MIN_LENGTH, 'Password must be at least 3 characters long.', 3);
+            ->addRule(Form::MIN_LENGTH, "Password must be at least {self::PASSWORD_MIN_LENGTH} characters long.", self::PASSWORD_MIN_LENGTH);
 
 		$form->addSubmit('save', 'Create message');
 
 		// $form->addHidden('recaptcha_token');
 
 		$form->onSuccess[] = [$this, 'messageFormSucceeded'];
+		return $form;
+	}
+
+	public function createComponentImageForm(): Form
+	{
+		$form = new Form;
+
+		$form->addUpload('image', 'Image to send')
+			->addRule($form::IMAGE, 'Image needs to be a JPEG, PNG, GIF, or WebP file.');
+
+		$form->addPassword('password', 'Password (optional):')
+            ->setHtmlAttribute('placeholder', 'Enter password')
+            ->addCondition(Form::FILLED, true)
+            ->addRule(Form::MIN_LENGTH, "Password must be at least {self::PASSWORD_MIN_LENGTH} characters long.", self::PASSWORD_MIN_LENGTH);
+
+		$form->addSubmit('save', 'Create message');
+
+		$form->onSuccess[] = [$this, 'imageFormSucceeded'];
 		return $form;
 	}
 
@@ -159,5 +217,43 @@ final class DefaultPresenter extends BasePresenter
 		$url = $hash;
 		$this->flashMessage('Message created!', 'success');
 		$this->redirect('Default:created', $url);
+	}
+
+	public function imageFormSucceeded(Form $form, $values)
+	{
+		$data = [];
+		$data['password'] = Strings::trim($values->password);
+		$data['created_at'] = new DateTime();
+		$data['expires_at'] = new DateTime('now + 2 DAYS');
+		$url = '';
+
+		if (strlen($data['password']) >= 3) {
+			$hashedPassword = HashService::hashPassword($data['password']);
+			if (isset($values->image) && $values->image->isOk()) {
+				$savedFile = $this->imageStorage->saveImage($values->image, $this->messagesRepository->uploadDir);
+				$data['filename'] = $savedFile->filename;
+				$this->encryptionService->encryptFileWithPassword($savedFile->path, $savedFile->encryptPath, $data['password']);
+			}
+			$data['password'] = $hashedPassword;
+			$row = $this->messagesRepository->findAllImages()->insert($data);
+
+			$hash = HashService::idToHash($row->id, 'images');
+			$row->update(['hash' => $hash]);
+		} else {
+			unset($data['password']);
+			if (isset($values->image) && $values->image->isOk()) {
+				$savedFile = $this->imageStorage->saveImage($values->image, $this->messagesRepository->uploadDir);
+				$data['filename'] = $savedFile->filename;
+				$this->encryptionService->encryptFile($savedFile->path, $savedFile->encryptPath);
+			}
+			$row = $this->messagesRepository->findAllImages()->insert($data);
+
+			$hash = HashService::idToHash($row->id, 'images');
+			$row->update(['hash' => $hash]);
+		}
+
+		$url = $hash;
+		$this->flashMessage('Message created!', 'success');
+		$this->redirect('Default:created', $url, true);
 	}
 }
