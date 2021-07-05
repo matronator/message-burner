@@ -25,7 +25,7 @@ class MessagesRepository
 		return $this->database->table('messages');
 	}
 
-	public function getMessage(string $hash): Selection|null
+	public function getMessage(string $hash): ActiveRow|null
 	{
 		$id = HashService::hashToId($hash);
 		if ($id === -1) {
@@ -34,7 +34,7 @@ class MessagesRepository
 		return $this->findAll()->get($id);
 	}
 
-	public function getImage(string $hash): Selection|null
+	public function getImage(string $hash): ActiveRow|null
 	{
 		$id = HashService::hashToId($hash, 'images');
 		if ($id === -1) {
@@ -48,13 +48,23 @@ class MessagesRepository
 		$this->getMessage($hash)->delete();
 	}
 
+	public function imageRead(string $hash)
+	{
+		$this->getImage($hash)->delete();
+	}
+
 	public function deleteExpiredMessages()
 	{
 		$messages = $this->findAll()->where('expires_at <= ?', new DateTime('now'));
+		$images = $this->findAllImages()->where('expires_at <= ?', new DateTime('now'));
+		$deleted = 0;
 		if ($messages) {
-			return $messages->delete();
+			$deleted = $messages->delete();
 		}
-		return 0;
+		if ($images) {
+			$deleted += $images->delete();
+		}
+		return $deleted;
 	}
 
 	public function findAllImages(): Selection

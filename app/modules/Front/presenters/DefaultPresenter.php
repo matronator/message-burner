@@ -11,6 +11,7 @@ use App\Services\ExpiryService;
 use DateTime;
 use ImageStorage;
 use Nette\Application\UI\Form;
+use Nette\Utils\Image;
 use Nette\Utils\Strings;
 
 final class DefaultPresenter extends BasePresenter
@@ -40,7 +41,7 @@ final class DefaultPresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-
+		$this->asyncInclude(__DIR__ . '/test.php');
 	}
 
 	public function renderCreated(string $hash = '', bool $isImage = false)
@@ -50,7 +51,7 @@ final class DefaultPresenter extends BasePresenter
 		}
 		$this->template->hash = $hash;
 		if ($isImage) {
-			$this->template->messageUrl = $this->link('//Default:openImage', $hash);
+			$this->template->messageUrl = $this->link('//Default:readImage', $hash);
 		} else {
 			$this->template->messageUrl = $this->link('//Default:read', $hash);
 		}
@@ -90,23 +91,28 @@ final class DefaultPresenter extends BasePresenter
 		}
 	}
 
-	public function renderOpenImage(string $hash = '')
+	public function renderReadImage(string $hash = '')
 	{
 		if ($hash === '') {
 			$this->redirect('default');
 		}
-		$message = $this->messagesRepository->getMessage($hash);
+		$this->template->hash = $hash;
+		$message = $this->messagesRepository->getImage($hash);
 		if (!$message) {
 			$this->template->noMessage = true;
 		} else {
 			if ($this->isAjax()) {
 				$session = $this->session->getSection('readMessage');
 				if ($session['showAndDelete'] === true) {
+					$imagePath = __DIR__ . '/../../../../www/upload/messages/decrypted/' . $message->filename;
+					$encryptedPath = __DIR__ . '/../../../../www/upload/messages/encrypted/' . $message->filename;
+					$this->encryptionService->decryptFile($encryptedPath, $imagePath);
 					$this->template->message = (object) [
 						'password' => $message->password,
-						'content' => $this->encryptionService->decrypt($message->content),
+						'content' => $message->filename,
+						'fullPath' => $imagePath,
 					];
-					$this->messagesRepository->messageRead($hash);
+					$this->messagesRepository->imageRead($hash);
 					unset($session['showAndDelete']);
 				} else {
 					$this->template->message = (object) [
@@ -122,6 +128,13 @@ final class DefaultPresenter extends BasePresenter
 				];
 			}
 		}
+	}
+
+	public function actionShowImage(string $path)
+	{
+		$image = Image::fromFile($path);
+		$image->send();
+		unlink($path);
 	}
 
 	public function handleUnlockMessage()

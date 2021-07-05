@@ -4,6 +4,7 @@
 
 {block pageContent}
 {* {control contactForm} *}
+{* <div class="hidden" data-image-hash="{$hash}"></div> *}
 <div class="container-sm">
     {ifset $noMessage}
         <h2>No message found</h2>
@@ -24,11 +25,21 @@
         </div>
 
         <div class="read-message" n:snippet="message">
-            {if $message->content === '' && isset($msgError)}
-                {$msgError}
-            {else}
-                {$message->content|breakLines}
-            {/if}
+            {ifset $message->content}
+                {if $message->content === '' && isset($msgError)}
+                    {$msgError}
+                {else}
+                    {if strlen($message->content) > 1}
+                        {* {capture $image}{$basePath}/upload/messages/decrypted/{$message->content}{/capture} *}
+                        {* <img src="data:{$message->mime};base64,{$message->img}" alt="Image"> *}
+                        {* {$message->image} *}
+                        <img src="{link //Default:showImage, $message->fullPath}" alt="Image">
+                        {* <img src="127.0.0.1:8000/default/show-image?path={$message->fullPath}" alt=""> *}
+                        {* {php unlink($message->fullPath);} *}
+                        {* {$message->content} *}
+                    {/if}
+                {/if}
+            {/ifset}
         </div>
     {/ifset}
 </div>

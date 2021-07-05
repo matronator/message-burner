@@ -90,7 +90,9 @@ class EncryptionService
 
     public function decryptFile(string $source, string $destination)
     {
-        return File::decryptFile($source, $destination, $this->key);
+        $decrypted = File::decryptFile($source, $destination, $this->key);
+        unlink($source);
+        return $decrypted;
     }
 
     public function encryptFileWithPassword(string $source, string $destination, ?string $password = null)
@@ -103,7 +105,7 @@ class EncryptionService
     public function decryptFileWithPassword(string $source, string $destination, ?string $password = null)
     {
         $decrypted = File::decryptFileWithPassword($source, $destination, $password ?? $this->password);
-        // unlink($source);
+        unlink($source);
         return $decrypted;
     }
 }

@@ -96,7 +96,7 @@
     }
 
     .btn {
-        @apply text-button rounded-3xl px-5 py-2 font-bold uppercase cursor-pointer;
+        @apply text-button px-5 py-2 font-bold uppercase cursor-pointer;
         &\-primary {
             @apply bg-ternary dark:bg-dark-secondary text-white;
         }

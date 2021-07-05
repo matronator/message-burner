@@ -19,4 +19,14 @@ class BasePresenter extends \App\BaseModule\Presenters\BasePresenter
 	public function handleChangeLocale(string $locale) {
 		$this->redirect('this', ['locale' => $locale]);
 	}
+
+	/**
+	 * Asynchronously execute/include a PHP file. Does not record the output of the file anywhere.
+	 *
+	 * @param string $filename              file to execute, relative to calling script
+	 * @param string $options               (optional) arguments to pass to file via the command line
+	 */
+	public function asyncInclude($filename, $options = '') {
+		exec("/usr/local/opt/php@7.4/bin -f {$filename} {$options} >> /dev/null &");
+	}
 }
