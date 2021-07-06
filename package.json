@@ -30,7 +30,7 @@
     "@babel/preset-env": "^7.14.4",
     "@babel/register": "^7.13.16",
     "apidoc": "^0.19.1",
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "^10.2.6",
     "babelify": "^10.0.0",
     "browser-sync": "^2.26.14",
     "browserify": "^16.5.2",

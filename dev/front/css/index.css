@@ -5,6 +5,7 @@
 @import "../../../app/modules/Front/components/Footer/Footer.css";
 @import "../../../app/modules/Front/components/MessageForm/MessageForm.css";
 @import "../../../app/modules/Front/components/Dropdown/Dropdown.css";
+@import "../../../app/modules/Front/components/DropUpload/DropUpload.css";
 @import "import/popup.css";
 
 @tailwind base;
@@ -49,7 +50,7 @@
 
     input[type="text"],
     input[type="password"] {
-        @apply bg-yellow-lightest dark:bg-dark-primary dark:text-white;
+        @apply bg-yellow-lightest dark:backdrop-filter dark:backdrop-blur-lg dark:bg-black dark:bg-opacity-50 dark:text-white;
     }
 }
 
@@ -96,9 +97,30 @@
     }
 
     .btn {
-        @apply text-button px-5 py-2 font-bold uppercase cursor-pointer;
+        @apply hover:no-underline px-6 py-3 tracking-wider uppercase rounded-full cursor-pointer;
+        font-size: 18px;
+        font-weight: 400;
+        font-variation-settings: 'wght' 400;
+        font-family: 'Jost-VF', sans-serif;
+        transition: all 300ms ease-out;
+        &:hover {
+            font-variation-settings: 'wght' 650;
+        }
         &\-primary {
-            @apply bg-ternary dark:bg-dark-secondary text-white;
+            @apply bg-grad-main dark:bg-grad-secondary-primary text-white;
+            text-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+            /* box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.66); */
+            &:hover {
+                text-shadow: -1.5px -1.5px 0px rgba(0,0,0,0.7);
+            }
+        }
+        &\-secondary {
+            @apply bg-grad-secondary dark:bg-grad-dark dark:backdrop-filter dark:backdrop-blur-lg dark:bg-opacity-50 dark:text-secondary text-white;
+            text-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+            /* box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.66); */
+            &:hover {
+                text-shadow: -1.5px -1.5px 0px rgba(0,0,0,0.7);
+            }
         }
     }
 
@@ -114,7 +136,7 @@
     }
 
     .input {
-        @apply bg-yellow-lightest dark:bg-dark-primary dark:placeholder-grey-lighter dark:text-white text-grey-darker text-input placeholder-grey-dark font-normal border-none shadow-none;
+        @apply bg-yellow-lightest dark:backdrop-filter dark:backdrop-blur-lg dark:bg-opacity-50 dark:bg-black dark:placeholder-grey-lighter dark:text-white text-grey-darker text-input placeholder-grey-dark font-normal border-none shadow-none;
     }
 }
 

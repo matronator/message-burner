@@ -5,6 +5,24 @@
 {block pageContent}
 <h2>Send a self-destructing image</h2>
 
-{control imageForm}
+{form imageForm}
+
+    {* {include '../../components/DropUpload/DropUpload.latte', input => $form['image']->control, name => 'image'} *}
+
+    <div class="drop-upload input">
+        <label n:name="image">
+            <span>Drag and drop the file here or click to select...</span>
+            {include '../../components/DropUpload/UploadIcon.latte', size => '16'}
+            <input class="js-file" type="file" n:name="image">
+            <span class="upload-filename">No file selected</span>
+        </label>
+        <div class="file-list">
+            <img class="thumbnail">
+        </div>
+    </div>
+
+    <p>{input save, class => 'btn btn-primary my-4'} OR <a n:href="Default:default" class="btn btn-secondary">Write a message</a></p>
+
+{/form}
 
 {/block}

@@ -41,7 +41,7 @@ final class DefaultPresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-		$this->asyncInclude(__DIR__ . '/test.php');
+
 	}
 
 	public function renderCreated(string $hash = '', bool $isImage = false)
@@ -199,7 +199,7 @@ final class DefaultPresenter extends BasePresenter
             ->addCondition(Form::FILLED, true)
             ->addRule(Form::MIN_LENGTH, "Password must be at least {self::PASSWORD_MIN_LENGTH} characters long.", self::PASSWORD_MIN_LENGTH);
 
-		$form->addSubmit('save', 'Create message');
+		$form->addSubmit('save', 'Upload image');
 
 		$form->onSuccess[] = [$this, 'imageFormSucceeded'];
 		return $form;

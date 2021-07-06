@@ -52,7 +52,9 @@ const cssProcessors = [
           postscssAutoprefixer, // uses browser list option from package.json
           postcssNano,
         ]
-      : []
+      : [
+        postscssAutoprefixer
+      ]
   )
 
 const config = {
@@ -199,7 +201,7 @@ function images() {
             progressive: true,
             quality: config.images.quality,
           }),
-          imagemin.optipng({ optimizationLevel: 5 }),
+          imagemin.optipng({ optimizationLevel: 2 }),
           imagemin.svgo({
             plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
           }),

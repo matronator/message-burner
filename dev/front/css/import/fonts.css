@@ -4,6 +4,14 @@
 /* Regular */
 
 @font-face {
+  font-family: "Jost-VF";
+  src: url(etc/fonts/Jost-VF.woff2) format("woff2-variations"),
+    url(etc/fonts/Jost-VF.woff) format("woff"),
+    url(etc/fonts/Jost-VF.ttf) format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
   font-family: "Jost";
   src: url(etc/fonts/Jost-400-Book.woff2) format("woff2"),
     url(etc/fonts/Jost-400-Book.woff) format("woff"),

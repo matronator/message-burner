@@ -1,0 +1,18 @@
+@layer components {
+    .drop-upload {
+        @apply w-full h-48 flex justify-center items-center relative p-4;
+        & label {
+            @apply w-full h-full border border-grey flex justify-center items-center border-dashed cursor-pointer flex-col;
+        }
+        & .js-file {
+            @apply w-0 h-0 overflow-hidden;
+        }
+    }
+
+    .file-list {
+        @apply absolute top-4 left-4;
+    }
+    .thumbnail {
+        @apply h-40;
+    }
+}

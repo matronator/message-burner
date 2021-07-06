@@ -1,5 +1,5 @@
 module.exports = {
-  // mode: 'jit',
+  mode: 'jit',
   purge: [
     // "./app/modules/Front/**/*.{js,css,html,latte}",
     // "./dev/front/**/*.{js,css,html,latte}",
@@ -23,10 +23,10 @@ module.exports = {
     fontSize: {
       button: [
         {
-          fontSize: "10px",
-          lineHeight: "22px",
+          fontSize: "12px",
+          lineHeight: "20px",
           letterSpacing: "1px",
-          fontWeight: "600",
+          fontWeight: "800",
         },
       ],
       xs: ["12px", "22px"],
@@ -133,7 +133,11 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      backdropFilter: ['dark'],
+    },
+  },
   plugins: [],
 }
 
