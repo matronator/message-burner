@@ -26,7 +26,7 @@ final class RouterFactory
 		//--------------------- FRONT ROUTES ---------------------//
 		////////////////////////////////////////////////////////////
 		$router->withModule('Front')
-			->addRoute('[<locale=cs cs|en>/]message/new/<hash>', 'Default:created')
+			->addRoute('[<locale=cs cs|en>/]message/new/<hash>[/<isImage>]', 'Default:created')
 			->addRoute('[<locale=cs cs|en>/]message/read/<hash>', 'Default:read')
 			->addRoute('[<locale=cs cs|en>/]image/new', 'Default:image')
 			->addRoute('[<locale=cs cs|en>/]image/read/<hash>', 'Default:readImage')

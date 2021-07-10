@@ -40,4 +40,10 @@ class HashService
         $security = new Passwords;
         return $security->hash($password);
     }
+
+    public static function verifyPassword(string $password, string $hash): bool
+    {
+        $security = new Passwords;
+        return $security->verify($password, $hash);
+    }
 }

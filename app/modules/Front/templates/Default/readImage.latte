@@ -4,7 +4,6 @@
 
 {block pageContent}
 {* {control contactForm} *}
-{* <div class="hidden" data-image-hash="{$hash}"></div> *}
 <div class="container-sm">
     {ifset $noMessage}
         <h2>No message found</h2>
@@ -16,9 +15,11 @@
         <h2>Read message</h2>
         <p class="lead">Do you want to read the message now?<br>(The message will be <em class="text-red-danger">deleted</em>)</p>
         <div class="relative" n:if="$message->password !== null && strlen($message->content) <= 0">
-            <p class="text-lead">Message is protected by password. Enter the password below to unlock and read the message.</p>
-            <input type="password" placeholder="Enter password">
-            <a n:href="unlockMessage!" class="btn btn-primary ajax">Unlock message</a>
+            <p class="text-lead sm:text-base">Message is protected by password:</p>
+            {form unlockForm, class => 'ajax'}
+                {input password, class => 'block w-full mb-4 input'}
+                {input send, class => 'btn btn-primary inline-block'}
+            {/form}
         </div>
         <div class="relative" n:if="$message->password === null && strlen($message->content) <= 0">
             <a n:href="showMessage!" class="btn btn-primary ajax">Show message</a>
@@ -27,7 +28,7 @@
         <div class="read-message" n:snippet="message">
             {ifset $message->content}
                 {if $message->content === '' && isset($msgError)}
-                    {$msgError}
+                    <p class="text-red-danger-2 text-lg font-semibold text-center opacity-75">{$msgError}</p>
                 {else}
                     {if strlen($message->content) > 1}
                         {* {capture $image}{$basePath}/upload/messages/decrypted/{$message->content}{/capture} *}
@@ -42,6 +43,8 @@
             {/ifset}
         </div>
     {/ifset}
+
+    <a n:href="Default:default">Create new message</a>
 </div>
 
 {* {/form} *}

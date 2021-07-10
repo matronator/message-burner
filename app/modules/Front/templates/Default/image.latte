@@ -21,7 +21,14 @@
         </div>
     </div>
 
-    <p>{input save, class => 'btn btn-primary my-4'} OR <a n:href="Default:default" class="btn btn-secondary">Write a message</a></p>
+    <div class="relative grid w-full grid-cols-12 px-8 mx-auto mb-4">
+        <div class="sm:col-span-12 sm:text-center relative col-span-4 p-2 text-left">
+            {label password, class => 'w-full d-block' /}
+        </div>
+        <div class="sm:col-span-12 relative col-span-8">{input password, class => 'w-full d-block p-2 password-input input'}</div>
+    </div>
+
+    <p>{input save, class => 'btn btn-primary inline-block my-4'} OR <a n:href="Default:default" class="btn btn-secondary inline-block">Write a message</a></p>
 
 {/form}
 

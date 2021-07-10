@@ -69,18 +69,36 @@ final class DefaultPresenter extends BasePresenter
 			if ($this->isAjax()) {
 				$session = $this->session->getSection('readMessage');
 				if ($session['showAndDelete'] === true) {
-					$this->template->message = (object) [
-						'password' => $message->password,
-						'content' => $this->encryptionService->decrypt($message->content),
-					];
+					if ($session['withPassword'] === true) {
+						$this->template->message = (object) [
+							'password' => $message->password,
+							'content' => $this->encryptionService->decryptWithPassword($message->content, $session['password']),
+						];
+					} else {
+						$this->template->message = (object) [
+							'password' => $message->password,
+							'content' => $this->encryptionService->decrypt($message->content),
+						];
+					}
 					$this->messagesRepository->messageRead($hash);
 					unset($session['showAndDelete']);
+					unset($session['withPassword']);
+					unset($session['password']);
 				} else {
-					$this->template->message = (object) [
-						'password' => $message->password,
-						'content' => '',
-					];
-					$this->template->msgError = 'Something went wrong';
+					if ($session['wrongPassword'] === true) {
+						$this->template->message = (object) [
+							'password' => $message->password,
+							'content' => '',
+						];
+						$this->template->msgError = 'Wrong password!';
+						unset($session['wrongPassword']);
+					} else {
+						$this->template->message = (object) [
+							'password' => $message->password,
+							'content' => '',
+						];
+						$this->template->msgError = 'Something went wrong';
+					}
 				}
 			} else {
 				$this->template->message = (object) [
@@ -106,7 +124,11 @@ final class DefaultPresenter extends BasePresenter
 				if ($session['showAndDelete'] === true) {
 					$imagePath = __DIR__ . '/../../../../www/upload/messages/decrypted/' . $message->filename;
 					$encryptedPath = __DIR__ . '/../../../../www/upload/messages/encrypted/' . $message->filename;
-					$this->encryptionService->decryptFile($encryptedPath, $imagePath);
+					if ($session['withPassword'] === true) {
+						$this->encryptionService->decryptFileWithPassword($encryptedPath, $imagePath, $session['password']);
+					} else {
+						$this->encryptionService->decryptFile($encryptedPath, $imagePath);
+					}
 					$this->template->message = (object) [
 						'password' => $message->password,
 						'content' => $message->filename,
@@ -114,12 +136,23 @@ final class DefaultPresenter extends BasePresenter
 					];
 					$this->messagesRepository->imageRead($hash);
 					unset($session['showAndDelete']);
+					unset($session['withPassword']);
+					unset($session['password']);
 				} else {
-					$this->template->message = (object) [
-						'password' => $message->password,
-						'content' => '',
-					];
-					$this->template->msgError = 'Something went wrong';
+					if ($session['wrongPassword'] === true) {
+						$this->template->message = (object) [
+							'password' => $message->password,
+							'content' => '',
+						];
+						$this->template->msgError = 'Wrong password!';
+						unset($session['wrongPassword']);
+					} else {
+						$this->template->message = (object) [
+							'password' => $message->password,
+							'content' => '',
+						];
+						$this->template->msgError = 'Something went wrong';
+					}
 				}
 			} else {
 				$this->template->message = (object) [
@@ -137,10 +170,13 @@ final class DefaultPresenter extends BasePresenter
 		unlink($path);
 	}
 
-	public function handleUnlockMessage()
-	{
-
-	}
+	// public function handleUnlockMessage()
+	// {
+	// 	$session = $this->session->getSection('readMessage');
+	// 	// if ()
+	// 	$session['showAndDelete'] = true;
+	// 	$this->redrawControl('message');
+	// }
 
 	public function handleShowMessage()
 	{
@@ -192,6 +228,7 @@ final class DefaultPresenter extends BasePresenter
 		$form = new Form;
 
 		$form->addUpload('image', 'Image to send')
+			->setRequired()
 			->addRule($form::IMAGE, 'Image needs to be a JPEG, PNG, GIF, or WebP file.');
 
 		$form->addPassword('password', 'Password (optional):')
@@ -202,6 +239,22 @@ final class DefaultPresenter extends BasePresenter
 		$form->addSubmit('save', 'Upload image');
 
 		$form->onSuccess[] = [$this, 'imageFormSucceeded'];
+		return $form;
+	}
+
+	public function createComponentUnlockForm(): Form
+	{
+		$form = new Form;
+
+		$form->setHtmlAttribute('data-ajax-parent', 'original_post');
+
+		$form->addPassword('password', 'Password:')
+            ->setHtmlAttribute('placeholder', 'Enter password')
+			->setRequired();
+
+		$form->addSubmit('send', 'Unlock message');
+
+		$form->onSuccess[] = [$this, 'unlockFormSucceeded'];
 		return $form;
 	}
 
@@ -268,5 +321,23 @@ final class DefaultPresenter extends BasePresenter
 		$url = $hash;
 		$this->flashMessage('Message created!', 'success');
 		$this->redirect('Default:created', $url, true);
+	}
+
+	public function unlockFormSucceeded(Form $form, $values)
+	{
+		if (Strings::contains($this->getURL()->path, 'image')) {
+			$message = $this->messagesRepository->getImage($this->getParameter('hash'));
+		} else {
+			$message = $this->messagesRepository->getMessage($this->getParameter('hash'));
+		}
+		$session = $this->session->getSection('readMessage');
+		if (HashService::verifyPassword($values->password, $message->password)) {
+			$session['showAndDelete'] = true;
+			$session['withPassword'] = true;
+			$session['password'] = $values->password;
+		} else {
+			$session['wrongPassword'] = true;
+		}
+		$this->redrawControl('message');
 	}
 }

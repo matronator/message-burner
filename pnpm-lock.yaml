@@ -11,7 +11,7 @@ specifiers:
   '@popperjs/core': ^2.9.2
   apidoc: ^0.19.1
   autoprefixer: ^10.2.6
-  axette: ^1.1.8
+  axette: ^1.1.13
   babelify: ^10.0.0
   browser-sync: ^2.26.14
   browserify: ^16.5.2
@@ -58,7 +58,7 @@ dependencies:
   '@ckeditor/ckeditor5-build-classic': 16.0.0
   '@ckeditor/ckeditor5-ckfinder': 16.0.0
   '@popperjs/core': 2.9.2
-  axette: 1.1.8
+  axette: 1.1.13
   choices.js: 9.0.1
   clipboard-polyfill: 3.0.3
   core-js: 3.13.1
@@ -1919,8 +1919,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axette/1.1.8:
-    resolution: {integrity: sha512-IlgtGroeBc92nlnIZEkg4/b0SnEYFMhtphYOMjU2Yb4pxQk6P+uihIvfiAhe0Z30W03hPmYDOknrI02GHUzP9Q==}
+  /axette/1.1.13:
+    resolution: {integrity: sha512-8LRiwSVLs+Hjm3xSYWEMN80Evv6PIsVdv3TxwTvCPBw2f6fd5Owiz21ushkbd5Bjxj6bRQLoHwpH+9X8bNKYLw==}
     dev: false
 
   /axios/0.21.1_debug@4.3.1:

@@ -26,7 +26,7 @@
     }
 
     h1 { @apply mb-6 text-3xl; }
-    h2 { @apply mb-6 text-2xl; }
+    h2 { @apply sm:text-lg mb-6 text-2xl; }
     h3 { @apply mb-4 text-xl; }
     h4 { @apply mb-4 text-lg; }
     h5 { @apply mb-4 text-base font-bold; }
@@ -50,7 +50,7 @@
 
     input[type="text"],
     input[type="password"] {
-        @apply bg-yellow-lightest dark:backdrop-filter dark:backdrop-blur-lg dark:bg-black dark:bg-opacity-50 dark:text-white;
+        @apply bg-yellow-lightest dark:backdrop-filter dark:backdrop-blur-lg dark:bg-black dark:bg-opacity-50 dark:text-white px-1 py-2;
     }
 }
 
@@ -72,7 +72,7 @@
     /* --------========≡≡≡≡≡--| TYPOGRAPHY |--≡≡≡≡≡========-------- */
 
     .lead {
-        @apply text-lead font-bold tracking-normal text-center;
+        @apply text-lead sm:text-base font-bold tracking-normal text-center;
     }
     .sub-1 {
         @apply text-lg font-bold tracking-normal;
@@ -103,6 +103,9 @@
         font-variation-settings: 'wght' 400;
         font-family: 'Jost-VF', sans-serif;
         transition: all 300ms ease-out;
+        @media (max-width: 640px) {
+            font-size: 14px;
+        }
         &:hover {
             font-variation-settings: 'wght' 650;
         }
@@ -137,6 +140,7 @@
 
     .input {
         @apply bg-yellow-lightest dark:backdrop-filter dark:backdrop-blur-lg dark:bg-opacity-50 dark:bg-black dark:placeholder-grey-lighter dark:text-white text-grey-darker text-input placeholder-grey-dark font-normal border-none shadow-none;
+        font-size: 16px;
     }
 }
 

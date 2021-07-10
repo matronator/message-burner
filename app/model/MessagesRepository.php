@@ -25,7 +25,7 @@ class MessagesRepository
 		return $this->database->table('messages');
 	}
 
-	public function getMessage(string $hash): ActiveRow|null
+	public function getMessage(string $hash): ?ActiveRow
 	{
 		$id = HashService::hashToId($hash);
 		if ($id === -1) {
@@ -34,7 +34,7 @@ class MessagesRepository
 		return $this->findAll()->get($id);
 	}
 
-	public function getImage(string $hash): ActiveRow|null
+	public function getImage(string $hash): ?ActiveRow
 	{
 		$id = HashService::hashToId($hash, 'images');
 		if ($id === -1) {
@@ -62,6 +62,10 @@ class MessagesRepository
 			$deleted = $messages->delete();
 		}
 		if ($images) {
+			foreach ($images as $image) {
+				$encryptedPath = __DIR__ . '/../../../../www/upload/messages/encrypted/' . $image->filename;
+				unlink($encryptedPath);
+			}
 			$deleted += $images->delete();
 		}
 		return $deleted;
