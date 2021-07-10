@@ -1,17 +1,14 @@
 /*********************** FLASH ***********************/
 
-.flash {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 40px;
-  background-color: red;
-  color: white;
-  font-weight: 700;
-  text-align: center;
-  z-index: 999;
-  animation: hideFlash 1s 5s forwards;
+@layer components {
+  .flash {
+    @apply fixed top-0 left-0 right-0 py-5 px-10 font-bold text-center;
+    z-index: 999;
+    animation: hideFlash 1s 5s forwards;
+  }
+  .flash.success {
+    @apply bg-secondary dark:bg-dark-secondary text-black dark:text-white;
+  }
 }
 
 @keyframes hideFlash {
