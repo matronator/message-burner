@@ -29,6 +29,10 @@
 	#RewriteCond http%1://%{HTTP_HOST} ^(https?://)(www\.)?(.+)$
 	#RewriteRule ^ %1%3%{REQUEST_URI} [R=301,L]
 
+	RewriteCond %{HTTP:X-Forwarded-Proto} !https [OR]
+	RewriteCond %{HTTP_HOST} ^(www\.)
+	RewriteRule (.*) https://burner.matronator.com%{REQUEST_URI} [L,R=301]
+
 
 	###################################################
 	#Set index folder

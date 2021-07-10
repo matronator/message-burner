@@ -9,7 +9,7 @@
 
     {* {include '../../components/DropUpload/DropUpload.latte', input => $form['image']->control, name => 'image'} *}
 
-    <div class="drop-upload input">
+    <div class="drop-upload input mb-4">
         <label n:name="image">
             <span>Drag and drop the file here or click to select...</span>
             {include '../../components/DropUpload/UploadIcon.latte', size => '16'}
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="relative grid w-full grid-cols-12 px-8 mx-auto mb-4">
+    <div class="relative grid w-full grid-cols-12 px-8 mx-auto mt-4">
         <div class="sm:col-span-12 sm:text-center relative col-span-4 p-2 text-left">
             {label password, class => 'w-full d-block' /}
         </div>

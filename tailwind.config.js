@@ -1,5 +1,5 @@
 module.exports = {
-  mode: 'jit',
+  // mode: 'jit',
   purge: [
     // "./app/modules/Front/**/*.{js,css,html,latte}",
     // "./dev/front/**/*.{js,css,html,latte}",

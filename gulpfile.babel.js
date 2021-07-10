@@ -50,7 +50,7 @@ const cssProcessors = [
     isProduction
       ? [
           postscssAutoprefixer, // uses browser list option from package.json
-          postcssNano,
+          // postcssNano,
         ]
       : [
         postscssAutoprefixer

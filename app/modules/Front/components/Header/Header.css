@@ -1,6 +1,6 @@
 @layer components {
     .header {
-        @apply w-screen h-32 mb-4 dark:bg-grad-dark dark:bg-opacity-60 dark:backdrop-filter dark:backdrop-blur-lg bg-grad-main dark:text-white relative p-4 mx-auto text-center flex flex-col justify-center items-center;
+        @apply w-screen h-32 mb-4 dark:bg-grad-dark dark:bg-opacity-60 dark:backdrop-filter backdrop-blur-lg bg-grad-main dark:text-white relative p-4 mx-auto text-center flex flex-col justify-center items-center;
         box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.66);
         font-family: 'Big Shoulders Stencil Display', sans-serif;
         & h1 {
