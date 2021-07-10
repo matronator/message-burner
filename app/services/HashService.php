@@ -16,6 +16,8 @@ use Nette\Security\Passwords;
 
 class HashService
 {
+    public const HASH_LENGTH = 16;
+
     /**
      * Encode an integer ID to a hash
      *
@@ -25,13 +27,13 @@ class HashService
      */
     public static function idToHash(int $id, string $namespace = 'messages'): string
     {
-        $hashids = new Hashids($namespace, 8);
+        $hashids = new Hashids($namespace, self::HASH_LENGTH);
         return $hashids->encode($id);
     }
 
     public static function hashToId(string $hash, string $namespace = 'messages'): int
     {
-        $hashids = new Hashids($namespace, 8);
+        $hashids = new Hashids($namespace, self::HASH_LENGTH);
         return $hashids->decode($hash)[0] ?? -1;
     }
 
