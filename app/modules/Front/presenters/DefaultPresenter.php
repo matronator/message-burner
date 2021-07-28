@@ -124,15 +124,23 @@ final class DefaultPresenter extends BasePresenter
 				if ($session['showAndDelete'] === true) {
 					$imagePath = __DIR__ . '/../../../../www/upload/messages/decrypted/' . $message->filename;
 					$encryptedPath = __DIR__ . '/../../../../www/upload/messages/encrypted/' . $message->filename;
+					$note = $message->note;
 					if ($session['withPassword'] === true) {
 						$this->encryptionService->decryptFileWithPassword($encryptedPath, $imagePath, $session['password']);
+						if ($message->note !== null) {
+							$note = $this->encryptionService->decryptWithPassword($message->note, $session['password']);
+						}
 					} else {
 						$this->encryptionService->decryptFile($encryptedPath, $imagePath);
+						if ($message->note !== null) {
+							$note = $this->encryptionService->decrypt($message->note);
+						}
 					}
 					$this->template->message = (object) [
 						'password' => $message->password,
 						'content' => $message->filename,
 						'fullPath' => $imagePath,
+						'note' => $note !== null ? $note : '',
 					];
 					$this->messagesRepository->imageRead($hash);
 					unset($session['showAndDelete']);
@@ -231,12 +239,17 @@ final class DefaultPresenter extends BasePresenter
 			->setRequired()
 			->addRule($form::IMAGE, 'Image needs to be a JPEG, PNG, GIF, or WebP file.');
 
+		$form->addTextArea('note')
+			->setHtmlAttribute('maxlength', '255')
+			->setHtmlAttribute('data-remaining-chars', '255')
+			->setHtmlAttribute('placeholder', '(optional) Write a short message (max. 255 characters)...');
+
 		$form->addPassword('password', 'Password (optional):')
             ->setHtmlAttribute('placeholder', 'Enter password')
             ->addCondition(Form::FILLED, true)
             ->addRule(Form::MIN_LENGTH, "Password must be at least {self::PASSWORD_MIN_LENGTH} characters long.", self::PASSWORD_MIN_LENGTH);
 
-		$form->addSubmit('save', 'Upload image');
+		$form->addSubmit('save', 'Send image');
 
 		$form->onSuccess[] = [$this, 'imageFormSucceeded'];
 		return $form;
@@ -291,6 +304,7 @@ final class DefaultPresenter extends BasePresenter
 		$data['password'] = Strings::trim($values->password);
 		$data['created_at'] = new DateTime();
 		$data['expires_at'] = new DateTime('now + 2 DAYS');
+		$noteTrimmed = Strings::substring($values->note, 0, 255);
 		$url = '';
 
 		if (strlen($data['password']) >= 3) {
@@ -299,6 +313,9 @@ final class DefaultPresenter extends BasePresenter
 				$savedFile = $this->imageStorage->saveImage($values->image, $this->messagesRepository->uploadDir);
 				$data['filename'] = $savedFile->filename;
 				$this->encryptionService->encryptFileWithPassword($savedFile->path, $savedFile->encryptPath, $data['password']);
+			}
+			if (Strings::length($noteTrimmed) > 0) {
+				$data['note'] = $this->encryptionService->encryptWithPassword($noteTrimmed, $data['password']);
 			}
 			$data['password'] = $hashedPassword;
 			$row = $this->messagesRepository->findAllImages()->insert($data);
@@ -311,6 +328,9 @@ final class DefaultPresenter extends BasePresenter
 				$savedFile = $this->imageStorage->saveImage($values->image, $this->messagesRepository->uploadDir);
 				$data['filename'] = $savedFile->filename;
 				$this->encryptionService->encryptFile($savedFile->path, $savedFile->encryptPath);
+			}
+			if (Strings::length($noteTrimmed) > 0) {
+				$data['note'] = $this->encryptionService->encrypt($noteTrimmed);
 			}
 			$row = $this->messagesRepository->findAllImages()->insert($data);
 

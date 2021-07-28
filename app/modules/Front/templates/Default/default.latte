@@ -2,10 +2,6 @@
 {define pageTitle}Homepage{/define}
 {define metaDescription}Homepage{/define}
 
-{block head}
-    <script src="{$basePath}/ckeditor5/build/ckeditor.js"></script>
-{/block}
-
 {block pageContent}
 <h2 class="sm:text-lg text-xl">Create new self-destructing message</h2>
 
@@ -16,4 +12,5 @@
 {block scripts}
     {* <script defer src="{$basePath}/ckeditor5/build/editorSettings.js"></script> *}
     {* <script src="{asset editor.js front}"></script> *}
+    <script defer async src="{asset forms.js front}"></script>
 {/block}

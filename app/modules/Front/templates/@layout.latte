@@ -27,7 +27,6 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300;600&display=swap" rel="stylesheet">
 
     <link rel="icon" href="{$basePath}/dist/front/etc/favicon.ico">
@@ -40,8 +39,8 @@
     <link n:foreach="$presenter->localeList as $localeItem" rel="alternate" hreflang="{$localeItem}" href="{link //this, locale=>$localeItem}"/>
     <link rel="alternate" hreflang="x-default" href="{link //this, locale=>$defaultLocale}" />
 
-    <script n:syntax="off">
-        if (localStorage.getItem(`theme`) === `dark` || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    <script n:syntax="off" async>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
         } else {
             document.documentElement.classList.remove('dark')
@@ -60,7 +59,7 @@
 
     {include '../components/Footer/Footer.latte'}
 
-    <script defer src="{asset index.js front}"></script>
+    <script defer async src="{asset index.js front}"></script>
     {ifset scripts}
         {include scripts}
     {/ifset}

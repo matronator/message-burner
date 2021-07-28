@@ -6,27 +6,25 @@
  */
 
 
-document.addEventListener(`DOMContentLoaded`, () => {
-    const darkmodeBtn = document.querySelector(`[data-current-theme]`)
-    if (localStorage.getItem(`theme`) === `dark`) {
-        darkmodeBtn.setAttribute(`data-current-theme`, `dark`)
-        darkmodeBtn.innerHTML = `🌗`
-    } else if (localStorage.getItem(`theme`) === `light`) {
-        darkmodeBtn.setAttribute(`data-current-theme`, `light`)
-        darkmodeBtn.innerHTML = `🌑`
+const darkmodeBtn = document.querySelector(`[data-current-theme]`)
+if (localStorage.getItem(`theme`) === `dark`) {
+    darkmodeBtn.setAttribute(`data-current-theme`, `dark`)
+    darkmodeBtn.innerHTML = `🌗`
+} else if (localStorage.getItem(`theme`) === `light`) {
+    darkmodeBtn.setAttribute(`data-current-theme`, `light`)
+    darkmodeBtn.innerHTML = `🌑`
+} else {
+    darkmodeBtn.setAttribute(`data-current-theme`, `system`)
+    darkmodeBtn.innerHTML = `🌕`
+}
+darkmodeBtn.addEventListener(`click`, e => {
+    if (darkmodeBtn.getAttribute(`data-current-theme`) === `system`) {
+        chooseTheme(`light`)
+    } else if (darkmodeBtn.getAttribute(`data-current-theme`) === `light`) {
+        chooseTheme(`dark`)
     } else {
-        darkmodeBtn.setAttribute(`data-current-theme`, `system`)
-        darkmodeBtn.innerHTML = `🌕`
+        chooseTheme()
     }
-    darkmodeBtn.addEventListener(`click`, e => {
-        if (darkmodeBtn.getAttribute(`data-current-theme`) === `system`) {
-            chooseTheme(`light`)
-        } else if (darkmodeBtn.getAttribute(`data-current-theme`) === `light`) {
-            chooseTheme(`dark`)
-        } else {
-            chooseTheme()
-        }
-    })
 })
 
 function chooseTheme(theme = `system`) {

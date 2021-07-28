@@ -33,8 +33,14 @@
             {/if}
         </div>
     {/ifset}
-    <a n:href="Default:default">Create new message</a>
+    <a n:href="Default:default" class="btn btn-primary">Create new message</a>
 </div>
 
 {* {/form} *}
+{/block}
+
+{block scripts}
+    {if $message->password !== null && strlen($message->content) <= 0}
+        <script async defer src="{asset forms.js front}"></script>
+    {/if}
 {/block}

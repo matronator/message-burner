@@ -2,23 +2,48 @@
 {define pageTitle}Homepage{/define}
 {define metaDescription}Homepage{/define}
 
+{block head}
+    <script n:syntax="off" async>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageNote = document.querySelector('[data-remaining-chars]');
+            const charCount = document.getElementById('noteCharCount');
+            if (imageNote && charCount) {
+                imageNote.addEventListener('input', function(e) {
+                    if (imageNote.value.replaceAll('\n', 'aa').replaceAll('\r', 'aa').length > 255) {
+                        e.preventDefault();
+                        imageNote.value = imageNote.value.substring(0, 255);
+                        charCount.innerText = '255 / 255';
+                    } else {
+                        charCount.innerText = imageNote.value.replaceAll('\n', 'aa').replaceAll('\r', 'aa').length + ' / 255';
+                    }
+                });
+            }
+        });
+    </script>
+{/block}
+
 {block pageContent}
 <h2>Send a self-destructing image</h2>
 
-{form imageForm}
+{form imageForm, class => 'container-md'}
 
     {* {include '../../components/DropUpload/DropUpload.latte', input => $form['image']->control, name => 'image'} *}
 
     <div class="drop-upload input mb-4">
         <label n:name="image">
-            <span>Drag and drop the file here or click to select...</span>
+            <span>Drag and drop the image here or click to select...</span>
             {include '../../components/DropUpload/UploadIcon.latte', size => '16'}
             <input class="js-file" type="file" n:name="image">
-            <span class="upload-filename">No file selected</span>
+            <span class="upload-filename bg-yellow-lightest dark:bg-black z-10 px-2 py-1 bg-opacity-50">No file selected</span>
         </label>
         <div class="file-list">
             <img class="thumbnail">
         </div>
+    </div>
+
+    <div class="h-36 relative">
+        {input note, class => 'input message-input max-h-28'}
+        <span id="noteCharCount" class="absolute bottom-0 right-0">0 / 255</span>
     </div>
 
     <div class="relative grid w-full grid-cols-12 px-8 mx-auto mt-4">
@@ -32,4 +57,8 @@
 
 {/form}
 
+{/block}
+
+{block scripts}
+    <script async defer src="{asset forms.js front}"></script>
 {/block}

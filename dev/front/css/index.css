@@ -67,7 +67,8 @@
     }
 
     .container-md {
-        max-width: 1310px;
+        @apply px-2 mx-auto;
+        max-width: 960px;
     }
     /* --------========≡≡≡≡≡--| TYPOGRAPHY |--≡≡≡≡≡========-------- */
 
