@@ -20,4 +20,8 @@
     .ck-content.ck-editor__editable {
         @apply h-80 bg-yellow-lightest;
     }
+
+    .btn#send-msg-button.is-loading {
+        
+    }
 }

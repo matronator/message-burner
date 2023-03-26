@@ -24,7 +24,7 @@ final class DefaultPresenter extends BasePresenter
 	/** @var ImageStorage */
 	private $imageStorage;
 
-	public const PASSWORD_MIN_LENGTH = 5;
+	public const PASSWORD_MIN_LENGTH = 3;
 
 	public function __construct(
 		MessagesRepository $messagesRepository,
@@ -221,7 +221,7 @@ final class DefaultPresenter extends BasePresenter
         $form->addPassword('password', 'Password (optional):')
             ->setHtmlAttribute('placeholder', 'Enter password')
             ->addCondition(Form::FILLED, true)
-            ->addRule(Form::MIN_LENGTH, "Password must be at least {self::PASSWORD_MIN_LENGTH} characters long.", self::PASSWORD_MIN_LENGTH);
+            ->addRule(Form::MIN_LENGTH, "Password must be at least " . self::PASSWORD_MIN_LENGTH . " characters long.", self::PASSWORD_MIN_LENGTH);
 
 		$form->addSubmit('save', 'Create message');
 

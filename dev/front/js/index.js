@@ -2,6 +2,7 @@ import * as clipboard from "clipboard-polyfill/text";
 import axette from "axette";
 import "./import/darkmode.js";
 import "./import/popup.js";
+import "./../../../app/modules/Front/components/MessageForm/MessageForm.js"
 
 axette.init()
 axette.fixURL()

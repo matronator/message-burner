@@ -28,8 +28,8 @@ services:
 	router: App\Router\RouterFactory::createRouter
 	nette.latteFactory:
 	    setup:
-	        - addFilter(NULL, 'App\Filter\StaticFilters::common')
-	        - addFilter('imageGenerator', '@App\Filter\ImageFilter')
+	        # - addFilter(NULL, 'App\Filter\StaticFilters::common')
+	        - addFilter('imageGenerator', @App\Filter\ImageFilter)
 
 http:
     headers:

@@ -28,7 +28,7 @@
 		"ext-json": "*",
 		"defuse/php-encryption": "9999999-dev",
 		"gregwar/captcha": "9999999-dev",
-		"hashids/hashids": "4.1.x-dev"
+		"hashids/hashids": "4.1"
     },
 	"require-dev": {
 		"nette/tester": "^2.4.0"
