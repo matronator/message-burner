@@ -14,7 +14,7 @@
 
 @layer base {
     body {
-        @apply font-body dark:bg-grad-body dark:text-white relative min-h-screen pb-16 text-black bg-white;
+        @apply font-body dark:bg-black dark:text-white relative min-h-screen pb-16 text-black bg-white;
     }
 
     a {
@@ -50,7 +50,7 @@
 
     input[type="text"],
     input[type="password"] {
-        @apply bg-yellow-lightest dark:backdrop-filter backdrop-blur-lg dark:bg-black dark:bg-opacity-50 dark:text-white px-1 py-2;
+        @apply bg-yellow-lightest dark:backdrop-filter backdrop-blur-lg dark:bg-opacity-30 dark:bg-grey-dark dark:text-white px-1 py-2;
     }
 }
 
@@ -135,12 +135,12 @@
     }
 
     .read-message {
-        @apply bg-yellow-lighter dark:backdrop-filter backdrop-blur-lg dark:bg-black dark:bg-opacity-50 dark:placeholder-grey-lighter dark:text-white text-grey-darker placeholder-grey-dark block w-full px-3 py-4 mx-auto my-4 text-base text-left;
+        @apply bg-yellow-lighter dark:backdrop-filter backdrop-blur-lg dark:bg-opacity-30 dark:bg-grey-dark dark:placeholder-grey-lighter dark:text-white text-grey-darker placeholder-grey-dark block w-full px-3 py-4 mx-auto my-4 text-base text-left;
         min-height: 200px;
     }
 
     .input {
-        @apply bg-yellow-lightest dark:backdrop-filter backdrop-blur-lg dark:bg-opacity-50 dark:bg-black dark:placeholder-grey-lighter dark:text-white text-grey-darker text-input placeholder-grey-dark font-normal border-none shadow-none;
+        @apply bg-yellow-lightest dark:backdrop-filter backdrop-blur-lg dark:bg-opacity-30 dark:bg-grey-dark dark:placeholder-grey-lighter dark:text-white text-grey-darker text-input placeholder-grey-dark font-normal border-none shadow-none;
         font-size: 16px;
     }
 }

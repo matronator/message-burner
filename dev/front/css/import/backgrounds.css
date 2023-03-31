@@ -36,6 +36,7 @@
         background: linear-gradient(41deg, rgba(23,15,36,1) 0%, rgba(0,16,25,1) 14%, rgba(10,19,38,1) 35%, rgba(0,10,47,1) 52%, rgba(19,7,36,1) 70%, rgba(0,14,37,1) 90%, rgba(33,0,33,1) 100%);
     }
     .bg-grad-dark {
-        background: linear-gradient(90deg, rgba(20,20,20,var(--tw-bg-opacity)) 0%, rgba(0,0,0,var(--tw-bg-opacity)) 100%);
+        background: linear-gradient(-226deg, rgba(65, 0, 26, var(--tw-bg-opacity)) 0%, rgba(41, 0, 73, var(--tw-bg-opacity)) 100%),
+                    linear-gradient(-180deg, #712600 2%, #06203d 97%);
     }
 }
