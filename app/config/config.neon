@@ -23,6 +23,7 @@ services:
 	- App\Filter\ImageFilter
 	- App\Services\EncryptionService(%encryption%)
 	- App\Services\ExpiryService(%expiration%)
+	- App\Services\PathService(%rootDir%, %appDir%, %wwwDir%)
 	imagePipe: \ImageGenerator(%wwwDir%)
 	imageStorage: \ImageStorage(%wwwDir%)
 	router: App\Router\RouterFactory::createRouter

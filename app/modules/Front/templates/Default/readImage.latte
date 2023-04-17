@@ -3,7 +3,6 @@
 {define metaDescription}Read{/define}
 
 {block pageContent}
-{* {control contactForm} *}
 <div class="container-sm">
     {ifset $noMessage}
         <h2>No message found</h2>
@@ -22,7 +21,7 @@
             {/form}
         </div>
         <div class="relative" n:if="$message->password === null && strlen($message->content) <= 0">
-            <a n:href="showMessage!" class="btn btn-primary ajax">Show message</a>
+            <a n:href="showMessage!" class="btn btn-primary ajax inline-block">Show message</a>
         </div>
 
         <div class="read-message" n:snippet="message">
@@ -31,23 +30,19 @@
                     <p class="text-red-danger-2 text-lg font-semibold text-center opacity-75">{$msgError}</p>
                 {else}
                     {if strlen($message->content) > 1}
-                        {* {capture $image}{$basePath}/upload/messages/decrypted/{$message->content}{/capture} *}
-                        {* <img src="data:{$message->mime};base64,{$message->img}" alt="Image"> *}
                         {if strlen($message->note) > 0}
                             <p>{$message->note|breakLines}</p>
                         {/if}
-                        <img src="{link //Default:showImage, $message->fullPath}" alt="Image">
-                        {* <img src="127.0.0.1:8000/default/show-image?path={$message->fullPath}" alt=""> *}
+                        <img src="{link :Front:Default:showImage, $message->fullPath}" alt="Image">
                     {/if}
                 {/if}
             {/ifset}
         </div>
     {/ifset}
 
-    <a n:href="Default:default" class="btn btn-primary">Create new message</a>
+    <a n:href="Default:image" class="btn btn-primary inline-block">Send&nbsp;new&nbsp;image</a>
 </div>
 
-{* {/form} *}
 {/block}
 
 {block scripts}

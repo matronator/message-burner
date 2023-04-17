@@ -14,7 +14,7 @@
     {else}
         <h2>Read message</h2>
         <p class="lead">Do you want to read the message now?<br>(The message will be <em class="uppercase">deleted</em>)</p>
-        <div class="relative" n:if="$message->password !== null && strlen($message->content) <= 0">
+        <div class="relative" n:if="(isset($message) && $message) && $message->password !== null && strlen($message->content) <= 0">
             <p class="text-lead sm:text-base">Message is protected by password:</p>
             {form unlockForm, class => 'ajax'}
                 {input password, class => 'block w-full mb-4 input'}
@@ -28,8 +28,8 @@
                 </button>
             {/form}
         </div>
-        <div class="relative" n:if="$message->password === null && strlen($message->content) <= 0">
-            <a n:href="showMessage!" class="btn btn-primary ajax" id="read-msg-button">Show message</a>
+        <div class="relative" n:if="(isset($message) && $message) && $message->password === null && strlen($message->content) <= 0">
+            <a n:href="showMessage!" class="btn btn-primary ajax inline-block" id="read-msg-button">Show message</a>
             <button type="button" class="btn btn-primary inline-flex items-center cursor-not-allowed hidden" disabled id="msg-sent-button">
                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -47,7 +47,7 @@
             {/if}
         </div>
     {/ifset}
-    <a n:href="Default:default" class="btn btn-primary">Create new message</a>
+    <a n:href="Default:default" class="btn btn-primary inline-block">Create&nbsp;new&nbsp;message</a>
 </div>
 
 {* {/form} *}
