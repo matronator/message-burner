@@ -1,3 +1,17 @@
-error:
+errors:
 	notFound: 'Stránka, kterou hledáte, bohužel nebyla nalezena.'
 	goBack: 'Zpět na úvodní stránku'
+	wrongPassword: 'Špatné heslo!'
+	somethingWentWrong: 'Něco se pokazilo'
+
+messageForm:
+	sending: 'Odesílám...'
+	or: 'NEBO'
+	sendImage: 'Odešli&nbsp;obrázek'
+	messagePlaceholder: 'Zde napiš svoji zprávu...'
+	password: 'Heslo (nepovinné):'
+	enterPassword: 'Zadej heslo'
+	send: 'Odeslat'
+
+footer:
+	createdBy: 'Vytvořil'

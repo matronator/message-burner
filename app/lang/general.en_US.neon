@@ -1,3 +1,17 @@
-error:
+errors:
 	notFound: 'Sorry, the page you are looking for was not found.'
 	goBack: 'Back to homepage'
+	wrongPassword: 'Wrong password!'
+	somethingWentWrong: 'Something went wrong'
+
+messageForm:
+	sending: 'Sending...'
+	or: 'OR'
+	sendImage: 'Send&nbsp;an&nbsp;image'
+	messagePlaceholder: 'Write your message here...'
+	password: 'Password (optional):'
+	enterPassword: 'Enter password'
+	send: 'Send'
+
+footer:
+	createdBy: 'Created by'

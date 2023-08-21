@@ -95,14 +95,14 @@ final class DefaultPresenter extends BasePresenter
 							'password' => $message->password,
 							'content' => '',
 						];
-						$this->template->msgError = 'Wrong password!';
+						$this->template->msgError = $this->trans('general.errors.wrongPassword');
 						unset($session['wrongPassword']);
 					} else {
 						$this->template->message = (object) [
 							'password' => $message->password,
 							'content' => '',
 						];
-						$this->template->msgError = 'Something went wrong';
+						$this->template->msgError = $this->trans('general.errors.somethingWentWrong');
 					}
 				}
 			} else {
@@ -158,14 +158,14 @@ final class DefaultPresenter extends BasePresenter
 							'password' => $message->password,
 							'content' => '',
 						];
-						$this->template->msgError = 'Wrong password!';
+						$this->template->msgError = $this->trans('general.errors.wrongPassword');
 						unset($session['wrongPassword']);
 					} else {
 						$this->template->message = (object) [
 							'password' => $message->password,
 							'content' => '',
 						];
-						$this->template->msgError = 'Something went wrong';
+						$this->template->msgError = $this->trans('general.errors.somethingWentWrong');
 					}
 				}
 			} else {
@@ -219,18 +219,18 @@ final class DefaultPresenter extends BasePresenter
 
 		$form->addTextArea('content')
 			->setRequired()
-			->setHtmlAttribute('placeholder', 'Write your message here...');
+			->setHtmlAttribute('placeholder', $this->trans('general.messageForm.messagePlaceholder'));
 			// ->setHtmlAttribute('data-text-editor', 'message')
 			// ->setHtmlAttribute('class', 'js-wysiwyg');
 
         // $form->addText('captcha', 'Enter captcha:');
 
-        $form->addPassword('password', 'Password (optional):')
-            ->setHtmlAttribute('placeholder', 'Enter password')
+        $form->addPassword('password', $this->trans('general.messageForm.password'))
+            ->setHtmlAttribute('placeholder', $this->trans('general.messageForm.enterPassword'))
             ->addCondition(Form::FILLED, true)
             ->addRule(Form::MIN_LENGTH, "Password must be at least " . self::PASSWORD_MIN_LENGTH . " characters long.", self::PASSWORD_MIN_LENGTH);
 
-		$form->addSubmit('save', 'Create message');
+		$form->addSubmit('save', $this->trans('general.messageForm.send'));
 
 		// $form->addHidden('recaptcha_token');
 

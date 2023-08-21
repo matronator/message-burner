@@ -26,17 +26,17 @@ final class RouterFactory
 		//--------------------- FRONT ROUTES ---------------------//
 		////////////////////////////////////////////////////////////
 		$router->withModule('Front')
-			->addRoute('[<locale=cs cs|en>/]message/new/<hash>[/<isImage>]', 'Default:created')
-			->addRoute('[<locale=cs cs|en>/]message/read/<hash>', 'Default:read')
-			->addRoute('[<locale=cs cs|en>/]image/new', 'Default:image')
-			->addRoute('[<locale=cs cs|en>/]image/read/<hash>', 'Default:readImage')
-			->addRoute('[<locale=cs cs|en>/]image/delete/<hash>', 'Default:deleteImage')
+			->addRoute('[<locale=en cs|en>/]message/new/<hash>[/<isImage>]', 'Default:created')
+			->addRoute('[<locale=en cs|en>/]message/read/<hash>', 'Default:read')
+			->addRoute('[<locale=en cs|en>/]image/new', 'Default:image')
+			->addRoute('[<locale=en cs|en>/]image/read/<hash>', 'Default:readImage')
+			->addRoute('[<locale=en cs|en>/]image/delete/<hash>', 'Default:deleteImage')
 			// SITEMAP
 			->addRoute('sitemap.xml', 'Sitemap:default')
 			->addRoute('sitemap', 'Sitemap:default')
 
 			// MOST GENERAL ROUTE
-			->addRoute('[<locale=cs cs|en>/]<presenter>/<action>[/<slug>]', 'Default:default');
+			->addRoute('[<locale=en cs|en>/]<presenter>/<action>[/<slug>]', 'Default:default');
 
 		return $router;
 	}

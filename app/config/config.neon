@@ -46,7 +46,7 @@ extensions:
 
 translation:
     locales:
-        whitelist: [en, cs, sk]
+        whitelist: [en, cs]
         default: en
         fallback: [en]
     dirs:
