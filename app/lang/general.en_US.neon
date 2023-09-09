@@ -3,6 +3,10 @@ errors:
 	goBack: 'Back to homepage'
 	wrongPassword: 'Wrong password!'
 	somethingWentWrong: 'Something went wrong'
+	imageFormat: 'Image needs to be a JPEG, PNG, GIF, or WebP file.'
+
+success:
+	messageCreated: 'Message created!'
 
 messageForm:
 	sending: 'Sending...'
@@ -13,5 +17,27 @@ messageForm:
 	enterPassword: 'Enter password'
 	send: 'Send'
 
+images:
+	heading: 'Send a self-destructing image'
+	imageToSend: 'Image to send'
+	placeholder: '(optional) Write a short message (max. 500 characters)...'
+	sendImage: 'Send image'
+	dropUpload: 'Drag and drop the image here or click to select...'
+	noFileSelected: 'No file selected'
+
+unlockForm:
+	password: 'Password'
+	unlockMessage: 'Unlock message'
+
 footer:
 	createdBy: 'Created by'
+
+created:
+	messageCreated: 'Message created'
+	linkIsReady: 'Link to your message is ready.'
+	itWillSelfDestruct: 'It will self-destruct after reading.'
+	copyLink: 'Click the link bellow to copy it to clipboard:'
+	copied: 'Copied!'
+	expirationText: 'Message will only available for <strong>48 hours</strong> - unread messages are automatically <strong>deleted</strong> after 2 days!'
+	destroyNow: 'Destroy the message now'
+	createNew: 'Create new message'

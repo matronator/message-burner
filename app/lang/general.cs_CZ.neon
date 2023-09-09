@@ -3,6 +3,10 @@ errors:
 	goBack: 'Zpět na úvodní stránku'
 	wrongPassword: 'Špatné heslo!'
 	somethingWentWrong: 'Něco se pokazilo'
+	imageFormat: 'Obrázek musí být ve formátu JPEG, PNG, GIF, nebo WebP.'
+
+success:
+	messageCreated: 'Zpráva vytvořena!'
 
 messageForm:
 	sending: 'Odesílám...'
@@ -13,5 +17,27 @@ messageForm:
 	enterPassword: 'Zadej heslo'
 	send: 'Odeslat'
 
+images:
+	heading: 'Pošli sebe-zničující obrázek'
+	imageToSend: 'Obrázek k odeslání'
+	placeholder: '(volitelné) Napiš krátkou zprávu (max. 500 znaků)...'
+	sendImage: 'Odeslat obrázek'
+	dropUpload: 'Přetáhni sem obrázek, nebo klikni a vyber...'
+	noFileSelected: 'Žádný soubor nevybrán'
+
+unlockForm:
+	password: 'Heslo'
+	unlockMessage: 'Odemkni zprávu'
+
 footer:
 	createdBy: 'Vytvořil'
+
+created:
+	messageCreated: 'Zpráva vytvořena'
+	linkIsReady: 'Odkaz na tvoji zprávu je připraven.'
+	itWillSelfDestruct: 'Sama se smaže po otevření.'
+	copyLink: 'Klikni na odkaz níže pro zkopírování do schránky:'
+	copied: 'Zkopírováno!'
+	expirationText: 'Zpráva bude dostupná pouze <strong>48 hodin</strong> - nepřečtené zprávy jsou automaticky <strong>mazány</strong> po 2 dnech!'
+	destroyNow: 'Smazat zprávu nyní'
+	createNew: 'Vytvořit novou zprávu'

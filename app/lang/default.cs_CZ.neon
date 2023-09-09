@@ -1,2 +1,17 @@
 default:
 	heading: 'Vytvoř novou sebedestruktivní zprávu'
+	or: 'NEBO'
+	writeMessage: 'Napsat zprávu'
+
+read:
+	heading: 'Přečíst zprávu'
+	text: 'Opravdu si chceš zprávu přečíst teď?<br>(Zpráva bude <em class="uppercase">odstraněna</em>)'
+	noMessage: 'Žádná zpráva nenalezena'
+	noMessageText: 'Neplatný odkaz, nebo byla zpráva již zobrazena a smazána.'
+	backToHomepage: 'Zpátky domů'
+	sendNewImage: 'Pošli&nbsp;nový&nbsp;obrázek'
+	createNewMessage: 'Vytvoř&nbsp;novou&nbsp;zprávu'
+	passwordProtected: 'Zpráva je chráněna heslem:'
+	opening: 'Otvírám...'
+	showMessage: 'Zobrazit zprávu'
+	showImage: 'Zobrazit obrázek'

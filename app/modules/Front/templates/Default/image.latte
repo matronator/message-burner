@@ -9,12 +9,12 @@
             const charCount = document.getElementById('noteCharCount');
             if (imageNote && charCount) {
                 imageNote.addEventListener('input', function(e) {
-                    if (imageNote.value.replaceAll('\n', 'aa').replaceAll('\r', 'aa').length > 255) {
+                    if (imageNote.value.replaceAll('\n', 'aa').replaceAll('\r', 'aa').length > 500) {
                         e.preventDefault();
                         imageNote.value = imageNote.value.substring(0, 255);
-                        charCount.innerText = '255 / 255';
+                        charCount.innerText = '500 / 500';
                     } else {
-                        charCount.innerText = imageNote.value.replaceAll('\n', 'aa').replaceAll('\r', 'aa').length + ' / 255';
+                        charCount.innerText = imageNote.value.replaceAll('\n', 'aa').replaceAll('\r', 'aa').length + ' / 500';
                     }
                 });
             }
@@ -23,7 +23,7 @@
 {/block}
 
 {block pageContent}
-<h2>Send a self-destructing image</h2>
+<h2>{_general.images.heading}</h2>
 
 {form imageForm, class => 'container-md'}
 
@@ -31,10 +31,10 @@
 
     <div class="drop-upload input mb-4">
         <label n:name="image">
-            <span>Drag and drop the image here or click to select...</span>
+            <span>{_general.images.dropUpload}</span>
             {include '../../components/DropUpload/UploadIcon.latte', size => '16'}
             <input class="js-file" type="file" n:name="image">
-            <span class="upload-filename bg-yellow-lightest dark:bg-black z-10 px-2 py-1 bg-opacity-50">No file selected</span>
+            <span class="upload-filename bg-yellow-lightest dark:bg-black z-10 px-2 py-1 bg-opacity-50">{_general.images.noFileSelected}</span>
         </label>
         <div class="file-list">
             <img class="thumbnail">
@@ -43,7 +43,7 @@
 
     <div class="h-36 relative">
         {input note, class => 'input message-input max-h-28'}
-        <span id="noteCharCount" class="absolute bottom-0 right-0">0 / 255</span>
+        <span id="noteCharCount" class="absolute bottom-0 right-0">0 / 500</span>
     </div>
 
     <div class="relative grid w-full grid-cols-12 px-8 mx-auto mt-4">
@@ -53,7 +53,7 @@
         <div class="sm:col-span-12 relative col-span-8">{input password, class => 'w-full d-block p-2 password-input input'}</div>
     </div>
 
-    <p>{input save, class => 'btn btn-primary inline-block my-4'} OR <a n:href="Default:default" class="btn btn-secondary inline-block">Write a message</a></p>
+    <p>{input save, class => 'btn btn-primary inline-block my-4'} {_default.default.or} <a n:href="Default:default" class="btn btn-secondary inline-block">{_default.default.writeMessage}</a></p>
 
 {/form}
 

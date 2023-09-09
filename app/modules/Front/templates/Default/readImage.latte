@@ -5,23 +5,23 @@
 {block pageContent}
 <div class="container-sm">
     {ifset $noMessage}
-        <h2>No message found</h2>
-        <p class="lead">Invalid link or the message was already opened and deleted.</p>
+        <h2>{_default.read.noMessage}</h2>
+        <p class="lead">{_default.read.noMessageText}</p>
         <p class="text-center">
-            <a n:href="Default:default">Back to homepage</a>
+            <a n:href="Default:default">{_default.read.backToHomepage}</a>
         </p>
     {else}
-        <h2>Read message</h2>
-        <p class="lead">Do you want to read the message now?<br>(The message will be <em class="text-red-danger">deleted</em>)</p>
+        <h2>{_default.read.heading}</h2>
+        <p class="lead">{_default.read.text|noescape}</p>
         <div class="relative" n:if="$message->password !== null && strlen($message->content) <= 0">
-            <p class="text-lead sm:text-base">Message is protected by password:</p>
+            <p class="text-lead sm:text-base">{_default.read.passwordProtected}</p>
             {form unlockForm, class => 'ajax'}
                 {input password, class => 'block w-full mb-4 input'}
                 {input send, class => 'btn btn-primary inline-block'}
             {/form}
         </div>
         <div class="relative" n:if="$message->password === null && strlen($message->content) <= 0">
-            <a n:href="showMessage!" class="btn btn-primary ajax inline-block">Show message</a>
+            <a n:href="showMessage!" class="btn btn-primary ajax inline-block">{_default.read.showImage}</a>
         </div>
 
         <div class="read-message" n:snippet="message">
@@ -40,7 +40,7 @@
         </div>
     {/ifset}
 
-    <a n:href="Default:image" class="btn btn-primary inline-block">Send&nbsp;new&nbsp;image</a>
+    <a n:href="Default:image" class="btn btn-primary inline-block">{_default.read.sendNewImage|noescape}</a>
 </div>
 
 {/block}

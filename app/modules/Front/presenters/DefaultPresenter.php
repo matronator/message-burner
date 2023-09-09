@@ -242,21 +242,21 @@ final class DefaultPresenter extends BasePresenter
 	{
 		$form = new Form;
 
-		$form->addUpload('image', 'Image to send')
+		$form->addUpload('image', $this->trans('general.images.imageToSend'))
 			->setRequired()
-			->addRule($form::IMAGE, 'Image needs to be a JPEG, PNG, GIF, or WebP file.');
+			->addRule($form::IMAGE, $this->trans('general.errors.imageFormat'));
 
 		$form->addTextArea('note')
 			->setHtmlAttribute('maxlength', '255')
 			->setHtmlAttribute('data-remaining-chars', '255')
-			->setHtmlAttribute('placeholder', '(optional) Write a short message (max. 255 characters)...');
+			->setHtmlAttribute('placeholder', $this->trans('general.images.placeholder'));
 
-		$form->addPassword('password', 'Password (optional):')
-            ->setHtmlAttribute('placeholder', 'Enter password')
+		$form->addPassword('password', $this->trans('general.messageForm.password'))
+            ->setHtmlAttribute('placeholder', $this->trans('general.messageForm.enterPassword'))
             ->addCondition(Form::FILLED, true)
             ->addRule(Form::MIN_LENGTH, "Password must be at least {self::PASSWORD_MIN_LENGTH} characters long.", self::PASSWORD_MIN_LENGTH);
 
-		$form->addSubmit('save', 'Send image');
+		$form->addSubmit('save', $this->trans('general.images.sendImage'));
 
 		$form->onSuccess[] = [$this, 'imageFormSucceeded'];
 		return $form;
@@ -268,11 +268,11 @@ final class DefaultPresenter extends BasePresenter
 
 		$form->setHtmlAttribute('data-ajax-parent', 'original_post');
 
-		$form->addPassword('password', 'Password:')
-            ->setHtmlAttribute('placeholder', 'Enter password')
+		$form->addPassword('password', $this->trans('general.unlockForm.password'))
+            ->setHtmlAttribute('placeholder', $this->trans('general.messageForm.enterPassword'))
 			->setRequired();
 
-		$form->addSubmit('send', 'Unlock message');
+		$form->addSubmit('send', $this->trans('general.unlockForm.unlockMessage'));
 
 		$form->onSuccess[] = [$this, 'unlockFormSucceeded'];
 		return $form;
@@ -301,7 +301,7 @@ final class DefaultPresenter extends BasePresenter
 			$row->update(['hash' => $hash]);
 		}
 		$url = $hash;
-		$this->flashMessage('Message created!', 'success');
+		$this->flashMessage($this->trans('general.success.messageCreated'), 'success');
 		$this->redirect('Default:created', $url);
 	}
 
@@ -346,7 +346,7 @@ final class DefaultPresenter extends BasePresenter
 		}
 
 		$url = $hash;
-		$this->flashMessage('Message created!', 'success');
+		$this->flashMessage($this->trans('general.success.messageCreated'), 'success');
 		$this->redirect('Default:created', $url, true);
 	}
 

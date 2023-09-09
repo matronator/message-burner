@@ -6,16 +6,16 @@
 {* {control contactForm} *}
 <div class="container-sm">
     {ifset $noMessage}
-        <h2>No message found</h2>
-        <p class="lead">Invalid link or the message was already opened and deleted.</p>
+        <h2>{_default.read.noMessage}</h2>
+        <p class="lead">{_default.read.noMessageText}</p>
         <p class="text-center">
-            <a n:href="Default:default">Back to homepage</a>
+            <a n:href="Default:default">{_default.read.backToHomepage}</a>
         </p>
     {else}
-        <h2>Read message</h2>
-        <p class="lead">Do you want to read the message now?<br>(The message will be <em class="uppercase">deleted</em>)</p>
+        <h2>{_default.read.heading}</h2>
+        <p class="lead">{_default.read.text|noescape}</p>
         <div class="relative" n:if="(isset($message) && $message) && $message->password !== null && strlen($message->content) <= 0">
-            <p class="text-lead sm:text-base">Message is protected by password:</p>
+            <p class="text-lead sm:text-base">{_default.read.passwordProtected}</p>
             {form unlockForm, class => 'ajax'}
                 {input password, class => 'block w-full mb-4 input'}
                 {input send, class => 'btn btn-primary inline-block read-msg-button'}
@@ -24,18 +24,18 @@
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Opening...
+                    {_default.read.opening}
                 </button>
             {/form}
         </div>
         <div class="relative" n:if="(isset($message) && $message) && $message->password === null && strlen($message->content) <= 0">
-            <a n:href="showMessage!" class="btn btn-primary ajax inline-block" id="read-msg-button">Show message</a>
+            <a n:href="showMessage!" class="btn btn-primary ajax inline-block" id="read-msg-button">{_default.read.showMessage}</a>
             <button type="button" class="btn btn-primary inline-flex items-center cursor-not-allowed hidden" disabled id="msg-sent-button">
                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Opening...
+                {_default.read.opening}
             </button>
         </div>
 
@@ -47,7 +47,7 @@
             {/if}
         </div>
     {/ifset}
-    <a n:href="Default:default" class="btn btn-primary inline-block">Create&nbsp;new&nbsp;message</a>
+    <a n:href="Default:default" class="btn btn-primary inline-block">{_default.read.createNewMessage|noescape}</a>
 </div>
 
 {* {/form} *}
