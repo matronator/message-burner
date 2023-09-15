@@ -7,6 +7,7 @@ errors:
 
 success:
 	messageCreated: 'Zpráva vytvořena!'
+	messageDestroyed: 'Zpráva byla odstraněna!'
 
 messageForm:
 	sending: 'Odesílám...'
@@ -41,3 +42,7 @@ created:
 	expirationText: 'Zpráva bude dostupná pouze <strong>48 hodin</strong> - nepřečtené zprávy jsou automaticky <strong>mazány</strong> po 2 dnech!'
 	destroyNow: 'Smazat zprávu nyní'
 	createNew: 'Vytvořit novou zprávu'
+
+destroyed:
+	messageDestroyed: 'Zpráva smazána'
+	messageDestroyedText: 'Zpráva byla bezpečně zničena a již není k dispozici. Nelze ji obnovit a veškeré její stopy byly odstraněny z našich serverů.'

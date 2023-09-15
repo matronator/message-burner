@@ -49,12 +49,17 @@ final class DefaultPresenter extends BasePresenter
 
 	}
 
+	public function renderDestroyed()
+	{
+
+	}
+
 	public function renderCreated(string $hash = '', bool $isImage = false)
 	{
 		if ($hash === '') {
 			$this->redirect('default');
 		}
-		$this->template->hash = $hash;
+		$this->template->msgHash = $hash;
 		if ($isImage) {
 			$this->template->messageUrl = $this->link('//Default:readImage', $hash);
 		} else {
@@ -211,6 +216,13 @@ final class DefaultPresenter extends BasePresenter
 			$this->sendJson(true);
 		}
 		$this->sendJson(false);
+	}
+
+	public function actionDestroy(string $hash)
+	{
+		$this->messagesRepository->getMessage($hash)->delete();
+		$this->flashMessage($this->trans('general.success.messageDestroyed'), 'success');
+		$this->redirect('Default:destroyed');
 	}
 
 	public function createComponentMessageForm(): Form

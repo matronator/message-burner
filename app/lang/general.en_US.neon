@@ -7,6 +7,7 @@ errors:
 
 success:
 	messageCreated: 'Message created!'
+	messageDestroyed: 'Message destroyed!'
 
 messageForm:
 	sending: 'Sending...'
@@ -41,3 +42,7 @@ created:
 	expirationText: 'Message will only available for <strong>48 hours</strong> - unread messages are automatically <strong>deleted</strong> after 2 days!'
 	destroyNow: 'Destroy the message now'
 	createNew: 'Create new message'
+
+destroyed:
+	messageDestroyed: 'Message destroyed'
+	messageDestroyedText: 'Message has been safely destroyed and is no longer available. It cannot be recovered and every trace has been removed from our servers.'
