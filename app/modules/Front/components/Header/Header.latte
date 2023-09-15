@@ -1,16 +1,20 @@
 <header class="header">
-    <a n:href="Default:default" class="-ml-80 sm:-ml-64 hover:no-underline no-underline">
-        <img class="brand-logo w-auto h-16" src="{$basePath}/dist/front/images/flame.png">
+    <div class="lang-toggle">
+        <a class="ajax" n:href="changeLocale! 'en'" n:if="$locale === 'cs'">🇬🇧 EN</a>
+        <a class="ajax" n:href="changeLocale! 'cs'" n:if="$locale === 'en'">🇨🇿 CZ</a>
+    </div>
+    <a n:href="Default:default" class="no-underline -ml-80 sm:-ml-48 sm:-mt-3 hover:no-underline">
+        <img class="w-auto h-16 sm:h-12 brand-logo" src="{$basePath}/dist/front/images/flame.png">
     </a>
-    <a n:href="Default:default" class="hover:no-underline text-center no-underline">
-        {* <img src="{$basePath}/dist/front/images/logo-new.png" class="max-h-32 w-auto h-auto"> *}
-        <h1 class="text-light justify-items-center -mt-14 flex items-center mx-auto mb-0 text-2xl font-light tracking-wider uppercase">
+    <a n:href="Default:default" class="text-center no-underline hover:no-underline sm:mt-1">
+        {* <img src="{$basePath}/dist/front/images/logo-new.png" class="w-auto h-auto max-h-32"> *}
+        <h1 class="flex items-center mx-auto mb-0 text-2xl font-light tracking-wider uppercase text-light justify-items-center -mt-14">
             {* <img src="{$basePath}/dist/front/images/logo.png" class="h-8 mt-3 ml-40"> *}
             <span class="sm:hidden ">Message</span>
-            <span class="sm:text-white text-secondary font-semibold">Burner</span>
+            <span class="font-semibold sm:text-white text-secondary">Burner</span>
         </h1>
     </a>
-    {* <h1 class="text-light mx-auto text-lg font-medium leading-none tracking-wide opacity-75">Message Burner</h1> *}
+    {* <h1 class="mx-auto text-lg font-medium leading-none tracking-wide opacity-75 text-light">Message Burner</h1> *}
     <div class="dark-toggle">
         <span class="btn" data-current-theme="system">🌘</span>
     </div>

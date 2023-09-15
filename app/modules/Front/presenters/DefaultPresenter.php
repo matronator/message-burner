@@ -34,7 +34,7 @@ final class DefaultPresenter extends BasePresenter
 		EncryptionService $encryptionService,
 		ExpiryService $expiryService,
 		ImageStorage $imageStorage,
-		PathService $pathService,
+		PathService $pathService
 	)
 	{
 		$this->messagesRepository = $messagesRepository;

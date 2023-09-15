@@ -6,8 +6,15 @@ namespace App\Services;
 
 class PathService
 {
-    public function __construct(public string $rootPath, public string $appPath, public string $wwwPath)
+    public string $rootPath;
+    public string $appPath;
+    public string $wwwPath;
+
+    public function __construct(string $rootPath, string $appPath, string $wwwPath)
     {
+        $this->rootPath = $rootPath;
+        $this->appPath = $appPath;
+        $this->wwwPath = $wwwPath;
     }
 
     public function getWwwDir(): string

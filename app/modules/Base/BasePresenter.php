@@ -34,7 +34,21 @@ class BasePresenter extends Presenter
 		$this->defaultLocale = 'en';
 
         $this->locale = $this->getParameter('locale') ?? 'en';
+
+        $this->template->locale = $this->locale;
+        $this->template->localeList = $this->localeList;
+        $this->template->defaultLocale = $this->defaultLocale;
 	}
+
+    public function handleChangeLocale(string $locale)
+    {
+        $locale = strtolower($locale);
+        if (in_array($locale, $this->localeList)) {
+            $this->locale = $locale;
+        }
+
+        $this->redirect('this', ['locale' => $locale]);
+    }
 
     /**
      * Shortcut translation method
