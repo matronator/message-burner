@@ -8,6 +8,7 @@ use App\Services\HashService;
 use App\Model\MessagesRepository;
 use App\Services\EncryptionService;
 use App\Services\ExpiryService;
+use App\Services\Memes\MemeService;
 use App\Services\PathService;
 use DateTime;
 use ImageStorage;
@@ -21,10 +22,10 @@ final class DefaultPresenter extends BasePresenter
 	private $messagesRepository;
 	private $encryptionService;
 	private $expiryService;
-
+	
 	/** @var ImageStorage */
 	private $imageStorage;
-
+	
 	private PathService $pathService;
 
 	public const PASSWORD_MIN_LENGTH = 3;
@@ -75,6 +76,7 @@ final class DefaultPresenter extends BasePresenter
 		$message = $this->messagesRepository->getMessage($hash);
 		if (!$message) {
 			$this->template->noMessage = true;
+			$this->template->meme = MemeService::getMeme();
 		} else {
 			if ($this->isAjax()) {
 				$session = $this->session->getSection('readMessage');

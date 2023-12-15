@@ -10,19 +10,19 @@ success:
 	messageDestroyed: 'Message destroyed!'
 
 messageForm:
-	sending: 'Sending...'
+	sending: 'Creating...'
 	or: 'OR'
 	sendImage: 'Send&nbsp;an&nbsp;image'
 	messagePlaceholder: 'Write your message here...'
 	password: 'Password (optional):'
 	enterPassword: 'Enter password'
-	send: 'Send'
+	send: 'Create'
 
 images:
 	heading: 'Send a self-destructing image'
 	imageToSend: 'Image to send'
 	placeholder: '(optional) Write a short message (max. 500 characters)...'
-	sendImage: 'Send image'
+	sendImage: 'Create link'
 	dropUpload: 'Drag and drop the image here or click to select...'
 	noFileSelected: 'No file selected'
 

@@ -10,19 +10,19 @@ success:
 	messageDestroyed: 'Zpráva byla odstraněna!'
 
 messageForm:
-	sending: 'Odesílám...'
+	sending: 'Vytvářím...'
 	or: 'NEBO'
-	sendImage: 'Odešli&nbsp;obrázek'
+	sendImage: 'Pošli&nbsp;obrázek'
 	messagePlaceholder: 'Zde napiš svoji zprávu...'
 	password: 'Heslo (nepovinné):'
 	enterPassword: 'Zadej heslo'
-	send: 'Odeslat'
+	send: 'Vytvořit'
 
 images:
 	heading: 'Pošli sebe-zničující obrázek'
 	imageToSend: 'Obrázek k odeslání'
 	placeholder: '(volitelné) Napiš krátkou zprávu (max. 500 znaků)...'
-	sendImage: 'Odeslat obrázek'
+	sendImage: 'Vytvořit odkaz'
 	dropUpload: 'Přetáhni sem obrázek, nebo klikni a vyber...'
 	noFileSelected: 'Žádný soubor nevybrán'
 

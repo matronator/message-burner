@@ -128,10 +128,13 @@
         text-shadow: -1.5px -1.5px 0px rgba(0,0,0,0.7);
     }
 
-    .msg-link {
-        @apply bg-light-2 w-full px-3 py-2 mb-3 text-base font-bold text-black no-underline appearance-none select-text;
+    input[type="text"].msg-link {
+        @apply bg-light-2 dark:bg-blue-darker w-full px-3 py-2 mb-3 text-base font-bold text-black dark:text-yellow no-underline appearance-none select-text;
+        border: 1px solid #701111;
+        animation: 1s infinite alternate pulsate;
         writing-mode: horizontal-tb;
         font-size: 16px;
+        cursor: pointer;
     }
 
     .read-message {
@@ -142,6 +145,15 @@
     .input {
         @apply bg-yellow-lightest dark:backdrop-filter backdrop-blur-lg dark:bg-opacity-30 dark:bg-grey-dark dark:placeholder-grey-lighter dark:text-white text-grey-darker text-input placeholder-grey-dark font-normal border-none shadow-none;
         font-size: 16px;
+    }
+}
+
+@keyframes pulsate {
+    from {
+        box-shadow: 0 0 10px -1px #701111;
+    }
+    to {
+        box-shadow: 0 0 6px 2px #701111;
     }
 }
 

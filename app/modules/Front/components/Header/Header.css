@@ -14,7 +14,7 @@
         @apply absolute right-4 bottom-4 w-auto h-auto;
     }
     .lang-toggle {
-        @apply absolute left-4 bottom-4 w-auto h-auto;
+        @apply absolute left-4 bottom-4 w-auto h-auto text-white;
         font-family: 'Jost', sans-serif;
     }
 }
