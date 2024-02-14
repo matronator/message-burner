@@ -46,8 +46,10 @@ extensions:
 
 translation:
     locales:
-        whitelist: [en, cs]
-        default: en
-        fallback: [en]
+        whitelist: [en_US, cs_CZ]
+        default: en_US
+        fallback: [en_US]
     dirs:
         - %appDir%/lang
+    localeResolvers:
+        - Contributte\Translation\LocalesResolvers\Router

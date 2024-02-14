@@ -3,18 +3,18 @@
 {define metaDescription}Homepage{/define}
 
 {block head}
-    <script n:syntax="off" async>
+    <script n:syntax="double" async>
         document.addEventListener('DOMContentLoaded', function() {
             const imageNote = document.querySelector('[data-remaining-chars]');
             const charCount = document.getElementById('noteCharCount');
             if (imageNote && charCount) {
                 imageNote.addEventListener('input', function(e) {
-                    if (imageNote.value.replaceAll('\n', 'aa').replaceAll('\r', 'aa').length > 500) {
+                    if (imageNote.value.replaceAll('\n', 'aa').replaceAll('\r', 'aa').length > {{$imageDescriptionMaxLength}}) {
                         e.preventDefault();
-                        imageNote.value = imageNote.value.substring(0, 255);
-                        charCount.innerText = '500 / 500';
+                        imageNote.value = imageNote.value.substring(0, {{$imageDescriptionMaxLength}});
+                        charCount.innerText = {{$imageDescriptionMaxLength|number:0,'.',' '}} + ' / ' + {{$imageDescriptionMaxLength|number:0,'.',' '}};
                     } else {
-                        charCount.innerText = imageNote.value.replaceAll('\n', 'aa').replaceAll('\r', 'aa').length + ' / 500';
+                        charCount.innerText = imageNote.value.replaceAll('\n', 'aa').replaceAll('\r', 'aa').length + ' / ' + {{$imageDescriptionMaxLength|number:0,'.',' '}};
                     }
                 });
             }
@@ -29,31 +29,31 @@
 
     {* {include '../../components/DropUpload/DropUpload.latte', input => $form['image']->control, name => 'image'} *}
 
-    <div class="drop-upload input mb-4">
+    <div class="mb-4 drop-upload input">
         <label n:name="image">
             <span>{_general.images.dropUpload}</span>
             {include '../../components/DropUpload/UploadIcon.latte', size => '16'}
             <input class="js-file" type="file" n:name="image">
-            <span class="upload-filename bg-yellow-lightest dark:bg-black z-10 px-2 py-1 bg-opacity-50">{_general.images.noFileSelected}</span>
+            <span class="z-10 px-2 py-1 bg-opacity-50 upload-filename bg-yellow-lightest dark:bg-black">{_general.images.noFileSelected}</span>
         </label>
         <div class="file-list">
             <img class="thumbnail">
         </div>
     </div>
 
-    <div class="h-36 relative">
+    <div class="relative h-36">
         {input note, class => 'input message-input max-h-28'}
-        <span id="noteCharCount" class="absolute bottom-0 right-0">0 / 500</span>
+        <span id="noteCharCount" class="absolute bottom-0 right-0">0 / {$imageDescriptionMaxLength|number:0,'.',' '}</span>
     </div>
 
     <div class="relative grid w-full grid-cols-12 px-8 mx-auto mt-4">
-        <div class="sm:col-span-12 sm:text-center relative col-span-4 p-2 text-left">
+        <div class="relative col-span-4 p-2 text-left sm:col-span-12 sm:text-center">
             {label password, class => 'w-full d-block' /}
         </div>
-        <div class="sm:col-span-12 relative col-span-8">{input password, class => 'w-full d-block p-2 password-input input'}</div>
+        <div class="relative col-span-8 sm:col-span-12">{input password, class => 'w-full d-block p-2 password-input input'}</div>
     </div>
 
-    <p>{input save, class => 'btn btn-primary inline-block my-4'} {_default.default.or} <a n:href="Default:default" class="btn btn-secondary inline-block">{_default.default.writeMessage}</a></p>
+    <p>{input save, class => 'btn btn-primary inline-block my-4'} {_default.default.or} <a n:href="Default:default" class="inline-block btn btn-secondary">{_default.default.writeMessage}</a></p>
 
 {/form}
 

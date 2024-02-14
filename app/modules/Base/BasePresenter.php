@@ -58,7 +58,7 @@ class BasePresenter extends Presenter
 	 */
 	public function trans($message, ...$parameters): string
     {
-        return $this->translator->translate($message, $parameters);
+        return $this->translator->translate($message, ...$parameters);
     }
 
 	protected function verifyRecaptcha($recaptcha_token)

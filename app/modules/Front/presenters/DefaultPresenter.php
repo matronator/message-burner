@@ -29,6 +29,7 @@ final class DefaultPresenter extends BasePresenter
 	private PathService $pathService;
 
 	public const PASSWORD_MIN_LENGTH = 3;
+	public const IMAGE_DESCRIPTION_MAX_LENGTH = 1000;
 
 	public function __construct(
 		MessagesRepository $messagesRepository,
@@ -53,6 +54,11 @@ final class DefaultPresenter extends BasePresenter
 	public function renderDestroyed()
 	{
 
+	}
+
+	public function renderImage()
+	{
+		$this->template->imageDescriptionMaxLength = self::IMAGE_DESCRIPTION_MAX_LENGTH;
 	}
 
 	public function renderCreated(string $hash = '', bool $isImage = false)
@@ -261,9 +267,9 @@ final class DefaultPresenter extends BasePresenter
 			->addRule($form::IMAGE, $this->trans('general.errors.imageFormat'));
 
 		$form->addTextArea('note')
-			->setHtmlAttribute('maxlength', '255')
-			->setHtmlAttribute('data-remaining-chars', '255')
-			->setHtmlAttribute('placeholder', $this->trans('general.images.placeholder'));
+			->setHtmlAttribute('maxlength', self::IMAGE_DESCRIPTION_MAX_LENGTH)
+			->setHtmlAttribute('data-remaining-chars', self::IMAGE_DESCRIPTION_MAX_LENGTH)
+			->setHtmlAttribute('placeholder', $this->trans('general.images.placeholder', ['max' => self::IMAGE_DESCRIPTION_MAX_LENGTH]));
 
 		$form->addPassword('password', $this->trans('general.messageForm.password'))
             ->setHtmlAttribute('placeholder', $this->trans('general.messageForm.enterPassword'))
@@ -325,7 +331,7 @@ final class DefaultPresenter extends BasePresenter
 		$data['password'] = Strings::trim($values->password);
 		$data['created_at'] = new DateTime();
 		$data['expires_at'] = new DateTime('now + 2 DAYS');
-		$noteTrimmed = Strings::substring($values->note, 0, 255);
+		$noteTrimmed = Strings::substring($values->note, 0, self::IMAGE_DESCRIPTION_MAX_LENGTH);
 		$url = '';
 
 		if (strlen($data['password']) >= 3) {

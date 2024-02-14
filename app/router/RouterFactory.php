@@ -26,12 +26,21 @@ final class RouterFactory
 		//--------------------- FRONT ROUTES ---------------------//
 		////////////////////////////////////////////////////////////
 		$router->withModule('Front')
-			->addRoute('[<locale=en cs|en>/]message/new/<hash>[/<isImage>]', 'Default:created')
-			->addRoute('[<locale=en cs|en>/]message/read/<hash>', 'Default:read')
-			->addRoute('[<locale=en cs|en>/]message/delete/<hash>', 'Default:destroy')
-			->addRoute('[<locale=en cs|en>/]message/deleted', 'Default:destroyed')
-			->addRoute('[<locale=en cs|en>/]image/new', 'Default:image')
-			->addRoute('[<locale=en cs|en>/]image/read/<hash>', 'Default:readImage')
+			//EN
+			->addRoute('[<locale=en en>/]message/new/<hash>[/<isImage>]', 'Default:created')
+			->addRoute('[<locale=en en>/]message/read/<hash>', 'Default:read')
+			->addRoute('[<locale=en en>/]message/delete/<hash>', 'Default:destroy')
+			->addRoute('[<locale=en en>/]message/deleted', 'Default:destroyed')
+			->addRoute('[<locale=en en>/]image/new', 'Default:image')
+			->addRoute('[<locale=en en>/]image/read/<hash>', 'Default:readImage')
+
+			// CS
+			->addRoute('[<locale=cs cs>/]zprava/nova/<hash>[/<isImage>]', 'Default:created')
+			->addRoute('[<locale=cs cs>/]zprava/precist/<hash>', 'Default:read')
+			->addRoute('[<locale=cs cs>/]zprava/smazat/<hash>', 'Default:destroy')
+			->addRoute('[<locale=cs cs>/]zprava/odstranena', 'Default:destroyed')
+			->addRoute('[<locale=cs cs>/]obrazek/novy', 'Default:image')
+			->addRoute('[<locale=cs cs>/]obrazek/otevrit/<hash>', 'Default:readImage')
 			// SITEMAP
 			->addRoute('sitemap.xml', 'Sitemap:default')
 			->addRoute('sitemap', 'Sitemap:default')

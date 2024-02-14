@@ -21,7 +21,7 @@ messageForm:
 images:
 	heading: 'Pošli sebe-zničující obrázek'
 	imageToSend: 'Obrázek k odeslání'
-	placeholder: '(volitelné) Napiš krátkou zprávu (max. 500 znaků)...'
+	placeholder: '(volitelné) Napiš krátkou zprávu (max. %max% znaků)...'
 	sendImage: 'Vytvořit odkaz'
 	dropUpload: 'Přetáhni sem obrázek, nebo klikni a vyber...'
 	noFileSelected: 'Žádný soubor nevybrán'
