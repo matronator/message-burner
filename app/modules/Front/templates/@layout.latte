@@ -39,6 +39,8 @@
     <link n:foreach="$presenter->localeList as $localeItem" rel="alternate" hreflang="{$localeItem}" href="{link //this, locale=>$localeItem}"/>
     <link rel="alternate" hreflang="x-default" href="{link //this, locale=>$defaultLocale}" />
 
+    <script data-goatcounter="https://burner.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
     <script n:syntax="off" async>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')

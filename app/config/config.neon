@@ -35,6 +35,9 @@ services:
 http:
     headers:
         X-Powered-By: matronator CMS # for security sake
+        X-Content-Type-Options: nosniff
+        X-XSS-Protection: '1; mode=block'
+        Content-Security-Policy: "default-src 'self'; script-src 'self' https://burner.goatcounter.com/ http://gc.zgo.at/ 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com/ 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com/ https://fonts.googleapis.com; frame-src https://burner.goatcounter.com/"
 
 latte:
     macros:
