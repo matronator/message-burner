@@ -1,7 +1,7 @@
 <header class="header">
     <div class="lang-toggle">
-        <a class="ajax" n:href="changeLocale! 'en'" n:if="$locale === 'cs'">🇬🇧 EN</a>
-        <a class="ajax" n:href="changeLocale! 'cs'" n:if="$locale === 'en'">🇨🇿 CZ</a>
+        <a class="ajax" n:href="changeLocale! 'en'" n:if="$locale === 'cs'" title="Switch to English">🇬🇧 EN</a>
+        <a class="ajax" n:href="changeLocale! 'cs'" n:if="$locale === 'en'" title="Přepnout na češtinu">🇨🇿 CZ</a>
     </div>
     <a n:href="Default:default" class="no-underline -ml-80 sm:-ml-48 sm:-mt-3 hover:no-underline">
         <img class="w-auto h-16 sm:h-12 brand-logo" src="{$basePath}/dist/front/images/flame.png">
@@ -16,6 +16,6 @@
     </a>
     {* <h1 class="mx-auto text-lg font-medium leading-none tracking-wide opacity-75 text-light">Message Burner</h1> *}
     <div class="dark-toggle">
-        <span class="btn" data-current-theme="system">🌘</span>
+        <span class="btn" tabindex="0" data-current-theme="system" role="button" title="System settings">🌘</span>
     </div>
 </header>

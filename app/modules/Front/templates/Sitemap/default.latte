@@ -14,7 +14,9 @@
 
     <url>
         <loc>{link //Default:default}</loc>
-        <xhtml:link n:foreach="$presenter->localeList as $locale" rel="alternate" hreflang="{$locale}" href="{link //Default:default, locale=>$locale}"/>
+        {foreach $presenter->localeList as $locale}
+            <xhtml:link rel="alternate" hreflang="{$locale}" href="{link //Default:default, locale => $locale}"/>
+        {/foreach}
     </url>
 
 
