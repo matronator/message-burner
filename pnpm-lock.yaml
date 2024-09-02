@@ -24,8 +24,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.8
       choices.js:
-        specifier: ^10.0.0
-        version: 10.2.0
+        specifier: ^11.0.0
+        version: 11.0.1
       clipboard-polyfill:
         specifier: ^4.0.0
         version: 4.1.0
@@ -2058,8 +2058,8 @@ packages:
     resolution: {integrity: sha512-lB0j9teu8JtDPDHRfU8pNH33w4wMu5bOaKoT4PxH+AKugBrIfpiJMTTKIm0TErNeJPkeQEgvH31YpccTwOKPRg==}
     engines: {node: '>=18'}
 
-  choices.js@10.2.0:
-    resolution: {integrity: sha512-8PKy6wq7BMjNwDTZwr3+Zry6G2+opJaAJDDA/j3yxvqSCnvkKe7ZIFfIyOhoc7htIWFhsfzF9tJpGUATcpUtPg==}
+  choices.js@11.0.1:
+    resolution: {integrity: sha512-yKYJvoqrJBn8PoRGfhTNqP0zBlC+DCGUbtE7zgRIYtyryWr/Z8EdW5Uw3G8Jhoo+1fNNHBP4yu0UMRqFwDQO9w==}
 
   chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
@@ -2469,10 +2469,6 @@ packages:
 
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
-
-  deepmerge@4.3.1:
-    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
-    engines: {node: '>=0.10.0'}
 
   define-lazy-prop@2.0.0:
     resolution: {integrity: sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==}
@@ -3163,8 +3159,8 @@ packages:
     resolution: {integrity: sha512-939eZS4gJ3htTHAldmyyuzlrD58P03fHG49v2JfFXbV6OhvZKRC9j2yAtdHw/zrp2zXHuv05zMIy40F0ge7spA==}
     engines: {node: '>=18'}
 
-  fuse.js@6.6.2:
-    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+  fuse.js@7.0.0:
+    resolution: {integrity: sha512-14F4hBIxqKvD4Zz/XjDc3y94mNZN6pRv3U13Udo0lNLCWRBUsrMv2xwcF/y/Z5sV6+FQW+/ow68cHpm4sunt8Q==}
     engines: {node: '>=10'}
 
   gauge@3.0.2:
@@ -5098,9 +5094,6 @@ packages:
   rechoir@0.8.0:
     resolution: {integrity: sha512-/vxpCXddiX8NGfGO/mTafwjq4aFa/71pvamip0++IQk3zG8cbCj0fifNPrjjF1XMXUne91jL9OoxmdykoEtifQ==}
     engines: {node: '>= 10.13.0'}
-
-  redux@4.2.1:
-    resolution: {integrity: sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==}
 
   regenerate-unicode-properties@10.1.0:
     resolution: {integrity: sha512-d1VudCLoIGitcU/hEg2QqvyGZQmdC0Lf8BqdOMXGFSvJP4bNV1+XqbPQeHHLD51Jh4QJJ225dlIFvY4Ly6MXmQ==}
@@ -8815,11 +8808,9 @@ snapshots:
 
   change-file-extension@0.1.1: {}
 
-  choices.js@10.2.0:
+  choices.js@11.0.1:
     dependencies:
-      deepmerge: 4.3.1
-      fuse.js: 6.6.2
-      redux: 4.2.1
+      fuse.js: 7.0.0
 
   chokidar@3.5.3:
     dependencies:
@@ -9385,8 +9376,6 @@ snapshots:
     optional: true
 
   deep-is@0.1.4: {}
-
-  deepmerge@4.3.1: {}
 
   define-lazy-prop@2.0.0: {}
 
@@ -10218,7 +10207,7 @@ snapshots:
 
   function-timeout@1.0.2: {}
 
-  fuse.js@6.6.2: {}
+  fuse.js@7.0.0: {}
 
   gauge@3.0.2:
     dependencies:
@@ -12326,10 +12315,6 @@ snapshots:
   rechoir@0.8.0:
     dependencies:
       resolve: 1.22.8
-
-  redux@4.2.1:
-    dependencies:
-      '@babel/runtime': 7.21.0
 
   regenerate-unicode-properties@10.1.0:
     dependencies:
