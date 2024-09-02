@@ -81,7 +81,7 @@
     "@ckeditor/ckeditor5-ckfinder": "^43.0.0",
     "@popperjs/core": "^2.11.7",
     "axette": "^2.0.0",
-    "choices.js": "^10.0.0",
+    "choices.js": "^11.0.0",
     "clipboard-polyfill": "^4.0.0",
     "core-js": "^3.29.1",
     "flatpickr": "^4.6.13",
