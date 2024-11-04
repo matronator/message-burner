@@ -56,7 +56,7 @@
     "postcss": "^8.4.21",
     "postcss-custom-media": "^11.0.0",
     "postcss-import": "^16.0.0",
-    "postcss-nested": "^6.0.0",
+    "postcss-nested": "^7.0.0",
     "prettier": "^3.0.0",
     "stylelint": "^16.0.0",
     "stylelint-config-prettier": "^9.0.0",
