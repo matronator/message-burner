@@ -77,8 +77,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@ckeditor/ckeditor5-build-classic": "^43.0.0",
-    "@ckeditor/ckeditor5-ckfinder": "^43.0.0",
+    "@ckeditor/ckeditor5-build-classic": "^44.0.0",
+    "@ckeditor/ckeditor5-ckfinder": "^44.0.0",
     "@popperjs/core": "^2.11.7",
     "axette": "^2.0.0",
     "choices.js": "^11.0.0",
