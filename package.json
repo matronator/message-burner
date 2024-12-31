@@ -6,6 +6,7 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp --production",
+    "prebuild": "rm -rf www/dist/front",
     "postpost": "npm run report-js && npm run report-css && npm run report-lh",
     "start-admin": "gulp --mod admin",
     "build-admin": "gulp --production --mod admin",
@@ -76,7 +77,6 @@
     ]
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
     "@ckeditor/ckeditor5-build-classic": "^44.0.0",
     "@ckeditor/ckeditor5-ckfinder": "^44.0.0",
     "@popperjs/core": "^2.11.7",

@@ -1,33 +1,55 @@
-import * as clipboard from "clipboard-polyfill/text";
-import { InApp } from "./import/detect-inapp.js";
+// import * as clipboard from "clipboard-polyfill";
 
 document.addEventListener(`DOMContentLoaded`, () => {
-    const messageLink = document.getElementById(`messageLink`)
+    const messageLink = document.getElementById(`messageLink`);
     if (messageLink) {
-        const inApp = new InApp(navigator.userAgent || navigator.vendor || window.opera)
+        messageLink.addEventListener(`click`, copyLink);
+    }
+});
 
-        if (inApp.isInApp || ['messenger', 'facebook'].includes(inApp.browser)) {
-            messageLink.addEventListener(`click`, copyLinkInApp, false)
-        } else {
-            messageLink.addEventListener(`click`, copyLink, false)
+function copyLink() {
+            try {
+                navigator.clipboard.writeText(messageLink.value);
+                navigator.clipboard.readText().then(val => {
+                    if (!val.includes("burner.matronator.cz/message/new/") && !val.includes("burner.matronator.cz/zprava/nova/")) {
+                        copyPolyfill();
+                    }
+                });
+                console.log("Coppied with clipboard API");
+            } catch (e) {
+                copyPolyfill(e);
+            }
+            messageLink.focus();
+            messageLink.select();
         }
-    }
 
-    function copyLink() {
-        messageLink.focus()
-        messageLink.setSelectionRange(0, 9999)
-        messageLink.select()
-        clipboard.writeText(messageLink.value)
-        // Because ^ it unselects the text for whatever reason
-        messageLink.focus()
-        messageLink.setSelectionRange(0, 9999)
-        messageLink.select()
-    }
+        function copyPolyfill(exception = null) {
+            if (exception) {
+                console.warn(exception);
+            }
+            try {
+                clipboard.writeText(messageLink.value);
+                clipboard.readText().then(val => {
+                    if (!val.includes("burner.matronator.cz/message/new/") && !val.includes("burner.matronator.cz/zprava/nova/")) {
+                        copyOld();
+                    }
+                });
+                console.log("Coppied with polyfill");
+            } catch (e) {
+                copyOld(e);
+            }
+        }
 
-    function copyLinkInApp() {
-        messageLink.focus()
-        messageLink.select()
-        messageLink.setSelectionRange(0, 9999)
-        document.execCommand("copy", false)
-    }
-})
+        function copyOld(exception = null) {
+            if (exception) {
+                console.warn(exception);
+            }
+            try {
+                messageLink.focus();
+                messageLink.select();
+                document.execCommand("copy", false);
+                console.log("Coppied with execCommand");
+            } catch (err) {
+                consoloe.warn(err);
+            }
+        }

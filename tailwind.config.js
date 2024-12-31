@@ -47,7 +47,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'body': ['Jost', 'Futura', 'Gil Sans', 'sans'],
+        'body': ['Jost', 'Futura', 'Gil Sans', 'sans-serif'],
       },
       screens: {
         "3xl": "1920px",
