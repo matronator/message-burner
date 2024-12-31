@@ -1,0 +1,17 @@
+default:
+	heading: 'Create new self-destructing message'
+	or: 'OR'
+	writeMessage: 'Write a message'
+
+read:
+	heading: 'Read message'
+	text: 'Do you want to read the message now?<br>(The message will be <em class="uppercase">deleted</em>)'
+	noMessage: 'No message found'
+	noMessageText: 'Invalid link or the message was already opened and deleted.'
+	backToHomepage: 'Back to homepage'
+	sendNewImage: 'Send&nbsp;new&nbsp;image'
+	createNewMessage: 'Create&nbsp;new&nbsp;message'
+	passwordProtected: 'Message is protected by password:'
+	opening: 'Opening...'
+	showMessage: 'Show message'
+	showImage: 'Show image'

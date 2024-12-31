@@ -6,6 +6,7 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp --production",
+    "prebuild": "rm -rf www/dist/front",
     "postpost": "npm run report-js && npm run report-css && npm run report-lh",
     "start-admin": "gulp --mod admin",
     "build-admin": "gulp --production --mod admin",
@@ -26,7 +27,6 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.14.3",
-    "@babel/plugin-proposal-optional-chaining": "^7.14.2",
     "@babel/preset-env": "^7.14.4",
     "@babel/register": "^7.13.16",
     "apidoc": "^0.19.1",
@@ -76,15 +76,15 @@
     ]
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
     "@ckeditor/ckeditor5-build-classic": "^16.0.0",
     "@ckeditor/ckeditor5-ckfinder": "^16.0.0",
     "@popperjs/core": "^2.9.2",
     "axette": "^1.1.13",
     "choices.js": "^9.0.1",
-    "clipboard-polyfill": "^3.0.3",
+    "clipboard-polyfill": "^4.1.1",
     "core-js": "^3.13.1",
     "flatpickr": "^4.6.9",
+    "lodash": "^4.17.21",
     "nouislider": "^14.7.0",
     "tui-image-editor": "^3.14.3",
     "uikit": "^3.6.22"

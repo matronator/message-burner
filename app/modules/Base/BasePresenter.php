@@ -7,7 +7,7 @@ namespace App\BaseModule\Presenters;
 use Nette\Http\Request;
 use Nette\Http\Url;
 use Nette\Application\UI\Presenter;
-use Nette\Localization\ITranslator;
+use Nette\Localization\Translator;
 
 class BasePresenter extends Presenter
 {
@@ -21,7 +21,7 @@ class BasePresenter extends Presenter
 	/** @var string */
 	public $defaultLocale;
 
-	/** @var ITranslator @inject */
+	/** @var Translator @inject */
 	public $translator;
 
 
@@ -29,12 +29,37 @@ class BasePresenter extends Presenter
 	{
 		parent::startup();
 
-		foreach($this->translator->getAvailableLocales() as $lang){
-			$this->localeList[] = substr($lang, 0, 2);
-		}
+		$this->localeList = ['en', 'cs'];
 
-		$this->defaultLocale = $this->translator->getDefaultLocale();
+		$this->defaultLocale = 'en';
+
+        $this->locale = $this->getParameter('locale') ?? 'en';
+
+        $this->template->locale = $this->locale;
+        $this->template->localeList = $this->localeList;
+        $this->template->defaultLocale = $this->defaultLocale;
 	}
+
+    public function handleChangeLocale(string $locale)
+    {
+        $locale = strtolower($locale);
+        if (in_array($locale, $this->localeList)) {
+            $this->locale = $locale;
+        }
+
+        $this->redirect('this', ['locale' => $locale]);
+    }
+
+    /**
+     * Shortcut translation method
+     * @return string
+	 * @param mixed $message
+	 * @param mixed ...$parameters
+	 */
+	public function trans($message, ...$parameters): string
+    {
+        return $this->translator->translate($message, ...$parameters);
+    }
 
 	protected function verifyRecaptcha($recaptcha_token)
     {

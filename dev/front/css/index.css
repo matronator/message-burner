@@ -42,10 +42,11 @@
     .container {
         @apply px-4;
         max-width: 1392px;
+        content-visibility: auto;
     }
     .container-sm {
         @apply px-2 mx-auto;
-        max-width: 960px;
+        content-visibility: auto;
     }
 
     input[type="text"],
@@ -57,6 +58,7 @@
 @layer components {
     .container-max {
         max-width: 1392px !important;
+        content-visibility: auto;
         @screen xl {
             padding-left: 80px !important;
             padding-right: 80px !important;
@@ -69,6 +71,7 @@
     .container-md {
         @apply px-2 mx-auto;
         max-width: 960px;
+        content-visibility: auto;
     }
     /* --------========≡≡≡≡≡--| TYPOGRAPHY |--≡≡≡≡≡========-------- */
 
@@ -142,6 +145,25 @@
     .input {
         @apply bg-yellow-lightest dark:backdrop-filter backdrop-blur-lg dark:bg-opacity-50 dark:bg-black dark:placeholder-grey-lighter dark:text-white text-grey-darker text-input placeholder-grey-dark font-normal border-none shadow-none;
         font-size: 16px;
+    }
+
+    .adbytes-display-ad {
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .ad-container {
+        background: #fff2;
+        backdrop-filter: blur(10px);
+        content-visibility: auto;
+        & > iframe {
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
     }
 }
 

@@ -1,3 +1,48 @@
-error:
+errors:
 	notFound: 'Stránka, kterou hledáte, bohužel nebyla nalezena.'
 	goBack: 'Zpět na úvodní stránku'
+	wrongPassword: 'Špatné heslo!'
+	somethingWentWrong: 'Něco se pokazilo'
+	imageFormat: 'Obrázek musí být ve formátu JPEG, PNG, GIF, nebo WebP.'
+
+success:
+	messageCreated: 'Zpráva vytvořena!'
+	messageDestroyed: 'Zpráva byla odstraněna!'
+
+messageForm:
+	sending: 'Vytvářím...'
+	or: 'NEBO'
+	sendImage: 'Pošli&nbsp;obrázek'
+	messagePlaceholder: 'Zde napiš svoji zprávu...'
+	password: 'Heslo (nepovinné):'
+	enterPassword: 'Zadej heslo'
+	send: 'Vytvořit'
+
+images:
+	heading: 'Pošli sebe-zničující obrázek'
+	imageToSend: 'Obrázek k odeslání'
+	placeholder: '(volitelné) Napiš krátkou zprávu (max. %max% znaků)...'
+	sendImage: 'Vytvořit odkaz'
+	dropUpload: 'Přetáhni sem obrázek, nebo klikni a vyber...'
+	noFileSelected: 'Žádný soubor nevybrán'
+
+unlockForm:
+	password: 'Heslo'
+	unlockMessage: 'Odemkni zprávu'
+
+footer:
+	createdBy: 'Vytvořil'
+
+created:
+	messageCreated: 'Zpráva vytvořena'
+	linkIsReady: 'Odkaz na tvoji zprávu je připraven.'
+	itWillSelfDestruct: 'Sama se smaže po otevření.'
+	copyLink: 'Klikni na odkaz níže pro zkopírování do schránky:'
+	copied: 'Zkopírováno!'
+	expirationText: 'Zpráva bude dostupná pouze <strong>48 hodin</strong> - nepřečtené zprávy jsou automaticky <strong>mazány</strong> po 2 dnech!'
+	destroyNow: 'Smazat zprávu nyní'
+	createNew: 'Vytvořit novou zprávu'
+
+destroyed:
+	messageDestroyed: 'Zpráva smazána'
+	messageDestroyedText: 'Zpráva byla bezpečně zničena a již není k dispozici. Nelze ji obnovit a veškeré její stopy byly odstraněny z našich serverů.'

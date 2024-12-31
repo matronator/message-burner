@@ -2,12 +2,15 @@
 <html lang="{$presenter->locale}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="title" content="Matronator's Message Burner">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Message Burner">
     <meta name="description" content="{ifset #metaDescription}{include #metaDescription|stripHtml|trim}{/ifset}">
     <meta name="copyright" content="Matronator © {php echo date('Y'); }">
     <meta name="robots" content="index,follow">
-    <meta name="author" content="Matronator; https://matronator.com">
+    <meta name="author" content="Matronator; https://matronator.cz">
+
+    <!-- Monetization -->
+    <meta name="adbytes-site-verification" content="2867a766d5363b86a58468cfd4d2a9df6c3abb60af802807e0518bfb9d770ddb">
 
     <title>Burner - {ifset #pageTitle}{include #pageTitle|striptags}{else}{include #metaDescription|striptags}{/ifset}</title>
 
@@ -16,14 +19,14 @@
     <meta property="og:url" content="{link '//this'}">
     <meta property="og:title" content="Message Burner">
     <meta property="og:description" content="Create secure single-use messages that are destroyed after being read by the recipient. Privacy guaranteed by Matronator™">
-    <meta property="og:image" content="https://i.imgur.com/Do7divD.png">
+    <meta property="og:image" content="https://repository-images.githubusercontent.com/372335603/83432b96-7af6-4cc3-bbd0-db09c26dc09e">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{link '//this'}">
     <meta property="twitter:title" content="Message Burner">
     <meta property="twitter:description" content="Create secure single-use messages that are destroyed after being read by the recipient. Privacy guaranteed by Matronator™">
-    <meta property="twitter:image" content="https://i.imgur.com/Do7divD.png">
+    <meta property="twitter:image" content="https://repository-images.githubusercontent.com/372335603/83432b96-7af6-4cc3-bbd0-db09c26dc09e">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +35,14 @@
     <link rel="icon" href="{$basePath}/dist/front/etc/favicon.ico">
     <link rel="stylesheet" href="{asset index.css front}">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="Burner">
+    <link rel="manifest" href="/manifest.json">
+
     {ifset head}
         {include head}
     {/ifset}
@@ -39,11 +50,14 @@
     <link n:foreach="$presenter->localeList as $localeItem" rel="alternate" hreflang="{$localeItem}" href="{link //this, locale=>$localeItem}"/>
     <link rel="alternate" hreflang="x-default" href="{link //this, locale=>$defaultLocale}" />
 
+    <script data-goatcounter="https://burner.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    {* <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script> *}
+
     <script n:syntax="off" async>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
+            document.documentElement.classList.add('dark');
         } else {
-            document.documentElement.classList.remove('dark')
+            document.documentElement.classList.remove('dark');
         }
     </script>
 </head>
@@ -53,9 +67,32 @@
 
     {include '../components/Header/Header.latte'}
 
-    <main class="container py-4 mx-auto text-center" n:snippet="body">
-        {include pageContent}
+    <div class="mx-auto container text-center ad-container">
+        {* <div id="frame" style="width: 728px;"><iframe data-aa='2364692' src='//ad.a-ads.com/2364692?size=728x90' style='width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe><a style="display: block; text-align: right; font-size: 12px" id="frame-link" href="https://aads.com/campaigns/new/?source_id=2364692&source_type=ad_unit&partner=2364692">Advertise here</a></div> *}
+        <div class="adbytes-display-ad" data-adspace-id="D90BE94973"></div>
+    </div>
+
+    <main class="container py-4 mx-auto text-center flex lg:block justify-around" n:snippet="body">
+        <div class="text-center ad-container lg:hidden">
+            {* <div data-banner-ad data-attributes="id,src,width,height,frameborder,loading" data-element="iframe" data-loading="lazy" data-id="banner_advert_wrapper_9745" data-src="https://api.fpadserver.com/banner?id=9745&size=160x600" data-width="160px" data-height="600px" data-frameborder="0" style="width:160px;height:600px;"></div> *}
+            {* <iframe loading="lazy" id='banner_advert_wrapper_9745' src='https://api.fpadserver.com/banner?id=9745&size=160x600' width='160px' height='600px' frameborder='0'></iframe> *}
+            <div class="adbytes-display-ad" data-adspace-id="4A644360B3"></div>
+        </div>
+
+        <div>
+            {include pageContent}
+        </div>
+
+        <div class="text-center ad-container lg:hidden">
+            {* <div data-banner-ad data-attributes="id,src,width,height,frameborder,loading" data-element="iframe" data-loading="lazy" data-id="banner_advert_wrapper_10083" data-src="https://api.fpadserver.com/banner?id=10083&size=160x600" data-width="160px" data-height="600px" data-frameborder="0" style="width:160px;height:600px;"></div> *}
+            {* <iframe loading="lazy" id='banner_advert_wrapper_10083' src='https://api.fpadserver.com/banner?id=10083&size=160x600' width='160px' height='600px' frameborder='0'></iframe> *}
+            <div class="adbytes-display-ad" data-adspace-id="0EBE38B9DE"></div>
+        </div>
     </main>
+
+    <div class="mx-auto container text-center ad-container">
+        <div class="adbytes-display-ad" data-adspace-id="30CBB2C150"></div>
+    </div>
 
     {include '../components/Footer/Footer.latte'}
 
@@ -63,5 +100,6 @@
     {ifset scripts}
         {include scripts}
     {/ifset}
+    <script defer async type="text/javascript" src="https://adbytes.media/js/show_ads.js"></script>
 </body>
 </html>

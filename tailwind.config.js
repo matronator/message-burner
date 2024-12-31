@@ -5,7 +5,11 @@ module.exports = {
     // "./dev/front/**/*.{js,css,html,latte}",
     "./app/modules/Front/**/*.latte",
     "./app/modules/Front/**/*.js",
+    "./app/modules/Front/**/*.css",
     "./dev/front/js/**/*.js",
+    "./dev/front/css/import/flash.css",
+    // "./dev/front/css/import/backgrounds.css",
+    "./dev/front/css/import/popup.css",
   ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
@@ -43,7 +47,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'body': ['Jost', 'Futura', 'Gil Sans', 'sans'],
+        'body': ['Jost', 'Futura', 'Gil Sans', 'sans-serif'],
       },
       screens: {
         "3xl": "1920px",

@@ -1,3 +1,48 @@
-error:
+errors:
 	notFound: 'Sorry, the page you are looking for was not found.'
 	goBack: 'Back to homepage'
+	wrongPassword: 'Wrong password!'
+	somethingWentWrong: 'Something went wrong'
+	imageFormat: 'Image needs to be a JPEG, PNG, GIF, or WebP file.'
+
+success:
+	messageCreated: 'Message created!'
+	messageDestroyed: 'Message destroyed!'
+
+messageForm:
+	sending: 'Creating...'
+	or: 'OR'
+	sendImage: 'Send&nbsp;an&nbsp;image'
+	messagePlaceholder: 'Write your message here...'
+	password: 'Password (optional):'
+	enterPassword: 'Enter password'
+	send: 'Create'
+
+images:
+	heading: 'Send a self-destructing image'
+	imageToSend: 'Image to send'
+	placeholder: '(optional) Write a short message (max. %max% characters)...'
+	sendImage: 'Create link'
+	dropUpload: 'Drag and drop the image here or click to select...'
+	noFileSelected: 'No file selected'
+
+unlockForm:
+	password: 'Password'
+	unlockMessage: 'Unlock message'
+
+footer:
+	createdBy: 'Created by'
+
+created:
+	messageCreated: 'Message created'
+	linkIsReady: 'Link to your message is ready.'
+	itWillSelfDestruct: 'It will self-destruct after reading.'
+	copyLink: 'Click the link bellow to copy it to clipboard:'
+	copied: 'Copied!'
+	expirationText: 'Message will only available for <strong>48 hours</strong> - unread messages are automatically <strong>deleted</strong> after 2 days!'
+	destroyNow: 'Destroy the message now'
+	createNew: 'Create new message'
+
+destroyed:
+	messageDestroyed: 'Message destroyed'
+	messageDestroyedText: 'Message has been safely destroyed and is no longer available. It cannot be recovered and every trace has been removed from our servers.'

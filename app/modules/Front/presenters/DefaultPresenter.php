@@ -8,6 +8,8 @@ use App\Services\HashService;
 use App\Model\MessagesRepository;
 use App\Services\EncryptionService;
 use App\Services\ExpiryService;
+use App\Services\Memes\MemeService;
+use App\Services\PathService;
 use DateTime;
 use ImageStorage;
 use Nette\Application\UI\Form;
@@ -20,23 +22,28 @@ final class DefaultPresenter extends BasePresenter
 	private $messagesRepository;
 	private $encryptionService;
 	private $expiryService;
-
+	
 	/** @var ImageStorage */
 	private $imageStorage;
+	
+	private PathService $pathService;
 
-	public const PASSWORD_MIN_LENGTH = 5;
+	public const PASSWORD_MIN_LENGTH = 3;
+	public const IMAGE_DESCRIPTION_MAX_LENGTH = 1000;
 
 	public function __construct(
 		MessagesRepository $messagesRepository,
 		EncryptionService $encryptionService,
 		ExpiryService $expiryService,
-		ImageStorage $imageStorage
+		ImageStorage $imageStorage,
+		PathService $pathService
 	)
 	{
 		$this->messagesRepository = $messagesRepository;
 		$this->encryptionService = $encryptionService;
 		$this->expiryService = $expiryService;
 		$this->imageStorage = $imageStorage;
+		$this->pathService = $pathService;
 	}
 
 	public function renderDefault()
@@ -44,12 +51,22 @@ final class DefaultPresenter extends BasePresenter
 
 	}
 
+	public function renderDestroyed()
+	{
+
+	}
+
+	public function renderImage()
+	{
+		$this->template->imageDescriptionMaxLength = self::IMAGE_DESCRIPTION_MAX_LENGTH;
+	}
+
 	public function renderCreated(string $hash = '', bool $isImage = false)
 	{
 		if ($hash === '') {
 			$this->redirect('default');
 		}
-		$this->template->hash = $hash;
+		$this->template->msgHash = $hash;
 		if ($isImage) {
 			$this->template->messageUrl = $this->link('//Default:readImage', $hash);
 		} else {
@@ -65,6 +82,7 @@ final class DefaultPresenter extends BasePresenter
 		$message = $this->messagesRepository->getMessage($hash);
 		if (!$message) {
 			$this->template->noMessage = true;
+			$this->template->meme = MemeService::getMeme();
 		} else {
 			if ($this->isAjax()) {
 				$session = $this->session->getSection('readMessage');
@@ -90,14 +108,14 @@ final class DefaultPresenter extends BasePresenter
 							'password' => $message->password,
 							'content' => '',
 						];
-						$this->template->msgError = 'Wrong password!';
+						$this->template->msgError = $this->trans('general.errors.wrongPassword');
 						unset($session['wrongPassword']);
 					} else {
 						$this->template->message = (object) [
 							'password' => $message->password,
 							'content' => '',
 						];
-						$this->template->msgError = 'Something went wrong';
+						$this->template->msgError = $this->trans('general.errors.somethingWentWrong');
 					}
 				}
 			} else {
@@ -122,8 +140,9 @@ final class DefaultPresenter extends BasePresenter
 			if ($this->isAjax()) {
 				$session = $this->session->getSection('readMessage');
 				if ($session['showAndDelete'] === true) {
-					$imagePath = __DIR__ . '/../../../../www/upload/messages/decrypted/' . $message->filename;
-					$encryptedPath = __DIR__ . '/../../../../www/upload/messages/encrypted/' . $message->filename;
+					$imagePath = $this->pathService->getWwwDir() . '/upload/messages/decrypted/' . $message->filename;
+					$publicPath = $message->filename;
+					$encryptedPath = $this->pathService->getWwwDir() . '/upload/messages/encrypted/' . $message->filename;
 					$note = $message->note;
 					if ($session['withPassword'] === true) {
 						$this->encryptionService->decryptFileWithPassword($encryptedPath, $imagePath, $session['password']);
@@ -139,7 +158,7 @@ final class DefaultPresenter extends BasePresenter
 					$this->template->message = (object) [
 						'password' => $message->password,
 						'content' => $message->filename,
-						'fullPath' => $imagePath,
+						'fullPath' => $publicPath,
 						'note' => $note !== null ? $note : '',
 					];
 					$this->messagesRepository->imageRead($hash);
@@ -152,14 +171,14 @@ final class DefaultPresenter extends BasePresenter
 							'password' => $message->password,
 							'content' => '',
 						];
-						$this->template->msgError = 'Wrong password!';
+						$this->template->msgError = $this->trans('general.errors.wrongPassword');
 						unset($session['wrongPassword']);
 					} else {
 						$this->template->message = (object) [
 							'password' => $message->password,
 							'content' => '',
 						];
-						$this->template->msgError = 'Something went wrong';
+						$this->template->msgError = $this->trans('general.errors.somethingWentWrong');
 					}
 				}
 			} else {
@@ -173,6 +192,7 @@ final class DefaultPresenter extends BasePresenter
 
 	public function actionShowImage(string $path)
 	{
+		$path = $this->pathService->getWwwDir() . '/upload/messages/decrypted/' . $path;
 		$image = Image::fromFile($path);
 		$image->send();
 		unlink($path);
@@ -206,24 +226,31 @@ final class DefaultPresenter extends BasePresenter
 		$this->sendJson(false);
 	}
 
+	public function actionDestroy(string $hash)
+	{
+		$this->messagesRepository->getMessage($hash)->delete();
+		$this->flashMessage($this->trans('general.success.messageDestroyed'), 'success');
+		$this->redirect('Default:destroyed');
+	}
+
 	public function createComponentMessageForm(): Form
 	{
 		$form = new Form;
 
 		$form->addTextArea('content')
 			->setRequired()
-			->setHtmlAttribute('placeholder', 'Write your message here...');
+			->setHtmlAttribute('placeholder', $this->trans('general.messageForm.messagePlaceholder'));
 			// ->setHtmlAttribute('data-text-editor', 'message')
 			// ->setHtmlAttribute('class', 'js-wysiwyg');
 
         // $form->addText('captcha', 'Enter captcha:');
 
-        $form->addPassword('password', 'Password (optional):')
-            ->setHtmlAttribute('placeholder', 'Enter password')
+        $form->addPassword('password', $this->trans('general.messageForm.password'))
+            ->setHtmlAttribute('placeholder', $this->trans('general.messageForm.enterPassword'))
             ->addCondition(Form::FILLED, true)
-            ->addRule(Form::MIN_LENGTH, "Password must be at least {self::PASSWORD_MIN_LENGTH} characters long.", self::PASSWORD_MIN_LENGTH);
+            ->addRule(Form::MIN_LENGTH, "Password must be at least " . self::PASSWORD_MIN_LENGTH . " characters long.", self::PASSWORD_MIN_LENGTH);
 
-		$form->addSubmit('save', 'Create message');
+		$form->addSubmit('save', $this->trans('general.messageForm.send'));
 
 		// $form->addHidden('recaptcha_token');
 
@@ -235,21 +262,21 @@ final class DefaultPresenter extends BasePresenter
 	{
 		$form = new Form;
 
-		$form->addUpload('image', 'Image to send')
+		$form->addUpload('image', $this->trans('general.images.imageToSend'))
 			->setRequired()
-			->addRule($form::IMAGE, 'Image needs to be a JPEG, PNG, GIF, or WebP file.');
+			->addRule($form::IMAGE, $this->trans('general.errors.imageFormat'));
 
 		$form->addTextArea('note')
-			->setHtmlAttribute('maxlength', '255')
-			->setHtmlAttribute('data-remaining-chars', '255')
-			->setHtmlAttribute('placeholder', '(optional) Write a short message (max. 255 characters)...');
+			->setHtmlAttribute('maxlength', self::IMAGE_DESCRIPTION_MAX_LENGTH)
+			->setHtmlAttribute('data-remaining-chars', self::IMAGE_DESCRIPTION_MAX_LENGTH)
+			->setHtmlAttribute('placeholder', $this->trans('general.images.placeholder', ['max' => self::IMAGE_DESCRIPTION_MAX_LENGTH]));
 
-		$form->addPassword('password', 'Password (optional):')
-            ->setHtmlAttribute('placeholder', 'Enter password')
+		$form->addPassword('password', $this->trans('general.messageForm.password'))
+            ->setHtmlAttribute('placeholder', $this->trans('general.messageForm.enterPassword'))
             ->addCondition(Form::FILLED, true)
             ->addRule(Form::MIN_LENGTH, "Password must be at least {self::PASSWORD_MIN_LENGTH} characters long.", self::PASSWORD_MIN_LENGTH);
 
-		$form->addSubmit('save', 'Send image');
+		$form->addSubmit('save', $this->trans('general.images.sendImage'));
 
 		$form->onSuccess[] = [$this, 'imageFormSucceeded'];
 		return $form;
@@ -261,11 +288,11 @@ final class DefaultPresenter extends BasePresenter
 
 		$form->setHtmlAttribute('data-ajax-parent', 'original_post');
 
-		$form->addPassword('password', 'Password:')
-            ->setHtmlAttribute('placeholder', 'Enter password')
+		$form->addPassword('password', $this->trans('general.unlockForm.password'))
+            ->setHtmlAttribute('placeholder', $this->trans('general.messageForm.enterPassword'))
 			->setRequired();
 
-		$form->addSubmit('send', 'Unlock message');
+		$form->addSubmit('send', $this->trans('general.unlockForm.unlockMessage'));
 
 		$form->onSuccess[] = [$this, 'unlockFormSucceeded'];
 		return $form;
@@ -294,7 +321,7 @@ final class DefaultPresenter extends BasePresenter
 			$row->update(['hash' => $hash]);
 		}
 		$url = $hash;
-		$this->flashMessage('Message created!', 'success');
+		$this->flashMessage($this->trans('general.success.messageCreated'), 'success');
 		$this->redirect('Default:created', $url);
 	}
 
@@ -304,7 +331,7 @@ final class DefaultPresenter extends BasePresenter
 		$data['password'] = Strings::trim($values->password);
 		$data['created_at'] = new DateTime();
 		$data['expires_at'] = new DateTime('now + 2 DAYS');
-		$noteTrimmed = Strings::substring($values->note, 0, 255);
+		$noteTrimmed = Strings::substring($values->note, 0, self::IMAGE_DESCRIPTION_MAX_LENGTH);
 		$url = '';
 
 		if (strlen($data['password']) >= 3) {
@@ -339,7 +366,7 @@ final class DefaultPresenter extends BasePresenter
 		}
 
 		$url = $hash;
-		$this->flashMessage('Message created!', 'success');
+		$this->flashMessage($this->trans('general.success.messageCreated'), 'success');
 		$this->redirect('Default:created', $url, true);
 	}
 
