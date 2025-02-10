@@ -1,0 +1,16 @@
+{define bodyClass}page--home{/define}
+{define pageTitle}Chat Room{/define}
+{define metaDescription}Chat Room{/define}
+
+{block pageContent}
+<h2 class="sm:text-lg text-xl">{_default.rooms.heading}</h2>
+
+{include '../../components/NewRoomForm/NewRoomForm.latte'}
+
+{/block}
+
+{block scripts}
+    {* <script defer src="{$basePath}/ckeditor5/build/editorSettings.js"></script> *}
+    {* <script src="{asset editor.js front}"></script> *}
+    <script defer async src="{asset forms.js front}"></script>
+{/block}

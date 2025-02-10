@@ -33,6 +33,8 @@ final class RouterFactory
 			->addRoute('[<locale=en en>/]message/deleted', 'Default:destroyed')
 			->addRoute('[<locale=en en>/]image/new', 'Default:image')
 			->addRoute('[<locale=en en>/]image/read/<hash>', 'Default:readImage')
+			->addRoute('[<locale=en en>/]room/new', 'Room:default')
+			->addRoute('[<locale=en en>/]room/<hash>', 'Room:read')
 
 			// CS
 			->addRoute('[<locale=cs cs>/]zprava/nova/<hash>[/<isImage>]', 'Default:created')

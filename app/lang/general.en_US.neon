@@ -7,6 +7,7 @@ errors:
 
 success:
 	messageCreated: 'Message created!'
+	roomCreated: 'Chat room created!'
 	messageDestroyed: 'Message destroyed!'
 
 messageForm:
@@ -17,6 +18,12 @@ messageForm:
 	password: 'Password (optional):'
 	enterPassword: 'Enter password'
 	send: 'Create'
+
+newRoomForm:
+	username: 'Username'
+	password: 'Password (optional):'
+	burnOnRead: ' Burn messages on read'
+	create: 'Create chat room'
 
 images:
 	heading: 'Send a self-destructing image'

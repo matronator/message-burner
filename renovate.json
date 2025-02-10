@@ -2,5 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>matronator/renovate-config"
+  ],
+  "ignoreDeps": [
+    "del", "gulp-rev", "gulp-imagemin", "gulp-postcss", "tailwindcss", "glob"
   ]
 }

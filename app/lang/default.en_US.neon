@@ -3,6 +3,9 @@ default:
 	or: 'OR'
 	writeMessage: 'Write a message'
 
+rooms:
+	heading: 'Create new chat room'
+
 read:
 	heading: 'Read message'
 	text: 'Do you want to read the message now?<br>(The message will be <em class="uppercase">deleted</em>)'
