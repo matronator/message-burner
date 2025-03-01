@@ -6,7 +6,6 @@
  */
 
 import NetteForms from "../../../vendor/nette/forms/src/assets/netteForms.js"
-import "./../../../app/modules/Front/components/DropUpload/DropUpload.js"
 import "./import/upload.js"
 import "./../../../app/modules/Front/components/MessageForm/MessageForm.js"
 

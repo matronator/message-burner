@@ -9,10 +9,19 @@
         }
     }
 
-    .file-list {
-        @apply absolute top-4 left-4;
-    }
-    .thumbnail {
-        @apply h-40;
+    .file-preview {
+        @apply absolute top-4 left-4 flex justify-center;
+        width: calc(100% - 2rem);
+
+        & > .preview {
+            @apply relative flex justify-center items-center bg-dark-primary border-light-2 border-2;
+            height: 128px;
+            width: 128px;
+
+            & > .remove-file {
+                @apply cursor-pointer bg-red-700 border-white text-white w-4 h-4 flex justify-center items-center rounded-full top-0 right-0 absolute;
+            }
+        }
+
     }
 }

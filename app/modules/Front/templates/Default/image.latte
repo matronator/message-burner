@@ -33,11 +33,14 @@
         <label n:name="image">
             <span>{_general.images.dropUpload}</span>
             {include '../../components/DropUpload/UploadIcon.latte', size => '16'}
-            <input class="js-file" type="file" n:name="image">
-            <span class="z-10 px-2 py-1 bg-opacity-50 upload-filename bg-yellow-lightest dark:bg-black">{_general.images.noFileSelected}</span>
+            <input class="js-file" type="file" n:name="image" capture="user" accept="image/*,video/*">
+            <span class="z-10 px-2 py-1 bg-opacity-50 upload-filename bg-yellow-lightest dark:bg-black" data-default-text="{_general.images.noFileSelected}">{_general.images.noFileSelected}</span>
         </label>
-        <div class="file-list">
-            <img class="thumbnail">
+        <div class="file-preview hidden">
+            <div class="preview">
+                <span class="remove-file" id="removeFile">&times;</span>
+                <img class="thumbnail">
+            </div>
         </div>
     </div>
 
