@@ -1,22 +1,80 @@
-# How to start a project:
+# Message Burner
 
-## Install dependencies
+![Message Burner logo](https://repository-images.githubusercontent.com/372335603/83432b96-7af6-4cc3-bbd0-db09c26dc09e)
 
-Run `composer install` and `npm install` commands in the root folder of the project
+![GitHub issues](https://img.shields.io/github/issues/matronator/message-burner)
+![GitHub license](https://img.shields.io/github/license/matronator/message-burner)
+![GitHub last commit](https://img.shields.io/github/last-commit/matronator/message-burner)
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
+[![](https://img.shields.io/github/sponsors/matronator?label=Sponsor&logo=GitHub)](https://github.com/sponsors/matronator)
+[![wakatime](https://wakatime.com/badge/user/ed11b7b0-962b-4893-a35b-4539adbcb349/project/d08aed6f-bb27-4b66-8766-d6d641c6b2c1.svg)](https://wakatime.com/badge/user/ed11b7b0-962b-4893-a35b-4539adbcb349/project/d08aed6f-bb27-4b66-8766-d6d641c6b2c1)
 
-## Prepare the data layer
+[Message Burner](https://burner.matronator.cz) is a web-based application designed for secure and temporary message sharing. It allows users to send messages that self-destruct after being read, ensuring privacy and confidentiality.
 
-Create database and run SQL in `/init-db.sql` or import it via database admin (phpmyadmin/adminer/...)
+**Website**: https://burner.matronator.cz
 
-Connect database in `/app/config/config.local.neon`. Provide database name, login and password.
+## Features
 
-## Set your environment variales
+- Private message sharing with self-destruction
+- Share a text an image
+- Secure PGP encryption of all shared content
+- TODO
 
-Create `/.env` file and set `HOST` with URL where the project is hosted. (see [example](https://github.com/motdotla/dotenv#usage)). This step is necessary if you don't use `npm run serve`. Otherwise, you can go with the defaults.
+## Getting Started
 
-# Build process
-There are two basic modules - front and admin. Use `./dev` and its respective subfolders to create or edit front-end assets. Here is an example of the folder structure:
+### Install Dependencies
 
+Run the following commands in the root folder of the project:
+
+```bash
+composer install
+npm install # or pnpm, bun, yarn...
+```
+
+### Prepare the Data Layer
+
+1. Create a database named `burner`.
+2. Run the SQL script located at `init-db.sql` or import it using a database admin tool (e.g., phpMyAdmin, Adminer).
+3. Configure the database connection in `app/config/config.local.neon` by providing the database name, login, and password.
+
+## Development
+
+### Front-End Development
+
+Run the following commands to start the front-end development server:
+
+```bash
+npm start # starts the dev frontend server
+npm run serve # starts backend PHP server
+```
+
+The `serve` script will start a server on 127.0.0.1:8000. This is the PHP built-in web server and has debugging panel (Tracy) turned on (if not disabled).
+
+The `start` script will start a server on localhost:3000. Develop on this if you want hot-reloading and automatic browser refresh on changes.
+
+### Admin Module Development
+
+Run the following commands to start the admin module development server:
+
+```bash
+npm run start-admin
+npm run serve
+```
+
+Changes to files in the `dev` folder (except `etc/*`) or templates will automatically refresh the browser.
+
+#### Admin Module Default Credentials
+
+The `init-db.sql` file includes a default admin user:
+
+- **Email:** `info@matronator.com`
+- **Password:** `changeme`
+
+> **Important:** Change these credentials before deploying to production.
+
+## Build Process
+
+There are two basic modules - front and admin. Use `dev` and its respective subfolders to create or edit front-end assets. Here is an example of the folder structure:
 
 ```
 /dev
@@ -38,7 +96,7 @@ There are two basic modules - front and admin. Use `./dev` and its respective su
     `-- etc
 ```
 
-All assets are compiled into `/www/dist` folder. For every module subfolder with its name is created.
+All assets are compiled into `www/dist` folder. For every module subfolder with its name is created.
 
 Keep in mind that files in `images` and `etc` preserve their original directory. Other files (css, js, icons) are generated into the root. For example in `app/components/Hamburger/Hamburger.css` you should reference external images as follows:
 
@@ -48,56 +106,51 @@ Keep in mind that files in `images` and `etc` preserve their original directory.
 }
 ```
 
-## Development
+### Front-End Production Build
 
-Run `npm start` if you want to develop the front module. For the admin module use `npm run start-admin` command.
+Run the following command to create a production build for the front module:
 
-Whenever a file (except `etc/*`) in `/dev` folder or template is changed, the web server will automatically refresh your browser window.
-
-### Admin module
-
-The `init-db.sql` file imports one default user with admin rights that you can use to login to the administration. You can change it or create a new one in the administration on the Users page.
-
-E-mail: `info@matronator.com`
-
-Password: `changeme`
-
-**DON'T FORGET TO CHANGE THE CREDENTIALS BEFORE DEPLOYING ON PRODUCTION!**
-
-## Production
-
-Run `npm run build` if you want to create production build of the front module. For the admin module use `npm run build-admin` command.
-
-# Asset usage
-
-Because of cache busting, the only way of using your assets is by means of `{asset}` custom Latte macro. It accepts two parameters. First is an asset name and the second is a module name (front or admin).
-
-Examples:
-
-```html
-<script src="{asset index.js front}"></script>
-...
-<link rel="stylesheet" href="{asset panel.css admin}" >
+```bash
+npm run build
 ```
 
-Currently, the macro doesn't take `$baseUrl` into account, so **the server must host to the domain root**
+### Admin Module Production Build
 
-# Coding standard
+Run the following command to create a production build for the admin module:
 
-## Javascript
+```bash
+npm run build-admin
+```
 
-Formatting is handled by [Prettier](https://prettier.io/). Standard is enforced by [ESLint](https://eslint.org/) rules (see `eslintConfig.rules` in `package.json` for a reference).
+## Asset Management
 
-## CSS
+Assets are compiled into the `www/dist` folder.
 
-Formatting is handled by [Prettier](https://prettier.io/). Standard is enforced by [Stylelint](https://stylelint.io/) rules (see `stylelint.rules` in `package.json` for a reference).
+### Images
 
-## PHP
+To reference images in templates, use the `{asset}` tag with the image path relative to the `www/` folder.
 
-WIP
+```html
+<img src="{asset 'dist/front/images/logo.png'}">
+```
 
-# GIT
+### JavaScript and CSS
 
-All commit messages must be written in English in present tense.
+Similarly, to reference JS and CSS files in templates, use the `|fullpath` filter with the asset filename and it will resolve the path automatically:
 
-Run `npm run lint-css` and `npm run lint-js` before you commit to check if your code adheres to the coding standard. It automatically fixes problems with formatting. Issues which cannot be solved automatically are displayed to the console.
+```html
+<script src="{='index.js'|fullpath}"></script>
+<link rel="stylesheet" href="{='main.css'|fullpath}">
+```
+
+To add asset from a different module than `front`, add an argument with the module name to the filter. For example, to add assets from `admin` module do this:
+
+```html
+<script src="{='index.js'|fullpath,'admin'}"></script>
+OR
+<link rel="stylesheet" href="{='dashboard.css'|fullpath, module: 'admin'}">
+```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

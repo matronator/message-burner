@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Message Burner">
     <meta name="description" content="{ifset #metaDescription}{include #metaDescription|stripHtml|trim}{/ifset}">
-    <meta name="copyright" content="Matronator © {php echo date('Y'); }">
+    <meta name="copyright" content="Matronator © {= date('Y') }">
     <meta name="robots" content="index,follow">
     <meta name="author" content="Matronator; https://matronator.cz">
 
@@ -32,16 +32,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300;600&display=swap" rel="stylesheet">
 
-    <link rel="icon" href="{$basePath}/dist/front/etc/favicon.ico">
-    <link rel="stylesheet" href="{asset index.css front}">
+    <link rel="icon" href="{asset 'dist/front/etc/favicon.ico'}">
+    <link rel="stylesheet" href="{='index.css'|fullpath}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="{asset 'favicon-96x96.png'}" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="{asset 'favicon.svg'}">
+    <link rel="shortcut icon" href="{asset 'favicon.ico'}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{asset 'apple-touch-icon.png'}">
     <meta name="apple-mobile-web-app-title" content="Burner">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="{asset 'manifest.json'}">
 
     {ifset head}
         {include head}
@@ -96,7 +96,7 @@
 
     {include '../components/Footer/Footer.latte'}
 
-    <script defer async src="{asset index.js front}"></script>
+    <script defer async src="{='index.js'|fullpath}"></script>
     {ifset scripts}
         {include scripts}
     {/ifset}

@@ -6,7 +6,6 @@ import sourcemaps from "gulp-sourcemaps" // gulp
 import tap from "gulp-tap" // gulp
 import sprite from "gulp-svg-sprite" // gulp
 import imagemin from "gulp-imagemin" // gulp
-import cache from "gulp-cache"
 import postcss from "gulp-postcss" // css
 import postcssImport from "postcss-import" // css
 import postcssNano from "cssnano" // css
@@ -50,7 +49,7 @@ const cssProcessors = [
     isProduction
       ? [
           postscssAutoprefixer, // uses browser list option from package.json
-          // postcssNano,
+          postcssNano, // minify css
         ]
       : [
         postscssAutoprefixer
@@ -80,7 +79,7 @@ const config = {
     entry: `dev/${module}/images/**`,
     watch: [`dev/${module}/images/**`],
     directory: `images`,
-    quality: 70, // 0 - worst, 100 - best
+    quality: 80, // 0 - worst, 100 - best
   },
   etc: {
     entry: `dev/${module}/etc/**`,
@@ -191,28 +190,22 @@ function icons() {
 }
 
 function images() {
-  return src(config.images.entry, {
-    since: lastRun(images),
-  })
-    .pipe(
-      cache(
-        imagemin([
-          imagemin.mozjpeg({
-            progressive: true,
-            quality: config.images.quality,
-          }),
-          imagemin.optipng({ optimizationLevel: 2 }),
-          imagemin.svgo({
-            plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
-          }),
-        ])
-      )
-    )
-    .pipe(dest(config.buildDest + config.images.directory))
+    return src(config.images.entry, { encoding: false, since: lastRun(images) })
+        // .pipe(
+        //     imagemin([
+        //         imagemin.gifsicle({interlaced: true}),
+        //         imagemin.mozjpeg({ progressive: true, quality: config.images.quality }),
+        //         imagemin.optipng({ optimizationLevel: 5 }),
+        //         imagemin.svgo({
+        //             plugins: [{ removeViewBox: true }, { cleanupIDs: false }]
+        //         })
+        //     ])
+        // )
+        .pipe(dest(config.buildDest + config.images.directory));
 }
 
 function etc() {
-  return src(config.etc.entry).pipe(
+  return src(config.etc.entry, { encoding: false }).pipe(
     dest(config.buildDest + config.etc.directory)
   )
 }
@@ -231,10 +224,6 @@ export async function createDevManifest() {
   }, {})
   await util.promisify(fs.mkdir)(config.manifest.base, { recursive: true })
   await asyncWrite(config.manifest.path, JSON.stringify(manifest, null, 4))
-}
-
-export async function clearCache() {
-  await cache.clearAll()
 }
 
 function watchFiles() {

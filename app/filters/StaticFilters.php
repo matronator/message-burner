@@ -30,4 +30,13 @@ class StaticFilters
         return preg_replace('/(\s)([a-zA-z])\s/i', '$1$2&nbsp;', $text);
     }
 
+    public static function asset(string $asset, string $module = 'front'): string
+    {
+        $rawManifest = file_get_contents(WWW_DIR . '/dist/' . $module . '/asset-manifest.json');
+        $manifest = json_decode($rawManifest, true);
+
+        $path = '/dist/' . $module . '/' . $manifest[$asset];
+
+        return $path;
+    }
 }

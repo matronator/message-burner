@@ -71,7 +71,7 @@
 {block scripts}
     {ifset $message}
         {if $message->password !== null && strlen($message->content) <= 0}
-            <script async defer src="{asset forms.js front}"></script>
+            <script async defer src="{='forms.js'|fullpath}"></script>
         {/if}
     {/ifset}
 {/block}

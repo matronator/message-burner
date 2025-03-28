@@ -11,6 +11,6 @@
 
 {block scripts}
     {* <script defer src="{$basePath}/ckeditor5/build/editorSettings.js"></script> *}
-    {* <script src="{asset editor.js front}"></script> *}
-    <script defer async src="{asset forms.js front}"></script>
+    {* <script src="{='editor.js'|fullpath}"></script> *}
+    <script defer async src="{='forms.js'|fullpath}"></script>
 {/block}
