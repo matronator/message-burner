@@ -15,6 +15,14 @@ messageForm:
 	sendImage: 'Pošli&nbsp;obrázek'
 	messagePlaceholder: 'Zde napiš svoji zprávu...'
 	password: 'Heslo (nepovinné):'
+	expiration: 'Odstranit po'
+	expirations:
+		day: '1 dni'
+		twoDays: '2 dnech'
+		threeDays: '3 dnech'
+		week: '1 týdnu'
+		twoWeeks: '2 týdnech'
+		month: '1 měsíci'
 	enterPassword: 'Zadej heslo'
 	send: 'Vytvořit'
 

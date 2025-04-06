@@ -15,8 +15,9 @@
 
 ## Features
 
-- Private message sharing with self-destruction
-- Share a text an image
+- Private message sharing with self-destruction upon reading
+- Set a self-destruct timer to delete unopened messages
+- Share a text or an image
 - Secure PGP encryption of all shared content
 - TODO
 

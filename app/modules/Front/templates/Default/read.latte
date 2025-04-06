@@ -34,27 +34,15 @@
             {form unlockForm, class => 'ajax'}
                 {input password, class => 'block w-full mb-4 input'}
                 {input send, class => 'btn btn-primary inline-block read-msg-button'}
-                <button type="button" class="inline-flex items-center hidden cursor-not-allowed btn btn-primary" disabled id="msg-sent-button">
-                    <svg class="w-5 h-5 mr-3 -ml-1 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    {_default.read.opening}
-                </button>
+                {include '../../components/Spinner/SpinnerButton.latte', text: 'default.read.opening'}
             {/form}
         </div>
         <div class="relative" n:if="(isset($message) && $message) && $message->password === null && strlen($message->content) <= 0">
             <a n:href="showMessage!" class="inline-block btn btn-primary ajax" id="read-msg-button">{_default.read.showMessage}</a>
-            <button type="button" class="inline-flex items-center hidden cursor-not-allowed btn btn-primary" disabled id="msg-sent-button">
-                <svg class="w-5 h-5 mr-3 -ml-1 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                {_default.read.opening}
-            </button>
+            {include '../../components/Spinner/SpinnerButton.latte', text: 'default.read.opening'}
         </div>
 
-        <div class="read-message" n:snippet="message">
+        <div class="read-message" n:snippet="messageContent">
             {if $message->content === '' && isset($msgError)}
                 <p class="text-lg font-semibold text-center opacity-75 text-red-danger-2">{$msgError}</p>
             {else}
@@ -69,9 +57,9 @@
 {/block}
 
 {block scripts}
-    {ifset $message}
+    <script async defer src="{='forms.js'|fullpath}"></script>
+    {* {ifset $message}
         {if $message->password !== null && strlen($message->content) <= 0}
-            <script async defer src="{='forms.js'|fullpath}"></script>
         {/if}
-    {/ifset}
+    {/ifset} *}
 {/block}

@@ -15,6 +15,14 @@ messageForm:
 	sendImage: 'Send&nbsp;an&nbsp;image'
 	messagePlaceholder: 'Write your message here...'
 	password: 'Password (optional):'
+	expiration: 'Self-destruct after'
+	expirations:
+		day: '1 day'
+		twoDays: '2 days'
+		threeDays: '3 days'
+		week: '1 week'
+		twoWeeks: '2 weeks'
+		month: '1 month'
 	enterPassword: 'Enter password'
 	send: 'Create'
 
