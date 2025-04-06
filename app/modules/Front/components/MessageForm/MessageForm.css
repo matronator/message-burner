@@ -20,7 +20,7 @@
     }
 
     .expiration-input {
-        @apply bg-yellow-lightest dark:bg-grey-dark dark:bg-opacity-30 text-grey-darker dark:text-white border border-grey-light rounded-md px-3 py-2 w-full outline-none;
+        @apply dark:bg-grey-dark dark:bg-opacity-30 text-grey-darker dark:text-white border border-grey-light dark:border-grey-dark rounded-md px-3 py-2 w-full outline-none;
     }
 
     .ck-content.ck-editor__editable {

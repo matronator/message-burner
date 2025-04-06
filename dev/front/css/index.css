@@ -161,6 +161,7 @@
         background: #fff2;
         backdrop-filter: blur(10px);
         content-visibility: auto;
+        max-width: max-content;
         & > iframe {
             margin: 0 auto;
             text-align: center;
