@@ -2877,8 +2877,8 @@ packages:
     resolution: {integrity: sha512-8cAwm6md1YTiPpOvDULYJL4ZS6WfM5/cTeVVh4JsvyYZAoqlRVUpHL9Gr5Fy7HA6xcSZicUia3DeAgO3Us8E+Q==}
     engines: {node: '>= 4.0.0'}
 
-  eazy-logger@4.0.1:
-    resolution: {integrity: sha512-2GSFtnnC6U4IEKhEI7+PvdxrmjJ04mdsj3wHZTFiw0tUtG4HCWzTr13ZYTk8XOGnA1xQMaDljoBOYlk3D/MMSw==}
+  eazy-logger@4.1.0:
+    resolution: {integrity: sha512-+mn7lRm+Zf1UT/YaH8WXtpU6PIV2iOjzP6jgKoiaq/VNrjYKp+OHZGe2znaLgDeFkw8cL9ffuaUm+nNnzcYyGw==}
     engines: {node: '>= 0.8.0'}
 
   ecc-jsbn@0.1.2:
@@ -6278,9 +6278,6 @@ packages:
   thenify@3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
 
-  third-party-web@0.26.5:
-    resolution: {integrity: sha512-tDuKQJUTfjvi9Fcrs1s6YAQAB9mzhTSbBZMfNgtWNmJlHuoFeXO6dzBFdGeCWRvYL50jQGK0jPsBZYxqZQJ2SA==}
-
   third-party-web@0.26.6:
     resolution: {integrity: sha512-GsjP92xycMK8qLTcQCacgzvffYzEqe29wyz3zdKVXlfRD5Kz1NatCTOZEeDaSd6uCZXvGd2CNVtQ89RNIhJWvA==}
 
@@ -8035,6 +8032,10 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 45.0.0
       '@ckeditor/ckeditor5-utils': 45.0.0
       ckeditor5: 45.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
 
   '@ckeditor/ckeditor5-fullscreen@45.0.0':
     dependencies:
@@ -8244,10 +8245,6 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 45.0.0
       ckeditor5: 45.0.0
       es-toolkit: 1.32.0
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
 
   '@ckeditor/ckeditor5-list@44.3.0':
     dependencies:
@@ -9848,7 +9845,7 @@ snapshots:
       connect-history-api-fallback: 1.6.0
       dev-ip: 1.0.1
       easy-extender: 2.3.4
-      eazy-logger: 4.0.1
+      eazy-logger: 4.1.0
       etag: 1.8.1
       fresh: 0.5.2
       fs-extra: 3.0.1
@@ -11032,7 +11029,7 @@ snapshots:
     dependencies:
       lodash: 4.17.21
 
-  eazy-logger@4.0.1:
+  eazy-logger@4.1.0:
     dependencies:
       chalk: 4.1.2
 
@@ -12901,7 +12898,7 @@ snapshots:
       robots-parser: 3.0.1
       semver: 5.7.2
       speedline-core: 1.4.3
-      third-party-web: 0.26.5
+      third-party-web: 0.26.6
       tldts-icann: 6.1.85
       ws: 7.5.10
       yargs: 17.7.2
@@ -15170,8 +15167,6 @@ snapshots:
   thenify@3.3.1:
     dependencies:
       any-promise: 1.3.0
-
-  third-party-web@0.26.5: {}
 
   third-party-web@0.26.6: {}
 
