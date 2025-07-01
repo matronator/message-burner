@@ -76,8 +76,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       dotenv:
-        specifier: ^16.0.0
-        version: 16.4.7
+        specifier: ^17.0.0
+        version: 17.0.0
       eslint:
         specifier: ^9.0.0
         version: 9.23.0(jiti@2.4.2)
@@ -2851,8 +2851,8 @@ packages:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
     engines: {node: '>=8'}
 
-  dotenv@16.4.7:
-    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
+  dotenv@17.0.0:
+    resolution: {integrity: sha512-A0BJ5lrpJVSfnMMXjmeO0xUnoxqsBHWCoqqTnGwGYVdnctqXXUEhJOO7LxmgxJon9tEZFGpe0xPRX0h2v3AANQ==}
     engines: {node: '>=12'}
 
   download@6.2.5:
@@ -8072,10 +8072,6 @@ snapshots:
       '@ckeditor/ckeditor5-ui': 45.0.0
       '@ckeditor/ckeditor5-utils': 45.0.0
       ckeditor5: 45.0.0
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
 
   '@ckeditor/ckeditor5-fullscreen@45.0.0':
     dependencies:
@@ -8285,6 +8281,10 @@ snapshots:
       '@ckeditor/ckeditor5-widget': 45.0.0
       ckeditor5: 45.0.0
       es-toolkit: 1.32.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
 
   '@ckeditor/ckeditor5-list@44.3.0':
     dependencies:
@@ -11025,7 +11025,7 @@ snapshots:
     dependencies:
       is-obj: 2.0.0
 
-  dotenv@16.4.7: {}
+  dotenv@17.0.0: {}
 
   download@6.2.5:
     dependencies:
