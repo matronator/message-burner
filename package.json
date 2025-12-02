@@ -40,7 +40,7 @@
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "glob": "^7.2.3",
+    "glob": "^9.0.0",
     "gulp": "^5.0.0",
     "gulp-imagemin": "^7.1.0",
     "gulp-noop": "^1.0.1",
