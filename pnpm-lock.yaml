@@ -34,7 +34,7 @@ importers:
         version: 4.6.13
       lodash:
         specifier: ^4.17.21
-        version: 4.17.21
+        version: 4.17.23
       nouislider:
         specifier: ^15.0.0
         version: 15.8.1
@@ -4733,8 +4733,8 @@ packages:
   lodash.uniq@4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
 
-  lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+  lodash@4.17.23:
+    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
 
   logalot@2.1.0:
     resolution: {integrity: sha512-Ah4CgdSRfeCJagxQhcVNMi9BfGYyEKLa6d7OA6xSbld/Hg3Cf2QiOa1mDpmG7Ve8LOH6DN3mdttzjQAvWTyVkw==}
@@ -8423,8 +8423,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.0.0
       ckeditor5: 47.0.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@ckeditor/ckeditor5-editor-classic@44.3.0':
     dependencies:
@@ -8692,6 +8690,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.0.0
       '@ckeditor/ckeditor5-widget': 47.0.0
       ckeditor5: 47.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-html-support@44.3.0':
     dependencies:
@@ -8969,6 +8969,8 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.0.0
       '@ckeditor/ckeditor5-widget': 47.0.0
       ckeditor5: 47.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@ckeditor/ckeditor5-paragraph@44.3.0':
     dependencies:
@@ -9287,8 +9289,6 @@ snapshots:
       '@ckeditor/ckeditor5-utils': 47.0.0
       ckeditor5: 47.0.0
       es-toolkit: 1.39.5
-    transitivePeerDependencies:
-      - supports-color
 
   '@colors/colors@1.6.0': {}
 
@@ -10307,7 +10307,7 @@ snapshots:
       iconv-lite: 0.6.3
       jquery: 3.7.1
       klaw-sync: 6.0.0
-      lodash: 4.17.21
+      lodash: 4.17.23
       markdown-it: 12.3.2
       nodemon: 3.1.9
       prismjs: 1.30.0
@@ -10440,7 +10440,7 @@ snapshots:
 
   async@2.6.4:
     dependencies:
-      lodash: 4.17.21
+      lodash: 4.17.23
 
   async@3.2.6: {}
 
@@ -11903,7 +11903,7 @@ snapshots:
 
   easy-extender@2.3.4:
     dependencies:
-      lodash: 4.17.21
+      lodash: 4.17.23
 
   eazy-logger@4.1.0:
     dependencies:
@@ -13964,7 +13964,7 @@ snapshots:
 
   lodash.uniq@4.5.0: {}
 
-  lodash@4.17.21: {}
+  lodash@4.17.23: {}
 
   logalot@2.1.0:
     dependencies:
@@ -15601,7 +15601,7 @@ snapshots:
 
   request-promise-core@1.1.4(request@2.88.2):
     dependencies:
-      lodash: 4.17.21
+      lodash: 4.17.23
       request: 2.88.2
     optional: true
 
