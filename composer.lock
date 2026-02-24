@@ -1141,12 +1141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/mail.git",
-                "reference": "82f31ef3f5e2eae516b6154a3fbaf986bd72080c"
+                "reference": "f013a8ada943f4db2cbab476dc28bb5e9cc8b9ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/mail/zipball/82f31ef3f5e2eae516b6154a3fbaf986bd72080c",
-                "reference": "82f31ef3f5e2eae516b6154a3fbaf986bd72080c",
+                "url": "https://api.github.com/repos/nette/mail/zipball/f013a8ada943f4db2cbab476dc28bb5e9cc8b9ab",
+                "reference": "f013a8ada943f4db2cbab476dc28bb5e9cc8b9ab",
                 "shasum": ""
             },
             "require": {
@@ -1156,8 +1156,10 @@
             },
             "require-dev": {
                 "nette/di": "^3.1 || ^4.0",
+                "nette/phpstan-rules": "^1.0",
                 "nette/tester": "^2.6",
-                "phpstan/phpstan": "^2.0@stable",
+                "phpstan/extension-installer": "^1.4@stable",
+                "phpstan/phpstan": "^2.1@stable",
                 "tracy/tracy": "^2.8"
             },
             "suggest": {
@@ -1208,7 +1210,7 @@
                 "issues": "https://github.com/nette/mail/issues",
                 "source": "https://github.com/nette/mail/tree/master"
             },
-            "time": "2026-02-10T02:48:43+00:00"
+            "time": "2026-02-20T07:40:44+00:00"
         },
         {
             "name": "nette/neon",
@@ -1364,12 +1366,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/robot-loader.git",
-                "reference": "d476f7f3d04c3c7a9ebe8429f56b5ce13f5fa900"
+                "reference": "58b0a8fa2e6ca52105e845cc6645b1cbb0eae33f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/d476f7f3d04c3c7a9ebe8429f56b5ce13f5fa900",
-                "reference": "d476f7f3d04c3c7a9ebe8429f56b5ce13f5fa900",
+                "url": "https://api.github.com/repos/nette/robot-loader/zipball/58b0a8fa2e6ca52105e845cc6645b1cbb0eae33f",
+                "reference": "58b0a8fa2e6ca52105e845cc6645b1cbb0eae33f",
                 "shasum": ""
             },
             "require": {
@@ -1428,7 +1430,7 @@
                 "issues": "https://github.com/nette/robot-loader/issues",
                 "source": "https://github.com/nette/robot-loader/tree/master"
             },
-            "time": "2026-02-12T11:14:10+00:00"
+            "time": "2026-02-20T07:20:45+00:00"
         },
         {
             "name": "nette/routing",
@@ -1639,12 +1641,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/security.git",
-                "reference": "74108f4edea95a4c95a05cb3edf226f0de908164"
+                "reference": "69bc997a9f09ce879d13b091a32859eece057ea9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/security/zipball/74108f4edea95a4c95a05cb3edf226f0de908164",
-                "reference": "74108f4edea95a4c95a05cb3edf226f0de908164",
+                "url": "https://api.github.com/repos/nette/security/zipball/69bc997a9f09ce879d13b091a32859eece057ea9",
+                "reference": "69bc997a9f09ce879d13b091a32859eece057ea9",
                 "shasum": ""
             },
             "require": {
@@ -1707,7 +1709,7 @@
                 "issues": "https://github.com/nette/security/issues",
                 "source": "https://github.com/nette/security/tree/v3.2"
             },
-            "time": "2026-02-13T03:23:26+00:00"
+            "time": "2026-02-20T07:10:16+00:00"
         },
         {
             "name": "nette/utils",
@@ -2391,12 +2393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "d6cc8e2fdd484f2f41d25938b0e8e3915de3cfbc"
+                "reference": "d07d117db41341511671b0a1a2be48f2772189ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/d6cc8e2fdd484f2f41d25938b0e8e3915de3cfbc",
-                "reference": "d6cc8e2fdd484f2f41d25938b0e8e3915de3cfbc",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/d07d117db41341511671b0a1a2be48f2772189ce",
+                "reference": "d07d117db41341511671b0a1a2be48f2772189ce",
                 "shasum": ""
             },
             "require": {
@@ -2482,7 +2484,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-12T19:15:33+00:00"
+            "time": "2026-02-16T20:44:03+00:00"
         },
         {
             "name": "symfony/translation-contracts",
