@@ -74,12 +74,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/translation.git",
-                "reference": "b00d2ab266c2de682544c958bc76c45b0cb9e412"
+                "reference": "b1274590b07de03f704638a42d4d3363848923e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/translation/zipball/b00d2ab266c2de682544c958bc76c45b0cb9e412",
-                "reference": "b00d2ab266c2de682544c958bc76c45b0cb9e412",
+                "url": "https://api.github.com/repos/contributte/translation/zipball/b1274590b07de03f704638a42d4d3363848923e5",
+                "reference": "b1274590b07de03f704638a42d4d3363848923e5",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +153,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-08T19:14:49+00:00"
+            "time": "2026-03-07T10:07:48+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -446,12 +446,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/application.git",
-                "reference": "57169522ad0ac91fa559501551dc066997098cad"
+                "reference": "b7d4723e92febad3130ecbfb0b2e7639190a687e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/application/zipball/57169522ad0ac91fa559501551dc066997098cad",
-                "reference": "57169522ad0ac91fa559501551dc066997098cad",
+                "url": "https://api.github.com/repos/nette/application/zipball/b7d4723e92febad3130ecbfb0b2e7639190a687e",
+                "reference": "b7d4723e92febad3130ecbfb0b2e7639190a687e",
                 "shasum": ""
             },
             "require": {
@@ -535,7 +535,7 @@
                 "issues": "https://github.com/nette/application/issues",
                 "source": "https://github.com/nette/application/tree/v3.2"
             },
-            "time": "2026-02-26T05:44:00+00:00"
+            "time": "2026-03-04T09:01:43+00:00"
         },
         {
             "name": "nette/bootstrap",
@@ -773,12 +773,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/database.git",
-                "reference": "06a8fe67679088cac70466c51120f52d9841ebdf"
+                "reference": "2a35cd509e5c474f825b445ffbab81e316d44431"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/database/zipball/06a8fe67679088cac70466c51120f52d9841ebdf",
-                "reference": "06a8fe67679088cac70466c51120f52d9841ebdf",
+                "url": "https://api.github.com/repos/nette/database/zipball/2a35cd509e5c474f825b445ffbab81e316d44431",
+                "reference": "2a35cd509e5c474f825b445ffbab81e316d44431",
                 "shasum": ""
             },
             "require": {
@@ -845,7 +845,7 @@
                 "issues": "https://github.com/nette/database/issues",
                 "source": "https://github.com/nette/database/tree/v3.2"
             },
-            "time": "2026-02-26T04:22:19+00:00"
+            "time": "2026-03-04T08:28:54+00:00"
         },
         {
             "name": "nette/di",
@@ -1512,12 +1512,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/safe-stream.git",
-                "reference": "860ddfeb1149a0484c745a391ad9e9168e59aac6"
+                "reference": "a59cedb93964b38228962849ab1804f4834725c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/safe-stream/zipball/860ddfeb1149a0484c745a391ad9e9168e59aac6",
-                "reference": "860ddfeb1149a0484c745a391ad9e9168e59aac6",
+                "url": "https://api.github.com/repos/nette/safe-stream/zipball/a59cedb93964b38228962849ab1804f4834725c8",
+                "reference": "a59cedb93964b38228962849ab1804f4834725c8",
                 "shasum": ""
             },
             "require": {
@@ -1575,7 +1575,7 @@
                 "issues": "https://github.com/nette/safe-stream/issues",
                 "source": "https://github.com/nette/safe-stream/tree/master"
             },
-            "time": "2026-02-23T03:33:58+00:00"
+            "time": "2026-03-09T01:25:05+00:00"
         },
         {
             "name": "nette/schema",
