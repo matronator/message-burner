@@ -1153,12 +1153,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/mail.git",
-                "reference": "d695774334cb4dfebc6f12449fde6148fed5df8e"
+                "reference": "979492b9be7f12730d8e1fc8897b983e15c58302"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/mail/zipball/d695774334cb4dfebc6f12449fde6148fed5df8e",
-                "reference": "d695774334cb4dfebc6f12449fde6148fed5df8e",
+                "url": "https://api.github.com/repos/nette/mail/zipball/979492b9be7f12730d8e1fc8897b983e15c58302",
+                "reference": "979492b9be7f12730d8e1fc8897b983e15c58302",
                 "shasum": ""
             },
             "require": {
@@ -1168,7 +1168,7 @@
             },
             "require-dev": {
                 "nette/di": "^3.1 || ^4.0",
-                "nette/tester": "^2.6",
+                "nette/tester": "^2.4",
                 "phpstan/phpstan-nette": "^2.0@stable",
                 "tracy/tracy": "^2.8"
             },
@@ -1219,7 +1219,7 @@
                 "issues": "https://github.com/nette/mail/issues",
                 "source": "https://github.com/nette/mail/tree/v4.0"
             },
-            "time": "2026-03-09T02:43:56+00:00"
+            "time": "2026-03-26T23:59:16+00:00"
         },
         {
             "name": "nette/neon",
