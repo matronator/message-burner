@@ -357,12 +357,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/latte.git",
-                "reference": "b5bd179e2e939c9673c9c0b99cb8b0eca6b2f8b3"
+                "reference": "203cafaa37262523d2aafd3522b606e6526e0396"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/latte/zipball/b5bd179e2e939c9673c9c0b99cb8b0eca6b2f8b3",
-                "reference": "b5bd179e2e939c9673c9c0b99cb8b0eca6b2f8b3",
+                "url": "https://api.github.com/repos/nette/latte/zipball/203cafaa37262523d2aafd3522b606e6526e0396",
+                "reference": "203cafaa37262523d2aafd3522b606e6526e0396",
                 "shasum": ""
             },
             "require": {
@@ -436,9 +436,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/latte/issues",
-                "source": "https://github.com/nette/latte/tree/v3.0.26"
+                "source": "https://github.com/nette/latte/tree/v3.0"
             },
-            "time": "2026-02-24T23:59:23+00:00"
+            "time": "2026-04-22T21:40:46+00:00"
         },
         {
             "name": "nette/application",
@@ -773,12 +773,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/database.git",
-                "reference": "b2f45c7bbc737afb5359a82869bc7fc26fe7fa80"
+                "reference": "a8d19d05a62b2f177766a1a0b35fe569695cede9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/database/zipball/b2f45c7bbc737afb5359a82869bc7fc26fe7fa80",
-                "reference": "b2f45c7bbc737afb5359a82869bc7fc26fe7fa80",
+                "url": "https://api.github.com/repos/nette/database/zipball/a8d19d05a62b2f177766a1a0b35fe569695cede9",
+                "reference": "a8d19d05a62b2f177766a1a0b35fe569695cede9",
                 "shasum": ""
             },
             "require": {
@@ -845,7 +845,7 @@
                 "issues": "https://github.com/nette/database/issues",
                 "source": "https://github.com/nette/database/tree/v3.2"
             },
-            "time": "2026-04-05T02:09:52+00:00"
+            "time": "2026-04-22T05:48:11+00:00"
         },
         {
             "name": "nette/di",
