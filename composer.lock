@@ -2662,12 +2662,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "5b66655faf24d8ebc48d3971e5dc4dc142ce62a5"
+                "reference": "f544971c42a1fa9c3da4b336353c75876202428c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/5b66655faf24d8ebc48d3971e5dc4dc142ce62a5",
-                "reference": "5b66655faf24d8ebc48d3971e5dc4dc142ce62a5",
+                "url": "https://api.github.com/repos/nette/tester/zipball/f544971c42a1fa9c3da4b336353c75876202428c",
+                "reference": "f544971c42a1fa9c3da4b336353c75876202428c",
                 "shasum": ""
             },
             "require": {
@@ -2735,7 +2735,7 @@
                 "issues": "https://github.com/nette/tester/issues",
                 "source": "https://github.com/nette/tester/tree/master"
             },
-            "time": "2026-05-11T18:43:06+00:00"
+            "time": "2026-05-17T15:30:17+00:00"
         }
     ],
     "aliases": [],
