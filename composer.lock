@@ -74,12 +74,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/translation.git",
-                "reference": "b1274590b07de03f704638a42d4d3363848923e5"
+                "reference": "5788c796703304792a2fdec8427533419ea2d59e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/translation/zipball/b1274590b07de03f704638a42d4d3363848923e5",
-                "reference": "b1274590b07de03f704638a42d4d3363848923e5",
+                "url": "https://api.github.com/repos/contributte/translation/zipball/5788c796703304792a2fdec8427533419ea2d59e",
+                "reference": "5788c796703304792a2fdec8427533419ea2d59e",
                 "shasum": ""
             },
             "require": {
@@ -104,10 +104,10 @@
                 "nette/tester": "^2.3.1",
                 "ninjify/nunjuck": "^0.4.0",
                 "ninjify/qa": "^0.13",
-                "phpstan/phpstan": "^1.8",
-                "phpstan/phpstan-deprecation-rules": "^1.0",
-                "phpstan/phpstan-nette": "^1.0",
-                "phpstan/phpstan-strict-rules": "^1.1",
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-nette": "^2.0",
+                "phpstan/phpstan-strict-rules": "^2.0",
                 "psr/log": "^1.1|^2.0|^3.0",
                 "tracy/tracy": "^2.8"
             },
@@ -153,7 +153,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-07T10:07:48+00:00"
+            "time": "2026-05-22T15:06:34+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -543,12 +543,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "8350eaf5667549244c302411d95c2841af3b1c52"
+                "reference": "02f7462f301f03739343a4645f8449a6f8eead91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/8350eaf5667549244c302411d95c2841af3b1c52",
-                "reference": "8350eaf5667549244c302411d95c2841af3b1c52",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/02f7462f301f03739343a4645f8449a6f8eead91",
+                "reference": "02f7462f301f03739343a4645f8449a6f8eead91",
                 "shasum": ""
             },
             "require": {
@@ -617,9 +617,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/bootstrap/issues",
-                "source": "https://github.com/nette/bootstrap/tree/v3.2.8"
+                "source": "https://github.com/nette/bootstrap/tree/v3.2"
             },
-            "time": "2026-05-05T22:55:20+00:00"
+            "time": "2026-05-19T17:43:22+00:00"
         },
         {
             "name": "nette/caching",
@@ -1648,12 +1648,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/security.git",
-                "reference": "c307397f6e4382f7029528b1ea4bf5d8e4781f80"
+                "reference": "2e16fa9b1742d0b10abc431c725a353294e31d7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/security/zipball/c307397f6e4382f7029528b1ea4bf5d8e4781f80",
-                "reference": "c307397f6e4382f7029528b1ea4bf5d8e4781f80",
+                "url": "https://api.github.com/repos/nette/security/zipball/2e16fa9b1742d0b10abc431c725a353294e31d7a",
+                "reference": "2e16fa9b1742d0b10abc431c725a353294e31d7a",
                 "shasum": ""
             },
             "require": {
@@ -1716,7 +1716,7 @@
                 "issues": "https://github.com/nette/security/issues",
                 "source": "https://github.com/nette/security/tree/v3.2"
             },
-            "time": "2026-05-11T21:16:26+00:00"
+            "time": "2026-05-23T02:39:03+00:00"
         },
         {
             "name": "nette/utils",
@@ -2400,12 +2400,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "afaa31b0c12d9a659eed1ea97f268a614cc1299c"
+                "reference": "fc60adf3b88f7a1c74f9241e014a56698a30c25a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/afaa31b0c12d9a659eed1ea97f268a614cc1299c",
-                "reference": "afaa31b0c12d9a659eed1ea97f268a614cc1299c",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/fc60adf3b88f7a1c74f9241e014a56698a30c25a",
+                "reference": "fc60adf3b88f7a1c74f9241e014a56698a30c25a",
                 "shasum": ""
             },
             "require": {
@@ -2491,7 +2491,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-06T08:55:54+00:00"
+            "time": "2026-05-24T09:51:05+00:00"
         },
         {
             "name": "symfony/translation-contracts",
